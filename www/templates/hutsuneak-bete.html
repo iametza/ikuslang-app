@@ -7,6 +7,12 @@
         
         <div id="hutsuneak-bete-bideoa-edukinontzia">
             
+            <div>
+                <ul>
+                    <li>{{izena}}</li>
+                </ul>
+            </div>
+            
             <div id="beheko-botoiak">
                 <button id="berriz-hasi-botoia" ng-click="hasi_berriz()">Berriz hasi</button>
                 <button id="egiaztatu-botoia" ng-click="egiaztatu()">Egiaztatu</button>
@@ -20,10 +26,6 @@
                     <div id="jquery_jplayer_1" class="jp-jplayer"></div>
                     
                     <div class="jp-gui">
-                        
-                        <div class="jp-video-play">
-                            <a href="javascript:;" class="jp-video-play-icon" tabindex="1">play</a>
-                        </div>
                         
                         <div class="jp-interface">
                             
@@ -40,33 +42,11 @@
                             
                             <div class="jp-controls-holder">
                                 
-                                <ul class="jp-controls">
-                                    <li><a href="javascript:;" class="jp-play" tabindex="1">Erreproduzitu</a></li>
-                                    <li><a href="javascript:;" class="jp-pause" tabindex="1">Pausatu</a></li>
-                                    <li><a href="javascript:;" class="jp-stop" tabindex="1">Gelditu</a></li>
-                                    <li><a href="javascript:;" class="jp-mute" tabindex="1" title="Mututu">Mututu</a></li>
-                                    <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
-                                    <li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="Bolumen max">Bolumen max</a></li>
-                                </ul>
-                                
-                                <div class="jp-volume-bar">
-                                    <div class="jp-volume-bar-value"></div>
-                                </div>
-                                
-                                <ul class="jp-toggles">
-                                    <li><a href="javascript:;" class="jp-full-screen" tabindex="1" title="Pantaila osoa">Pantaila osoa</a></li>
-                                    <li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="Berrezarri pantaila">Berrezarri pantaila</a></li>
-                                    <li><a href="javascript:;" class="jp-repeat" tabindex="1" title="Errepikatu">Errepikatu</a></li>
-                                    <li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="Kendu errepikapena">Kendu errepikapena</a></li>
-                                </ul>
+                                <a href="javascript:;" class="jp-play button icon ion-play" tabindex="1"></a>
+                                <a href="javascript:;" class="jp-pause button icon ion-pause" tabindex="1"></a>
                                 
                             </div><!--end jp-controls-holder-->
                             
-                            <div class="jp-title">
-                                <ul>
-                                    <li>{{izena}}</li>
-                                </ul>
-                            </div>
                         </div><!--end jp-interface-->
                         
                     </div><!--end jp-gui-->
