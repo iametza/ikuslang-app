@@ -43,7 +43,7 @@ angular.module('starter.controllers', [])
             webmv: "http://asier.ikuslang.ametza.com/bideoak/kzurutuzahd.webm"
         },
         options: {
-            swfPath: "swf/Jplayer.swf",
+            solution: "html",
             supplied: "m4v, webmv"
         }
     });
