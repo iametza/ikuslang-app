@@ -21,22 +21,22 @@
     top: 250px;
 }
 
-#transkribapena-edukia span, #target-content span  {
+#hutsuneak-bete-transkribapena-edukinontzia span, #target-content span  {
     cursor: pointer;
 }    
 
-#transkribapena-edukia span.transcript-grey:hover, #target-content span.transcript-grey:hover {  
+#hutsuneak-bete-transkribapena-edukinontzia span.transcript-grey:hover, #target-content span.transcript-grey:hover {  
     color: #f9b72b; 
 }
 
-#transkribapena-edukia span:hover, #target-content span:hover  {  
+#hutsuneak-bete-transkribapena-edukinontzia span:hover, #target-content span:hover  {  
     color: #f9b72b; 
 }
 
-#transkribapena-edukia span.highlight, #target-content span.highlight {  
+#hutsuneak-bete-transkribapena-edukinontzia span.highlight, #target-content span.highlight {  
     color: #fff; 
 }       
 
-#transkribapena-edukia span.transcript-grey, #target-content span.transcript-grey {
+#hutsuneak-bete-transkribapena-edukinontzia span.transcript-grey, #target-content span.transcript-grey {
    color: #888;
 }
