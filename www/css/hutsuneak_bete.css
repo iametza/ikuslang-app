@@ -1,3 +1,17 @@
+#hutsuneak-bete-bideoa-edukinontzia {
+    float: left;
+    width: 50%;
+}
+
+#hutsuneak-bete-transkribapena-edukinontzia {
+    float: right;
+    width: 50%;
+}
+
+#hutsuneak-bete-transkribapena-edukinontzia p {
+    width: 90%;
+}
+
 .hutsuneak-bete-input {
     display: inline-block !important;
     width: auto !important;
