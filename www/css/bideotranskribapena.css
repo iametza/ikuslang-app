@@ -42,7 +42,14 @@
 }
 
 .jp-controls-holder {
+    float: left;
+}
+
+.jp-aurrerapen-barra-edukinontzia {
+    width: calc(100% - 60px);
     display: inline-block;
+    margin-left: 5px;
+    margin-top: 10px;
 }
 
 /* @group progress bar */
@@ -53,18 +60,14 @@ div.jp-seeking-bg {
 }
 
 .jp-progress {
-	background: url("./jplayer-skin/pink.flag/jplayer.pink.flag.jpg") 0px -240px no-repeat;
-	width: 197px;
 	height: 13px;
-	padding: 0 2px 2px 2px;
-	margin-bottom: 4px;
 	overflow:hidden;
 }
 
 div.jp-video .jp-progress {
 	border-top:1px solid #180a1f;
 	border-bottom: 1px solid #554560;
-	width: calc(100% - 60px);
+	width: 100%;
 	background-image: none;
 	padding: 0;
     display: inline-block;
@@ -87,3 +90,12 @@ div.jp-video .jp-progress {
 
 
 /* @end */
+
+.jp-current-time {
+    display: inline-block;
+}
+
+.jp-duration {
+    display: inline-block;
+    float: right;
+}
