@@ -41,6 +41,10 @@
    color: #888;
 }
 
+.jp-controls-holder {
+    display: inline-block;
+}
+
 /* @group progress bar */
 
 /* The seeking class is added/removed inside jPlayer */
@@ -60,9 +64,10 @@ div.jp-seeking-bg {
 div.jp-video .jp-progress {
 	border-top:1px solid #180a1f;
 	border-bottom: 1px solid #554560;
-	width:100%;
+	width: calc(100% - 60px);
 	background-image: none;
 	padding: 0;
+    display: inline-block;
 }
 
 .jp-seek-bar {
