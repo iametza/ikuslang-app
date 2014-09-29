@@ -3,11 +3,11 @@
     width: auto !important;
 }
 
-.hutsuneak-bete-input .zuzena {
+.hutsuneak-bete-input.zuzena {
     color: #00FF00 !important;
 }
 
-.hutsuneak-bete-input .okerra {
+.hutsuneak-bete-input.okerra {
     color: #FF0000 !important;
 }
 
