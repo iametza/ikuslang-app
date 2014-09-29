@@ -55,6 +55,51 @@ angular.module('starter.controllers', [])
     $scope.tPause = 0;
     $scope.endTime = null;
     
+    $scope.hasi_berriz = function() {
+        
+        $("#transkribapena-edukia input").each(function() {
+            $(this).val("");
+            $(this).removeClass("zuzena").removeClass("okerra");
+        });
+        
+    }
+    
+    $scope.egiaztatu = function() {
+        
+        $("#transkribapena-edukia input").each(function() {
+            
+            // Erantzun okerrak ezabatu
+            if($(this).attr("data-testua") === $(this).val()) {
+                $(this).addClass("zuzena");
+            } else {
+                $(this).val("");
+            }
+        });
+        
+    }
+    
+    $scope.zuzendu = function() {
+        
+        var zuzenak = 0;
+        var okerrak = 0;
+        
+        $("#transkribapena-edukia input").each(function(index, elem) {                        
+            if($(this).attr("data-testua") === $(this).val()) {
+                $(this).addClass("zuzena");
+                
+                zuzenak++;
+            } else {
+                $(this).val($(elem).attr("data-testua"));
+                $(this).addClass("okerra");
+                
+                okerrak++;
+            }
+        });
+        
+        alert("Emaitza: " + zuzenak + "/" + (zuzenak + okerrak));
+        
+    }
+    
     $scope.initTranscript = function(p) {
         
         // Hutsuneak ze data-ms-tan jarri behar diren.
