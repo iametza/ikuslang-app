@@ -12,6 +12,20 @@
     width: 90%;
 }
 
+#jp_container_1 {
+    max-width: 95% !important;
+}
+
+#jquery_jplayer_1 {
+    height: auto !important;
+    width: 100% !important;
+}
+
+#jp_video_0 {
+    height: auto !important;
+    width: 100% !important;
+}
+
 .hutsuneak-bete-input {
     display: inline-block !important;
     width: auto !important;
