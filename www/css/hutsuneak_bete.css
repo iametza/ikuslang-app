@@ -1,8 +1,13 @@
-.zuzena {
+.hutsuneak-bete-input {
+    display: inline-block !important;
+    width: auto !important;
+}
+
+.hutsuneak-bete-input .zuzena {
     color: #00FF00 !important;
 }
 
-.okerra {
+.hutsuneak-bete-input .okerra {
     color: #FF0000 !important;
 }
 

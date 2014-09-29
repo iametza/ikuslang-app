@@ -148,7 +148,7 @@ angular.module('starter.controllers', [])
             hutsunearen_testua = $.trim(hutsunearen_testua);
             
             // Lehen hitzaren span-a input text batekin ordezkatu.
-            $("span[data-ms='" + hutsuneak[i][0].denbora + "']").replaceWith("<input type='text' data-testua='" + hutsunearen_testua + "' />");
+            $("span[data-ms='" + hutsuneak[i][0].denbora + "']").replaceWith("<input type='text' class='hutsuneak-bete-input' data-testua='" + hutsunearen_testua + "' />");
             
         }
         
