@@ -34,7 +34,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: "/hutsuneak-bete",
       views: {
         'menuContent' :{
-          templateUrl: "templates/hutsuneak-bete.html"
+          templateUrl: "templates/hutsuneak-bete.html",
+          controller: "HutsuneakBeteCtrl"
         }
       }
     })

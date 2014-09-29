@@ -33,6 +33,22 @@ angular.module('starter.controllers', [])
   };
 })
 
+.controller('HutsuneakBeteCtrl', function($scope) {
+    
+    $scope.izena = "Hutsuneak bete proba"
+    
+    $scope.pop = Popcorn.jplayer("#jquery_jplayer_1", {
+        media: {
+            m4v: "http://asier.ikuslang.ametza.com/bideoak/kzurutuzahd.mp4",
+            webmv: "http://asier.ikuslang.ametza.com/bideoak/kzurutuzahd.webm"
+        },
+        options: {
+            swfPath: "swf/Jplayer.swf",
+            supplied: "m4v, webmv"
+        }
+    });
+})
+
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },

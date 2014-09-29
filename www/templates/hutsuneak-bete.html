@@ -1,8 +1,89 @@
 <ion-view title="Hutsuneak bete">
-  <ion-nav-buttons side="left">
-    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-  </ion-nav-buttons>
-  <ion-content class="has-header">
-    <h1>Hutsuneak bete</h1>
-  </ion-content>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    
+    <ion-content class="has-header">
+        
+        <div id="transkribapena-edukinontzia">
+            
+            <div id="jp_container_1" class="jp-video jp-video-270p">
+                
+                <div class="jp-type-single">
+                    
+                    <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+                    
+                    <div class="jp-gui">
+                        
+                        <div class="jp-video-play">
+                            <a href="javascript:;" class="jp-video-play-icon" tabindex="1">play</a>
+                        </div>
+                        
+                        <div class="jp-interface">
+                            
+                            <div class="jp-progress">
+                                
+                                <div class="jp-seek-bar">
+                                    <div class="jp-play-bar"></div>
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="jp-current-time"></div>
+                            <div class="jp-duration"></div>
+                            
+                            <div class="jp-controls-holder">
+                                
+                                <ul class="jp-controls">
+                                    <li><a href="javascript:;" class="jp-play" tabindex="1">Erreproduzitu</a></li>
+                                    <li><a href="javascript:;" class="jp-pause" tabindex="1">Pausatu</a></li>
+                                    <li><a href="javascript:;" class="jp-stop" tabindex="1">Gelditu</a></li>
+                                    <li><a href="javascript:;" class="jp-mute" tabindex="1" title="Mututu">Mututu</a></li>
+                                    <li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+                                    <li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="Bolumen max">Bolumen max</a></li>
+                                </ul>
+                                
+                                <div class="jp-volume-bar">
+                                    <div class="jp-volume-bar-value"></div>
+                                </div>
+                                
+                                <ul class="jp-toggles">
+                                    <li><a href="javascript:;" class="jp-full-screen" tabindex="1" title="Pantaila osoa">Pantaila osoa</a></li>
+                                    <li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="Berrezarri pantaila">Berrezarri pantaila</a></li>
+                                    <li><a href="javascript:;" class="jp-repeat" tabindex="1" title="Errepikatu">Errepikatu</a></li>
+                                    <li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="Kendu errepikapena">Kendu errepikapena</a></li>
+                                </ul>
+                                
+                            </div><!--end jp-controls-holder-->
+                            
+                            <div class="jp-title">
+                                <ul>
+                                    <li>{{izena}}</li>
+                                </ul>
+                            </div>
+                        </div><!--end jp-interface-->
+                        
+                    </div><!--end jp-gui-->
+                    
+                    <div id="bideoa-azpitituluak" class="bideoa-azpitituluak-behean"></div>
+                    
+                    <div class="jp-no-solution">
+                        <span>Beharrezkoa da eguneratzea</span>
+                        Edukiak erreproduzitzeko nabigatzailea edo <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugina</a> eguneratu behar dituzu.
+                    </div>
+                    
+                </div><!--end jp-type-single-->
+                
+            </div><!--end jp_container_1-->
+            
+            <div id="transkribapena-edukia"></div>
+        </div>
+        
+        <div id="beheko-botoiak">
+            <button id="berriz-hasi-botoia">Berriz hasi</button>
+            <button id="egiaztatu-botoia">Egiaztatu</button>
+            <button id="zuzendu-botoia">Zuzendu</button>
+        </div>
+        
+    </ion-content>
 </ion-view>
