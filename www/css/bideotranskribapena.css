@@ -1,0 +1,42 @@
+/* Bideo eta hipertranskribapenaren estilo komunak */
+
+#jp_container_1 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#bideoa-azpitituluak {
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    text-align: center;
+    text-shadow: 2px 2px 6px #000000;
+    width: 480px;
+}
+
+.bideoa-azpitituluak-behean {
+    top: 250px;
+}
+
+#transkribapena-edukia span, #target-content span  {
+    cursor: pointer;
+}    
+
+#transkribapena-edukia span.transcript-grey:hover, #target-content span.transcript-grey:hover {  
+    color: #f9b72b; 
+}
+
+#transkribapena-edukia span:hover, #target-content span:hover  {  
+    color: #f9b72b; 
+}
+
+#transkribapena-edukia span.highlight, #target-content span.highlight {  
+    color: #fff; 
+}       
+
+#transkribapena-edukia span.transcript-grey, #target-content span.transcript-grey {
+   color: #888;
+}
