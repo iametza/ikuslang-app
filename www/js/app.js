@@ -31,10 +31,10 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     })
 
     .state('app.search', {
-      url: "/search",
+      url: "/hutsuneak-bete",
       views: {
         'menuContent' :{
-          templateUrl: "templates/search.html"
+          templateUrl: "templates/hutsuneak-bete.html"
         }
       }
     })
