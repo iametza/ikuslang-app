@@ -206,6 +206,9 @@ angular.module('ikuslang-app.controllers', [])
     
     $scope.galdera_erantzunak = [];
     
+    $scope.galderak = false;
+    $scope.amaierako_galderak = false;
+    
     $scope.pop;
     
     $scope.eskuratuDatuak = function() {
@@ -251,6 +254,102 @@ angular.module('ikuslang-app.controllers', [])
                 
             }
             
+            for (var i = 0; i < $scope.galdera_erantzunak.galderak.length; i++) {
+                
+                $scope.pop.code({
+                    
+                    start: $scope.galdera_erantzunak.galderak[i].denbora,
+                    end: $scope.galdera_erantzunak.galderak[i].denbora + 1,
+                    onStart: function() {
+                        
+                        $scope.pop.pause();
+                        
+                        // Dagokion galdera prestatu.
+                        $scope.bistaratu_galdera();
+                        
+                        $("#galderak-modala").modal("show", {
+                            backdrop: "static"
+                        });
+                        
+                    }
+                    
+                });
+                
+            }
+            
+            // Multimedia amaitzean bistaratu beharreko galderak badaude...
+            if ($scope.galdera_erantzunak.amaierako_galderak.length > 0) {
+                
+                $scope.pop.on("ended", function() {
+                    
+                    // Dagokion galdera prestatu.
+                    $scope.bistaratu_galdera();
+                    
+                    $("#galderak-modala").modal("show", {
+                        backdrop: "static"
+                    });
+                    
+                });
+                
+            }
+            
+            if ($scope.galdera_erantzunak.galderak.length > 0) {
+                
+                // Galderak objektu berri bat sortu
+                $scope.galderak = new Galderak({
+                    
+                    galderak_desordenatu: false
+                    
+                });
+                
+            }
+            
+            if ($scope.galdera_erantzunak.amaierako_galderak.length > 0) {
+                
+                // Amaierako galderentzat objektu berri bat sortu.
+                $scope.amaierako_galderak = new Galderak({
+                    
+                    galderak_desordenatu: true
+                    
+                });
+                
+            }
+            
+            for (var i = 0; i < $scope.galdera_erantzunak.galderak.length; i++) {
+                
+				$scope.galderak.gehitu_galdera({
+                    id_galdera: i,
+                    testua: $scope.galdera_erantzunak.galderak[i].galdera,
+                    noiz: $scope.galdera_erantzunak.galderak[i].denbora
+                });
+				
+				for (var j = 0; j < $scope.galdera_erantzunak.galderak[i].erantzunak.length; j++) {
+                    
+					$scope.galderak.gehitu_erantzuna(i,
+                                              j,
+                                              $scope.galdera_erantzunak.galderak[i].erantzunak[j].erantzuna,
+                                              $scope.galdera_erantzunak.galderak[i].erantzunak[j].zuzena);
+                    
+				}
+			}
+            
+            for (var i = 0; i < $scope.galdera_erantzunak.amaierako_galderak.length; i++) {
+                
+				$scope.amaierako_galderak.gehitu_galdera({
+                    id_galdera: i,
+                    testua: $scope.galdera_erantzunak.amaierako_galderak[i].galdera,
+                    noiz: $scope.galdera_erantzunak.amaierako_galderak[i].denbora
+                });
+				
+				for (var j = 0; j < $scope.galdera_erantzunak.amaierako_galderak[i].erantzunak.length; j++) {
+					
+                    $scope.amaierako_galderak.gehitu_erantzuna(i,
+                                                        j,
+                                                        $scope.galdera_erantzunak.amaierako_galderak[i].erantzunak[j].erantzuna,
+                                                        $scope.galdera_erantzunak.amaierako_galderak[i].erantzunak[j].zuzena);
+                    
+				}
+			}
             
             // Azpitituluen fitxategia parseatu bistaratzeko.
             //$scope.pop.parseSRT("http://asier.ikuslang.ametza.com/azpitituluak/karloszurutuzahd.srt", {target: "bideoa-azpitituluak"});
