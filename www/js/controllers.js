@@ -31,6 +31,10 @@ angular.module('ikuslang-app.controllers', [])
       $scope.closeLogin();
     }, 1000);
   };
+  
+    // Erabiltzaileari aurrerapen-barra erabiliz denboran aurrera eta atzera ibiltzea galaraziko diogu.
+    $.jPlayer.prototype.seekBar = function() {};
+    
 })
 
 .controller('HutsuneakBeteCtrl', ['$scope', 'Zerbitzaria', function($scope, Zerbitzaria) {
