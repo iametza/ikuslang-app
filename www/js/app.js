@@ -30,7 +30,7 @@ angular.module('ikuslang-app', ['ionic', 'ikuslang-app.controllers', 'ikuslang-a
       controller: 'AppCtrl'
     })
 
-    .state('app.search', {
+    .state('app.hutsuneak-bete', {
       url: "/hutsuneak-bete",
       views: {
         'menuContent' :{
@@ -40,11 +40,11 @@ angular.module('ikuslang-app', ['ionic', 'ikuslang-app.controllers', 'ikuslang-a
       }
     })
 
-    .state('app.browse', {
-      url: "/browse",
+    .state('app.galdera-erantzunak', {
+      url: "/galdera-erantzunak",
       views: {
         'menuContent' :{
-          templateUrl: "templates/browse.html"
+          templateUrl: "templates/galdera-erantzunak.html"
         }
       }
     })
