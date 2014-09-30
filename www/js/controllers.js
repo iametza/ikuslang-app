@@ -200,6 +200,72 @@ angular.module('ikuslang-app.controllers', [])
     
 }])
 
+.controller('GalderaErantzunakCtrl', ['$scope', 'Zerbitzaria', function($scope, Zerbitzaria) {
+    
+    $scope.izena = "";
+    
+    $scope.galdera_erantzunak = [];
+    
+    $scope.pop;
+    
+    $scope.eskuratuDatuak = function() {
+        
+        var id_ariketa = 1;
+        var id_hizkuntza = 1;
+        
+        var promise = Zerbitzaria.eskuratuGalderaErantzunak(id_ariketa, id_hizkuntza);
+        
+        promise.then(function() {
+            
+            $scope.galdera_erantzunak = Zerbitzaria.galdera_erantzunak;
+            
+            console.log($scope.galdera_erantzunak);
+            
+            $scope.izena = $scope.galdera_erantzunak.izena;
+            
+            if ($scope.galdera_erantzunak.ikus_entzunezkoa.mota === "bideoa") {
+                
+                $scope.pop = Popcorn.jplayer("#jquery_jplayer_1", {
+                    media: {
+                        m4v: Zerbitzaria.oinarrizko_url + $scope.galdera_erantzunak.ikus_entzunezkoa.bideo_path + $scope.galdera_erantzunak.ikus_entzunezkoa.bideo_mp4,
+                        webmv: Zerbitzaria.oinarrizko_url + $scope.galdera_erantzunak.ikus_entzunezkoa.bideo_path + $scope.galdera_erantzunak.ikus_entzunezkoa.bideo_webm
+                    },
+                    options: {
+                        solution: "html",
+                        supplied: "m4v, webmv"
+                    }
+                });
+                
+            } else if ($scope.galdera_erantzunak.ikus_entzunezkoa.mota === "audioa") {
+                
+                $scope.pop = Popcorn.jplayer("#jquery_jplayer_1", {
+                    media: {
+                        mp3: Zerbitzaria.oinarrizko_url + $scope.galdera_erantzunak.ikus_entzunezkoa.audio_path + $scope.galdera_erantzunak.ikus_entzunezkoa.audio_mp3,
+                        ogg: Zerbitzaria.oinarrizko_url + $scope.galdera_erantzunak.ikus_entzunezkoa.audio_path + $scope.galdera_erantzunak.ikus_entzunezkoa.audio_ogg
+                    },
+                    options: {
+                        solution: "html",
+                        supplied: "mp3, ogg"
+                    }
+                });
+                
+            }
+            
+            
+            // Azpitituluen fitxategia parseatu bistaratzeko.
+            //$scope.pop.parseSRT("http://asier.ikuslang.ametza.com/azpitituluak/karloszurutuzahd.srt", {target: "bideoa-azpitituluak"});
+            
+            // Hipertranskribapenaren oinarrizko funtzionalitatea hasieratu
+            //$scope.initTranscript($scope.pop, $scope.hutsuneak_bete.hutsuneak);
+            
+        });
+        
+    }
+    
+    $scope.eskuratuDatuak();
+    
+}])
+
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
     { title: 'Reggae', id: 1 },

@@ -44,7 +44,8 @@ angular.module('ikuslang-app', ['ionic', 'ikuslang-app.controllers', 'ikuslang-a
       url: "/galdera-erantzunak",
       views: {
         'menuContent' :{
-          templateUrl: "templates/galdera-erantzunak.html"
+          templateUrl: "templates/galdera-erantzunak.html",
+          controller: "GalderaErantzunakCtrl"
         }
       }
     })
