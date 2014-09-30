@@ -1,3 +1,10 @@
+#hutsuneak-bete-izenburua {
+    color: #444;
+    font-size: 24px;
+    padding: 10px;
+    text-align: center;
+}
+
 #hutsuneak-bete-bideoa-edukinontzia {
     float: left;
     width: 50%;
@@ -42,5 +49,6 @@
 }
 
 #goiko-botoiak {
+    padding: 10px;
     text-align: center;
 }
