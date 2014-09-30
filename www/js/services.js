@@ -8,6 +8,7 @@ angular.module('ikuslang-app.services', [])
     var factory = {};
     
     factory.api_url ="http://asier.ikuslang.ametza.com/API/v1/";
+    factory.oinarrizko_url = "http://asier.ikuslang.ametza.com/";
     
     factory.hutsuneak_bete = [];
     
