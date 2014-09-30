@@ -35,18 +35,11 @@ angular.module('ikuslang-app.controllers', [])
 
 .controller('HutsuneakBeteCtrl', ['$scope', 'Zerbitzaria', function($scope, Zerbitzaria) {
     
-    $scope.izena = "Hutsuneak bete proba"
+    $scope.izena = "";
     
     $scope.hutsuneak_bete = [];
     
     $scope.pop;
-    
-    $scope.dataMs = "data-ms";
-    
-    // Zertarako ziren hauek?
-    $scope.playSource = true;
-    $scope.tPause = 0;
-    $scope.endTime = null;
     
     $scope.hasi_berriz = function() {
         
@@ -99,11 +92,12 @@ angular.module('ikuslang-app.controllers', [])
         var hitz_kopurua;
         var hutsunearen_testua = "";
         var $spana;
+        var dataMs = "data-ms";
         
         $("#hutsuneak-bete-transkribapena-edukinontzia span").each(function(i) {  
             // doing p.transcript on every word is a bit inefficient - wondering if there is a better way
             p.transcript({
-                time: $(this).attr($scope.dataMs) / 1000, // seconds
+                time: $(this).attr(dataMs) / 1000, // seconds
                 futureClass: "transcript-grey",
                 target: this,
                 onNewPara: function(parent) {
@@ -159,9 +153,6 @@ angular.module('ikuslang-app.controllers', [])
         return txt;
     }
     
-    // Azpitituluen fitxategia parseatu bistaratzeko.
-    //$scope.pop.parseSRT("http://asier.ikuslang.ametza.com/azpitituluak/karloszurutuzahd.srt", {target: "bideoa-azpitituluak"});
-    
     $scope.eskuratuDatuak = function() {
         
         var id_ariketa = 3;
@@ -175,6 +166,8 @@ angular.module('ikuslang-app.controllers', [])
             
             console.log($scope.hutsuneak_bete);
             
+            $scope.izena = $scope.hutsuneak_bete.izena;
+            
             $scope.pop = Popcorn.jplayer("#jquery_jplayer_1", {
                 media: {
                     m4v: Zerbitzaria.oinarrizko_url + $scope.hutsuneak_bete.bideo_path + $scope.hutsuneak_bete.bideo_mp4,
@@ -185,6 +178,9 @@ angular.module('ikuslang-app.controllers', [])
                     supplied: "m4v, webmv"
                 }
             });
+            
+            // Azpitituluen fitxategia parseatu bistaratzeko.
+            //$scope.pop.parseSRT("http://asier.ikuslang.ametza.com/azpitituluak/karloszurutuzahd.srt", {target: "bideoa-azpitituluak"});
             
             // Hipertranskribapenaren testua bistaratu
             $('#hutsuneak-bete-transkribapena-edukinontzia').html($scope.hutsuneak_bete.hipertranskribapena);
