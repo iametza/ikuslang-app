@@ -202,19 +202,23 @@ angular.module('ikuslang-app.controllers', [])
 
 .controller('GalderaErantzunakCtrl', ['$scope', 'Zerbitzaria', function($scope, Zerbitzaria) {
     
-    $scope.izena = "";
+    var eredua = {
+        izena: ""
+    };
     
-    $scope.galdera_erantzunak = [];
+    $scope.izena = eredua.izena;
     
-    $scope.galderak = false;
-    $scope.amaierako_galderak = false;
+    var galdera_erantzunak = [];
+    
+    var galderak = false;
+    var amaierako_galderak = false;
     
     // Galdera arruntak bukatu diren ala ez. Amaierako galderak ez ditu kontutan hartzen.
-    $scope.galderak_bukatu_dira = false;
+    var galderak_bukatu_dira = false;
     
-    $scope.pop;
+    var pop;
     
-    $scope.eskuratuDatuak = function() {
+    var eskuratuDatuak = function() {
         
         var id_ariketa = 1;
         var id_hizkuntza = 1;
@@ -223,18 +227,18 @@ angular.module('ikuslang-app.controllers', [])
         
         promise.then(function() {
             
-            $scope.galdera_erantzunak = Zerbitzaria.galdera_erantzunak;
+            galdera_erantzunak = Zerbitzaria.galdera_erantzunak;
             
-            console.log($scope.galdera_erantzunak);
+            console.log(galdera_erantzunak);
             
-            $scope.izena = $scope.galdera_erantzunak.izena;
+            eredua.izena = galdera_erantzunak.izena;
             
-            if ($scope.galdera_erantzunak.ikus_entzunezkoa.mota === "bideoa") {
+            if (galdera_erantzunak.ikus_entzunezkoa.mota === "bideoa") {
                 
-                $scope.pop = Popcorn.jplayer("#jquery_jplayer_1", {
+                pop = Popcorn.jplayer("#jquery_jplayer_1", {
                     media: {
-                        m4v: Zerbitzaria.oinarrizko_url + $scope.galdera_erantzunak.ikus_entzunezkoa.bideo_path + $scope.galdera_erantzunak.ikus_entzunezkoa.bideo_mp4,
-                        webmv: Zerbitzaria.oinarrizko_url + $scope.galdera_erantzunak.ikus_entzunezkoa.bideo_path + $scope.galdera_erantzunak.ikus_entzunezkoa.bideo_webm
+                        m4v: Zerbitzaria.oinarrizko_url + galdera_erantzunak.ikus_entzunezkoa.bideo_path + galdera_erantzunak.ikus_entzunezkoa.bideo_mp4,
+                        webmv: Zerbitzaria.oinarrizko_url + galdera_erantzunak.ikus_entzunezkoa.bideo_path + galdera_erantzunak.ikus_entzunezkoa.bideo_webm
                     },
                     options: {
                         solution: "html",
@@ -242,12 +246,12 @@ angular.module('ikuslang-app.controllers', [])
                     }
                 });
                 
-            } else if ($scope.galdera_erantzunak.ikus_entzunezkoa.mota === "audioa") {
+            } else if (galdera_erantzunak.ikus_entzunezkoa.mota === "audioa") {
                 
-                $scope.pop = Popcorn.jplayer("#jquery_jplayer_1", {
+                pop = Popcorn.jplayer("#jquery_jplayer_1", {
                     media: {
-                        mp3: Zerbitzaria.oinarrizko_url + $scope.galdera_erantzunak.ikus_entzunezkoa.audio_path + $scope.galdera_erantzunak.ikus_entzunezkoa.audio_mp3,
-                        ogg: Zerbitzaria.oinarrizko_url + $scope.galdera_erantzunak.ikus_entzunezkoa.audio_path + $scope.galdera_erantzunak.ikus_entzunezkoa.audio_ogg
+                        mp3: Zerbitzaria.oinarrizko_url + galdera_erantzunak.ikus_entzunezkoa.audio_path + galdera_erantzunak.ikus_entzunezkoa.audio_mp3,
+                        ogg: Zerbitzaria.oinarrizko_url + galdera_erantzunak.ikus_entzunezkoa.audio_path + galdera_erantzunak.ikus_entzunezkoa.audio_ogg
                     },
                     options: {
                         solution: "html",
@@ -257,18 +261,18 @@ angular.module('ikuslang-app.controllers', [])
                 
             }
             
-            for (var i = 0; i < $scope.galdera_erantzunak.galderak.length; i++) {
+            for (var i = 0; i < galdera_erantzunak.galderak.length; i++) {
                 
-                $scope.pop.code({
+                pop.code({
                     
-                    start: $scope.galdera_erantzunak.galderak[i].denbora,
-                    end: $scope.galdera_erantzunak.galderak[i].denbora + 1,
+                    start: galdera_erantzunak.galderak[i].denbora,
+                    end: galdera_erantzunak.galderak[i].denbora + 1,
                     onStart: function() {
                         
-                        $scope.pop.pause();
+                        pop.pause();
                         
                         // Dagokion galdera prestatu.
-                        $scope.bistaratu_galdera();
+                        bistaratu_galdera();
                         
                         $("#galderak-modala").modal("show", {
                             backdrop: "static"
@@ -281,12 +285,12 @@ angular.module('ikuslang-app.controllers', [])
             }
             
             // Multimedia amaitzean bistaratu beharreko galderak badaude...
-            if ($scope.galdera_erantzunak.amaierako_galderak.length > 0) {
+            if (galdera_erantzunak.amaierako_galderak.length > 0) {
                 
-                $scope.pop.on("ended", function() {
+                pop.on("ended", function() {
                     
                     // Dagokion galdera prestatu.
-                    $scope.bistaratu_galdera();
+                    bistaratu_galdera();
                     
                     $("#galderak-modala").modal("show", {
                         backdrop: "static"
@@ -296,10 +300,10 @@ angular.module('ikuslang-app.controllers', [])
                 
             }
             
-            if ($scope.galdera_erantzunak.galderak.length > 0) {
+            if (galdera_erantzunak.galderak.length > 0) {
                 
                 // Galderak objektu berri bat sortu
-                $scope.galderak = new Galderak({
+                galderak = new Galderak({
                     
                     galderak_desordenatu: false
                     
@@ -307,10 +311,10 @@ angular.module('ikuslang-app.controllers', [])
                 
             }
             
-            if ($scope.galdera_erantzunak.amaierako_galderak.length > 0) {
+            if (galdera_erantzunak.amaierako_galderak.length > 0) {
                 
                 // Amaierako galderentzat objektu berri bat sortu.
-                $scope.amaierako_galderak = new Galderak({
+                amaierako_galderak = new Galderak({
                     
                     galderak_desordenatu: true
                     
@@ -318,58 +322,58 @@ angular.module('ikuslang-app.controllers', [])
                 
             }
             
-            for (var i = 0; i < $scope.galdera_erantzunak.galderak.length; i++) {
+            for (var i = 0; i < galdera_erantzunak.galderak.length; i++) {
                 
-				$scope.galderak.gehitu_galdera({
+				galderak.gehitu_galdera({
                     id_galdera: i,
-                    testua: $scope.galdera_erantzunak.galderak[i].galdera,
-                    noiz: $scope.galdera_erantzunak.galderak[i].denbora
+                    testua: galdera_erantzunak.galderak[i].galdera,
+                    noiz: galdera_erantzunak.galderak[i].denbora
                 });
 				
-				for (var j = 0; j < $scope.galdera_erantzunak.galderak[i].erantzunak.length; j++) {
+				for (var j = 0; j < galdera_erantzunak.galderak[i].erantzunak.length; j++) {
                     
-					$scope.galderak.gehitu_erantzuna(i,
+					galderak.gehitu_erantzuna(i,
                                               j,
-                                              $scope.galdera_erantzunak.galderak[i].erantzunak[j].erantzuna,
-                                              $scope.galdera_erantzunak.galderak[i].erantzunak[j].zuzena);
+                                              galdera_erantzunak.galderak[i].erantzunak[j].erantzuna,
+                                              galdera_erantzunak.galderak[i].erantzunak[j].zuzena);
                     
 				}
 			}
             
-            for (var i = 0; i < $scope.galdera_erantzunak.amaierako_galderak.length; i++) {
+            for (var i = 0; i < galdera_erantzunak.amaierako_galderak.length; i++) {
                 
-				$scope.amaierako_galderak.gehitu_galdera({
+				amaierako_galderak.gehitu_galdera({
                     id_galdera: i,
-                    testua: $scope.galdera_erantzunak.amaierako_galderak[i].galdera,
-                    noiz: $scope.galdera_erantzunak.amaierako_galderak[i].denbora
+                    testua: galdera_erantzunak.amaierako_galderak[i].galdera,
+                    noiz: galdera_erantzunak.amaierako_galderak[i].denbora
                 });
 				
-				for (var j = 0; j < $scope.galdera_erantzunak.amaierako_galderak[i].erantzunak.length; j++) {
+				for (var j = 0; j < galdera_erantzunak.amaierako_galderak[i].erantzunak.length; j++) {
 					
-                    $scope.amaierako_galderak.gehitu_erantzuna(i,
+                    amaierako_galderak.gehitu_erantzuna(i,
                                                         j,
-                                                        $scope.galdera_erantzunak.amaierako_galderak[i].erantzunak[j].erantzuna,
-                                                        $scope.galdera_erantzunak.amaierako_galderak[i].erantzunak[j].zuzena);
+                                                        galdera_erantzunak.amaierako_galderak[i].erantzunak[j].erantzuna,
+                                                        galdera_erantzunak.amaierako_galderak[i].erantzunak[j].zuzena);
                     
 				}
 			}
             
             // Hasteko prestatu
-			$scope.galderak && $scope.galderak.hasieratu();
-            $scope.amaierako_galderak && $scope.amaierako_galderak.hasieratu();
+			galderak && galderak.hasieratu();
+            amaierako_galderak && amaierako_galderak.hasieratu();
             
             // Azpitituluen fitxategia parseatu bistaratzeko.
-            //$scope.pop.parseSRT("http://asier.ikuslang.ametza.com/azpitituluak/karloszurutuzahd.srt", {target: "bideoa-azpitituluak"});
+            //pop.parseSRT("http://asier.ikuslang.ametza.com/azpitituluak/karloszurutuzahd.srt", {target: "bideoa-azpitituluak"});
             
             // Hipertranskribapenaren oinarrizko funtzionalitatea hasieratu
-            //$scope.initTranscript($scope.pop, $scope.hutsuneak_bete.hutsuneak);
+            //initTranscript(pop, hutsuneak_bete.hutsuneak);
             
         });
         
     }
     
     // Emandako id-a duen botoia desgaitu
-    $scope.desgaitu_botoia = function(id) {
+    var desgaitu_botoia = function(id) {
         
         //$(id).attr("disabled", true);
         $(id).css("visibility", "hidden");
@@ -377,7 +381,7 @@ angular.module('ikuslang-app.controllers', [])
     }
 
     // Emandako id-a duen botoia gaitu
-    $scope.gaitu_botoia = function(id) {
+    var gaitu_botoia = function(id) {
         
         //$(id).attr("disabled", false);
         $(id).css("visibility", "visible");
@@ -385,53 +389,53 @@ angular.module('ikuslang-app.controllers', [])
     }
     
     // Dagokion galdera bistaratzen du
-    $scope.bistaratu_galdera = function() {
+    var bistaratu_galdera = function() {
         
-        $scope.bistaratu_zuzen_kopurua();
+        bistaratu_zuzen_kopurua();
         
-        $scope.bistaratu_oker_kopurua();
+        bistaratu_oker_kopurua();
         
-        $scope.bistaratu_zenbagarrena();
+        bistaratu_zenbagarrena();
         
-        $scope.bistaratu_galdera_kopurua();
+        bistaratu_galdera_kopurua();
         
         // Hasieran aurrera joateko botoiak desgaituta egon behar du
-        $scope.desgaitu_botoia("#aurrera");
+        desgaitu_botoia("#aurrera");
         
         // Erabiltzaileari erantzuteko aukera eman
-        if (!$scope.galderak_bukatu_dira
-            && $scope.galderak
-            && $scope.galderak.itzuli_zenbagarren_galdera() <= $scope.galderak.itzuli_galdera_kopurua()) {
+        if (!galderak_bukatu_dira
+            && galderak
+            && galderak.itzuli_zenbagarren_galdera() <= galderak.itzuli_galdera_kopurua()) {
             
-            $scope.galderak.gaitu_erantzunak();
+            galderak.gaitu_erantzunak();
             
-        } else if ($scope.amaierako_galderak
-                   && $scope.amaierako_galderak.itzuli_zenbagarren_galdera() <= $scope.amaierako_galderak.itzuli_galdera_kopurua()) {
+        } else if (amaierako_galderak
+                   && amaierako_galderak.itzuli_zenbagarren_galdera() <= amaierako_galderak.itzuli_galdera_kopurua()) {
             
-            $scope.amaierako_galderak.gaitu_erantzunak();
+            amaierako_galderak.gaitu_erantzunak();
             
         }
         
-        if (!$scope.galderak_bukatu_dira
-            && $scope.galderak
-            && $scope.galderak.itzuli_zenbagarren_galdera() <= $scope.galderak.itzuli_galdera_kopurua()) {
+        if (!galderak_bukatu_dira
+            && galderak
+            && galderak.itzuli_zenbagarren_galdera() <= galderak.itzuli_galdera_kopurua()) {
             
             // Galderaren id-a gorde atributu pertsonalizatu batean
-            $("#galdera").attr("data-id", $scope.galderak.itzuli_id_galdera());
+            $("#galdera").attr("data-id", galderak.itzuli_id_galdera());
             
             // Galderaren testua bistaratu
-            $("#galdera").text($scope.galderak.itzuli_galderaren_testua());
+            $("#galdera").text(galderak.itzuli_galderaren_testua());
             
             // Galderari dagozkion erantzunen id-en arraya eskuratu (desordenatuta)
-            var id_erantzunak = $scope.galderak.itzuli_id_erantzunak();
+            var id_erantzunak = galderak.itzuli_id_erantzunak();
             
             // Galdera motaren arabera beharrezko fitxategia kargatu
-            if ($scope.galderak.itzuli_mota() == 'irudia') {
+            if (galderak.itzuli_mota() == 'irudia') {
                 
                 // Dagokion irudia bistaratzeko img bat sortu dagokion lekuan
-                $("#galdera_kontainer").prepend("<img id='irudia' src='" + $scope.galderak.itzuli_fitxategia() + "'>");
+                $("#galdera_kontainer").prepend("<img id='irudia' src='" + galderak.itzuli_fitxategia() + "'>");
                 
-            } else if ($scope.galderak.itzuli_mota() == 'soinua') {
+            } else if (galderak.itzuli_mota() == 'soinua') {
                 
                 // Play botoia bistaratu
                 //$("#play").css("visibility", "visible");
@@ -442,28 +446,28 @@ angular.module('ikuslang-app.controllers', [])
                     erreproduzitu_soinua();
                 });
                 
-                soundManager.play($scope.galderak.itzuli_fitxategia());
+                soundManager.play(galderak.itzuli_fitxategia());
             }
             
-        } else if ($scope.amaierako_galderak
-                   && $scope.amaierako_galderak.itzuli_zenbagarren_galdera() <= $scope.amaierako_galderak.itzuli_galdera_kopurua()) {
+        } else if (amaierako_galderak
+                   && amaierako_galderak.itzuli_zenbagarren_galdera() <= amaierako_galderak.itzuli_galdera_kopurua()) {
             
             // Galderaren id-a gorde atributu pertsonalizatu batean
-            $("#galdera").attr("data-id", $scope.amaierako_galderak.itzuli_id_galdera());
+            $("#galdera").attr("data-id", amaierako_galderak.itzuli_id_galdera());
             
             // Galderaren testua bistaratu
-            $("#galdera").text($scope.amaierako_galderak.itzuli_galderaren_testua());
+            $("#galdera").text(amaierako_galderak.itzuli_galderaren_testua());
             
             // Galderari dagozkion erantzunen id-en arraya eskuratu (desordenatuta)
-            var id_erantzunak = $scope.amaierako_galderak.itzuli_id_erantzunak();
+            var id_erantzunak = amaierako_galderak.itzuli_id_erantzunak();
             
             // Galdera motaren arabera beharrezko fitxategia kargatu
-            if ($scope.amaierako_galderak.itzuli_mota() == 'irudia') {
+            if (amaierako_galderak.itzuli_mota() == 'irudia') {
                 
                 // Dagokion irudia bistaratzeko img bat sortu dagokion lekuan
-                $("#galdera_kontainer").prepend("<img id='irudia' src='" + $scope.galderak.itzuli_fitxategia() + "'>");
+                $("#galdera_kontainer").prepend("<img id='irudia' src='" + galderak.itzuli_fitxategia() + "'>");
                 
-            } else if ($scope.amaierako_galderak.itzuli_mota() == 'soinua') {
+            } else if (amaierako_galderak.itzuli_mota() == 'soinua') {
                 
                 // Play botoia bistaratu
                 //$("#play").css("visibility", "visible");
@@ -474,7 +478,7 @@ angular.module('ikuslang-app.controllers', [])
                     erreproduzitu_soinua();
                 });
                 
-                soundManager.play($scope.galderak.itzuli_fitxategia());
+                soundManager.play(galderak.itzuli_fitxategia());
             }
             
         }
@@ -482,15 +486,15 @@ angular.module('ikuslang-app.controllers', [])
         // Galdera erantzunanitzaren div-ak ezabatu
         $(".erantzunanitza_div").remove();
         
-        if (!$scope.galderak_bukatu_dira
-            && $scope.galderak
-            && $scope.galderak.itzuli_zenbagarren_galdera() <= $scope.galderak.itzuli_galdera_kopurua()) {
+        if (!galderak_bukatu_dira
+            && galderak
+            && galderak.itzuli_zenbagarren_galdera() <= galderak.itzuli_galdera_kopurua()) {
             
             /*
              * Galdera honen eta aurrekoaren erantzun kopurua ez bada berdina,
              * aurreko div-ak ezabatu eta behar adina div sortu 
              */
-            if ($scope.galderak.itzuli_erantzun_mota() != "mapa") {
+            if (galderak.itzuli_erantzun_mota() != "mapa") {
                 
                 // Aurreko galderako mapa ezabatu
                 $("#chaptersMap").empty();
@@ -498,10 +502,10 @@ angular.module('ikuslang-app.controllers', [])
                 // Galdera erantzunanitzetan aurreko erantzunen div-ak ezabatu behar dira,
                 // bestela aurreko galderaren erantzun kopurua berdina denean ez da agertzen checkbox-ik
                 if (id_erantzunak.length != $("#erantzunak div").size()
-                    || $scope.galderak.erantzunanitza_da()) {
+                    || galderak.erantzunanitza_da()) {
                     
-                    $scope.ezabatu_aurreko_erantzunen_divak();
-                    $scope.sortu_erantzunen_divak();
+                    ezabatu_aurreko_erantzunen_divak();
+                    sortu_erantzunen_divak();
                     
                 }
                 
@@ -509,7 +513,7 @@ angular.module('ikuslang-app.controllers', [])
                 
                 // Aurreko galderaren divak ezabatu
                 // (behar bada ezkutatzearekin nahikoa litzateke)
-                $scope.ezabatu_aurreko_erantzunen_divak();
+                ezabatu_aurreko_erantzunen_divak();
                 
                 /*
                  * EGITEKO: Aurreko galderaren mapa berdina bada ez dago kargatu beharrik.
@@ -520,16 +524,16 @@ angular.module('ikuslang-app.controllers', [])
                 $("#chaptersMap").empty();
                 
                 // Mapa berria kargatu
-                prestatu_mapa($scope.galderak.itzuli_fitxategia());
+                prestatu_mapa(galderak.itzuli_fitxategia());
             }
             
             // Zuzendu botoia galdera erantzunanitzetan bakarrik bistaratu
-            if ($scope.galderak.erantzunanitza_da()) {
+            if (galderak.erantzunanitza_da()) {
                 
                 //$("#zuzendu").css("visibility", "visible");
                 $("#zuzendu").show();
                 
-                $scope.gaitu_botoia($("#zuzendu"));
+                gaitu_botoia($("#zuzendu"));
                 
             } else {
                 
@@ -539,7 +543,7 @@ angular.module('ikuslang-app.controllers', [])
             }
             
             // Erantzunak bistaratu
-            if ($scope.galderak.itzuli_erantzun_mota() != "mapa") {
+            if (galderak.itzuli_erantzun_mota() != "mapa") {
                 
                 for (var i = 0; i < id_erantzunak.length; i++){
                     
@@ -549,7 +553,7 @@ angular.module('ikuslang-app.controllers', [])
                     //$("#erantzuna" + i).css("background", "#fff");
                     
                     // Erantzunaren testua bistaratu
-                    $("#erantzuna" + i).text($scope.galderak.itzuli_erantzunaren_testua(id_erantzunak[i]));
+                    $("#erantzuna" + i).text(galderak.itzuli_erantzunaren_testua(id_erantzunak[i]));
                     
                     // Erantzunaren id_erantzuna gorde atributu pertsonalizatu batean
                     $("#erantzuna" + i).attr("data-id", id_erantzunak[i]);
@@ -567,14 +571,14 @@ angular.module('ikuslang-app.controllers', [])
                 
             }
             
-        } else if ($scope.amaierako_galderak
-                   && $scope.amaierako_galderak.itzuli_zenbagarren_galdera() <= $scope.amaierako_galderak.itzuli_galdera_kopurua()) {
+        } else if (amaierako_galderak
+                   && amaierako_galderak.itzuli_zenbagarren_galdera() <= amaierako_galderak.itzuli_galdera_kopurua()) {
             
             /*
              * Galdera honen eta aurrekoaren erantzun kopurua ez bada berdina,
              * aurreko div-ak ezabatu eta behar adina div sortu 
              */
-            if ($scope.amaierako_galderak.itzuli_erantzun_mota() != "mapa") {
+            if (amaierako_galderak.itzuli_erantzun_mota() != "mapa") {
                 
                 // Aurreko galderako mapa ezabatu
                 $("#chaptersMap").empty();
@@ -582,7 +586,7 @@ angular.module('ikuslang-app.controllers', [])
                 // Galdera erantzunanitzetan aurreko erantzunen div-ak ezabatu behar dira,
                 // bestela aurreko galderaren erantzun kopurua berdina denean ez da agertzen checkbox-ik
                 if (id_erantzunak.length != $("#erantzunak div").size()
-                    || $scope.amaierako_galderak.erantzunanitza_da()) {
+                    || amaierako_galderak.erantzunanitza_da()) {
                     
                     ezabatu_aurreko_erantzunen_divak();
                     sortu_erantzunen_divak();
@@ -609,7 +613,7 @@ angular.module('ikuslang-app.controllers', [])
             }
             
             // Zuzendu botoia galdera erantzunanitzetan bakarrik bistaratu
-            if ($scope.amaierako_galderak.erantzunanitza_da()) {
+            if (amaierako_galderak.erantzunanitza_da()) {
                 
                 //$("#zuzendu").css("visibility", "visible");
                 $("#zuzendu").show();
@@ -624,7 +628,7 @@ angular.module('ikuslang-app.controllers', [])
             }
             
             // Erantzunak bistaratu
-            if ($scope.amaierako_galderak.itzuli_erantzun_mota() != "mapa") {
+            if (amaierako_galderak.itzuli_erantzun_mota() != "mapa") {
                 
                 for (var i = 0; i < id_erantzunak.length; i++) {
                     
@@ -634,7 +638,7 @@ angular.module('ikuslang-app.controllers', [])
                     //$("#erantzuna" + i).css("background", "#fff");
                     
                     // Erantzunaren testua bistaratu
-                    $("#erantzuna" + i).text($scope.amaierako_galderak.itzuli_erantzunaren_testua(id_erantzunak[i]));
+                    $("#erantzuna" + i).text(amaierako_galderak.itzuli_erantzunaren_testua(id_erantzunak[i]));
                     
                     // Erantzunaren id_erantzuna gorde atributu pertsonalizatu batean
                     $("#erantzuna" + i).attr("data-id", id_erantzunak[i]);
@@ -656,59 +660,59 @@ angular.module('ikuslang-app.controllers', [])
         
     }
     
-    $scope.bistaratu_zenbagarrena =  function() {
+    var bistaratu_zenbagarrena =  function() {
         
         var zenbagarrena = 0;
         
-        if ($scope.galderak && $scope.amaierako_galderak) {
+        if (galderak && amaierako_galderak) {
             
-            zenbagarrena = $scope.galderak.itzuli_zenbagarren_galdera() + $scope.amaierako_galderak.itzuli_zenbagarren_galdera() - 1;
+            zenbagarrena = galderak.itzuli_zenbagarren_galdera() + amaierako_galderak.itzuli_zenbagarren_galdera() - 1;
             
-        } else if ($scope.galderak) {
+        } else if (galderak) {
             
-            zenbagarrena = $scope.galderak.itzuli_zenbagarren_galdera();
+            zenbagarrena = galderak.itzuli_zenbagarren_galdera();
             
-        } else if ($scope.amaierako_galderak) {
+        } else if (amaierako_galderak) {
             
-            zenbagarrena = $scope.amaierako_galderak.itzuli_zenbagarren_galdera();
+            zenbagarrena = amaierako_galderak.itzuli_zenbagarren_galdera();
             
         }
         
         $("#unekoa").text(zenbagarrena);
     }
     
-    $scope.bistaratu_zuzen_kopurua =  function() {
+    var bistaratu_zuzen_kopurua =  function() {
         
         var zuzen_kopurua = 0;
         
-        if ($scope.galderak) {
+        if (galderak) {
             
-            zuzen_kopurua = zuzen_kopurua + $scope.galderak.itzuli_erantzun_zuzen_kopurua();
+            zuzen_kopurua = zuzen_kopurua + galderak.itzuli_erantzun_zuzen_kopurua();
             
         }
         
-        if ($scope.amaierako_galderak) {
+        if (amaierako_galderak) {
             
-            zuzen_kopurua = zuzen_kopurua + $scope.amaierako_galderak.itzuli_erantzun_zuzen_kopurua();
+            zuzen_kopurua = zuzen_kopurua + amaierako_galderak.itzuli_erantzun_zuzen_kopurua();
             
         }
         
         $("#zuzenak").text(zuzen_kopurua);
     }
     
-    $scope.bistaratu_oker_kopurua =  function() {
+    var bistaratu_oker_kopurua =  function() {
         
         var oker_kopurua = 0;
         
-        if ($scope.galderak) {
+        if (galderak) {
             
-            oker_kopurua = oker_kopurua + $scope.galderak.itzuli_erantzun_oker_kopurua();
+            oker_kopurua = oker_kopurua + galderak.itzuli_erantzun_oker_kopurua();
             
         }
         
-        if ($scope.amaierako_galderak) {
+        if (amaierako_galderak) {
             
-            oker_kopurua = oker_kopurua + $scope.amaierako_galderak.itzuli_erantzun_oker_kopurua();
+            oker_kopurua = oker_kopurua + amaierako_galderak.itzuli_erantzun_oker_kopurua();
             
         }
         
@@ -716,26 +720,26 @@ angular.module('ikuslang-app.controllers', [])
         
     }
     
-    $scope.bistaratu_galdera_kopurua =  function() {
+    var bistaratu_galdera_kopurua =  function() {
         
         var galdera_kopurua = 0;
         
-        if ($scope.galderak) {
+        if (galderak) {
             
-            galdera_kopurua = galdera_kopurua + $scope.galderak.itzuli_galdera_kopurua();
+            galdera_kopurua = galdera_kopurua + galderak.itzuli_galdera_kopurua();
             
         }
         
-        if ($scope.amaierako_galderak) {
+        if (amaierako_galderak) {
             
-            galdera_kopurua = galdera_kopurua + $scope.amaierako_galderak.itzuli_galdera_kopurua();
+            galdera_kopurua = galdera_kopurua + amaierako_galderak.itzuli_galdera_kopurua();
             
         }
         
         $("#guztira").text(galdera_kopurua);
     }
     
-    $scope.aurrera_klik = function() {
+    var aurrera_klik = function() {
         
         // Irudiak ezkutuan daudela ziurtatu
         //$("#irudia").attr("src", "");
@@ -744,51 +748,51 @@ angular.module('ikuslang-app.controllers', [])
         //$("#play").css("visibility", "hidden");
         $("#play").remove();
         
-        if (!$scope.galderak_bukatu_dira
-            && $scope.galderak
-            && $scope.galderak.itzuli_zenbagarren_galdera() <= $scope.galderak.itzuli_galdera_kopurua()) {
+        if (!galderak_bukatu_dira
+            && galderak
+            && galderak.itzuli_zenbagarren_galdera() <= galderak.itzuli_galdera_kopurua()) {
             
             // Sortako azken galderan bagaude edo hurrengo galdera ez bada unekoaren denbora berean.
-            if (($scope.galderak.itzuli_zenbagarren_galdera() === $scope.galderak.itzuli_galdera_kopurua())
-                || ($scope.galderak.itzuliGalderaNoiz($scope.galderak.itzuli_zenbagarren_galdera()) !== $scope.galderak.itzuliGalderaNoiz($scope.galderak.itzuli_zenbagarren_galdera() + 1))) {
+            if ((galderak.itzuli_zenbagarren_galdera() === galderak.itzuli_galdera_kopurua())
+                || (galderak.itzuliGalderaNoiz(galderak.itzuli_zenbagarren_galdera()) !== galderak.itzuliGalderaNoiz(galderak.itzuli_zenbagarren_galdera() + 1))) {
                 
                 // Modala ezkutatu.
                 $("#galderak-modala").modal("hide");
                 
                 // Hurrengo galdera kargatu, gero bistaratzeko.
                 // Hurrengo galderarik ez badago false itzultzen du.
-                if (!$scope.galderak.hurrengo_galdera()) {
+                if (!galderak.hurrengo_galdera()) {
                     
-                    $scope.galderak_bukatu_dira = true;
+                    galderak_bukatu_dira = true;
                     
                 }
                 
                 // Multimedia erreproduzitzen hasi berriz ere.
-                $scope.pop.play();
+                pop.play();
                 
             } else {
                 
-                $scope.galderak.hurrengo_galdera();
+                galderak.hurrengo_galdera();
                 
                 // Hurrengo galdera bistaratu
-                $scope.bistaratu_galdera();
+                bistaratu_galdera();
                 
                 // Zenbagarren galdera den bistaratu
-                $scope.bistaratu_zenbagarrena();
+                bistaratu_zenbagarrena();
                 
                 // Botoia desgaitu erabiltzaileari erantzun bat hautatzera behartzeko
-                $scope.desgaitu_botoia("#aurrera");
+                desgaitu_botoia("#aurrera");
                 
                 // Erabiltzaileari erantzuteko aukera eman
-                $scope.galderak.gaitu_erantzunak();
+                galderak.gaitu_erantzunak();
                 
             }
             
-        } else if ($scope.amaierako_galderak
-                   && $scope.amaierako_galderak.itzuli_zenbagarren_galdera() <= $scope.amaierako_galderak.itzuli_galdera_kopurua()) {
+        } else if (amaierako_galderak
+                   && amaierako_galderak.itzuli_zenbagarren_galdera() <= amaierako_galderak.itzuli_galdera_kopurua()) {
             
             // Sortako azken galderan bagaude
-            if ($scope.amaierako_galderak.itzuli_zenbagarren_galdera() === $scope.amaierako_galderak.itzuli_galdera_kopurua()) {
+            if (amaierako_galderak.itzuli_zenbagarren_galdera() === amaierako_galderak.itzuli_galdera_kopurua()) {
                 
                 // Modala ezkutatu.
                 $("#galderak-modala").modal("hide");
@@ -797,19 +801,19 @@ angular.module('ikuslang-app.controllers', [])
                 
             } else {
                 
-                $scope.amaierako_galderak.hurrengo_galdera();
+                amaierako_galderak.hurrengo_galdera();
                 
                 // Hurrengo galdera bistaratu
-                $scope.bistaratu_galdera();
+                bistaratu_galdera();
                 
                 // Zenbagarren galdera den bistaratu
-                $scope.bistaratu_zenbagarrena();
+                bistaratu_zenbagarrena();
                 
                 // Botoia desgaitu erabiltzaileari erantzun bat hautatzera behartzeko
-                $scope.desgaitu_botoia("#aurrera");
+                desgaitu_botoia("#aurrera");
                 
                 // Erabiltzaileari erantzuteko aukera eman
-                $scope.amaierako_galderak.gaitu_erantzunak();
+                amaierako_galderak.gaitu_erantzunak();
                 
             }
             
@@ -817,16 +821,16 @@ angular.module('ikuslang-app.controllers', [])
         
     }
     
-    $scope.erantzun_klik_maneiatzailea = function() {
+    var erantzun_klik_maneiatzailea = function() {
         
-        if ($scope.galderak
-            && $scope.galderak.itzuli_zenbagarren_galdera() <= $scope.galderak.itzuli_galdera_kopurua()) {
+        if (galderak
+            && galderak.itzuli_zenbagarren_galdera() <= galderak.itzuli_galdera_kopurua()) {
             
             // Erantzunak gaituta badaude
-            if ($scope.galderak.itzuli_erantzunak_gaituta()) {
+            if (galderak.itzuli_erantzunak_gaituta()) {
                 
                 // Erantzuna zuzena bada
-                if ($scope.galderak.erantzun_zuzena_da($(this).attr("data-id")) == true){
+                if (galderak.erantzun_zuzena_da($(this).attr("data-id")) == true){
                     
                     //alert("oso ondo");
                     
@@ -836,8 +840,8 @@ angular.module('ikuslang-app.controllers', [])
                     // Erantzun zuzenari dagokion soinua erreproduzitu
                     soundManager.play('erantzun_zuzena');
                     
-                    $scope.galderak.erantzun_zuzenak_gehi_bat();
-                    $scope.bistaratu_zuzen_kopurua();
+                    galderak.erantzun_zuzenak_gehi_bat();
+                    bistaratu_zuzen_kopurua();
                     
                 } else { // okerra bada berriz
                     
@@ -856,27 +860,27 @@ angular.module('ikuslang-app.controllers', [])
                         $("#erantzuna" + erantzun_zuzenak[i]).addClass("erantzun_zuzena");
                     }
                     
-                    $scope.galderak.erantzun_okerrak_gehi_bat();
-                    $scope.bistaratu_oker_kopurua();
+                    galderak.erantzun_okerrak_gehi_bat();
+                    bistaratu_oker_kopurua();
                     
                 }
                 
                 // Erabiltzaileari ez utzi berriz erantzuten
-                $scope.galderak.desgaitu_erantzunak();
+                galderak.desgaitu_erantzunak();
                 
                 // Aurrera joateko botoia gaitu
-                $scope.gaitu_botoia("#aurrera");
+                gaitu_botoia("#aurrera");
                 
             }
             
-        } else if ($scope.amaierako_galderak
-                   && $scope.amaierako_galderak.itzuli_zenbagarren_galdera() <= $scope.amaierako_galderak.itzuli_galdera_kopurua()) {
+        } else if (amaierako_galderak
+                   && amaierako_galderak.itzuli_zenbagarren_galdera() <= amaierako_galderak.itzuli_galdera_kopurua()) {
             
             // Erantzunak gaituta badaude
-            if ($scope.amaierako_galderak.itzuli_erantzunak_gaituta()) {
+            if (amaierako_galderak.itzuli_erantzunak_gaituta()) {
                 
                 // Erantzuna zuzena bada
-                if ($scope.amaierako_galderak.erantzun_zuzena_da($(this).attr("data-id")) == true){
+                if (amaierako_galderak.erantzun_zuzena_da($(this).attr("data-id")) == true){
                     
                     //alert("oso ondo");
                     
@@ -886,9 +890,9 @@ angular.module('ikuslang-app.controllers', [])
                     // Erantzun zuzenari dagokion soinua erreproduzitu
                     soundManager.play('erantzun_zuzena');
                     
-                    $scope.amaierako_galderak.erantzun_zuzenak_gehi_bat();
+                    amaierako_galderak.erantzun_zuzenak_gehi_bat();
                     
-                    $scope.bistaratu_zuzen_kopurua();
+                    bistaratu_zuzen_kopurua();
                     
                 } else { // okerra bada berriz
                     
@@ -907,17 +911,17 @@ angular.module('ikuslang-app.controllers', [])
                         $("#erantzuna" + erantzun_zuzenak[i]).addClass("erantzun_zuzena");
                     }
                     
-                    $scope.amaierako_galderak.erantzun_okerrak_gehi_bat();
+                    amaierako_galderak.erantzun_okerrak_gehi_bat();
                     
-                    $scope.bistaratu_oker_kopurua();
+                    bistaratu_oker_kopurua();
                     
                 }
                 
                 // Erabiltzaileari ez utzi berriz erantzuten
-                $scope.amaierako_galderak.desgaitu_erantzunak();
+                amaierako_galderak.desgaitu_erantzunak();
                 
                 // Aurrera joateko botoia gaitu
-                $scope.gaitu_botoia("#aurrera");
+                gaitu_botoia("#aurrera");
                 
             }
             
@@ -925,53 +929,53 @@ angular.module('ikuslang-app.controllers', [])
         
     }
     
-    $scope.ezabatu_aurreko_erantzunen_divak = function() {
+    var ezabatu_aurreko_erantzunen_divak = function() {
         
         $("#erantzunak div").remove();
         
     }
     
-    $scope.sortu_erantzunen_divak = function() {
+    var sortu_erantzunen_divak = function() {
         
-        if ($scope.galderak
-            && $scope.galderak.itzuli_zenbagarren_galdera() <= $scope.galderak.itzuli_galdera_kopurua()) {
+        if (galderak
+            && galderak.itzuli_zenbagarren_galdera() <= galderak.itzuli_galdera_kopurua()) {
             
             // Erantzun bakoitzaren div-a sortu eta klik maneiatzailea gehitu
-            var erantzun_kop = $scope.galderak.itzuli_erantzun_kopurua();
+            var erantzun_kop = galderak.itzuli_erantzun_kopurua();
             
             for (var i = 0; i < erantzun_kop; i++){
                 
                 // Erantzunentzat behar adina div sortu
-                if ($scope.galderak.erantzunanitza_da()) {
+                if (galderak.erantzunanitza_da()) {
                     
                     $("#erantzunak").append("<div class='erantzunanitza_div' id='erantzunanitza" + i + "'><input type='checkbox' id='check" + i + "' ><span class='erantzuna_span' id='erantzuna" + i + "'></span></div>");
                     
                 } else {
                     
                     $("#erantzunak").append("<div class='erantzuna_div' id='erantzuna" + i + "'></div>");
-                    $("#erantzuna" + i).click($scope.erantzun_klik_maneiatzailea);
+                    $("#erantzuna" + i).click(erantzun_klik_maneiatzailea);
                     
                 }
                 
             }
             
-        } else if ($scope.amaierako_galderak
-                   && $scope.amaierako_galderak.itzuli_zenbagarren_galdera() <= $scope.amaierako_galderak.itzuli_galdera_kopurua()) {
+        } else if (amaierako_galderak
+                   && amaierako_galderak.itzuli_zenbagarren_galdera() <= amaierako_galderak.itzuli_galdera_kopurua()) {
             
             // Erantzun bakoitzaren div-a sortu eta klik maneiatzailea gehitu
-            var erantzun_kop = $scope.amaierako_galderak.itzuli_erantzun_kopurua();
+            var erantzun_kop = amaierako_galderak.itzuli_erantzun_kopurua();
             
             for (var i = 0; i < erantzun_kop; i++){
                 
                 // Erantzunentzat behar adina div sortu
-                if ($scope.amaierako_galderak.erantzunanitza_da()) {
+                if (amaierako_galderak.erantzunanitza_da()) {
                     
                     $("#erantzunak").append("<div class='erantzunanitza_div' id='erantzunanitza" + i + "'><input type='checkbox' id='check" + i + "' ><span class='erantzuna_span' id='erantzuna" + i + "'></span></div>");
                     
                 } else {
                     
                     $("#erantzunak").append("<div class='erantzuna_div' id='erantzuna" + i + "'></div>");
-                    $("#erantzuna" + i).click($scope.erantzun_klik_maneiatzailea);
+                    $("#erantzuna" + i).click(erantzun_klik_maneiatzailea);
                     
                 }
                 
@@ -981,7 +985,7 @@ angular.module('ikuslang-app.controllers', [])
         
     }
     
-    $scope.eskuratuDatuak();
+    eskuratuDatuak();
     
 }])
 
