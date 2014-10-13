@@ -68,8 +68,8 @@ Galderak.prototype = {
 	},
 	
 	// Gehitu erantzun bat id_galdera id-a duen galderari
-	gehitu_erantzuna: function(id_galdera, id_erantzuna, testua, zuzena_da) {
-		this.galderak[id_galdera].gehitu_erantzuna(id_erantzuna, testua, zuzena_da);
+	gehitu_erantzuna: function(id_galdera, id_erantzuna, testua, zuzena_da, id_erantzuna_db) {
+		this.galderak[id_galdera].gehitu_erantzuna(id_erantzuna, testua, zuzena_da, id_erantzuna_db);
 	},
 	
 	// Gehitu galdera bat
@@ -211,6 +211,11 @@ Galderak.prototype = {
 		return this.id_erantzunak;
 	},
 	
+    // id_galdera galderaren id_erantzuna erantzunaren datu-baseko id-a itzultzen du.
+    itzuli_id_erantzuna_db: function(id_galdera, id_erantzuna) {
+        return this.galderak[id_galdera].erantzunak[id_erantzuna].id_erantzuna_db;
+    },
+    
 	// Uneko galderaren id_galdera itzultzen du
 	itzuli_id_galdera: function() {
 		return this.id_galderak[this.zenbagarren_galdera];

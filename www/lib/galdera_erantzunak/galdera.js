@@ -58,7 +58,7 @@ function Galdera(id, testua, mota, erantzunanitza, erantzun_mota, fitxategia, no
 
 // Objektu guztiek konpartituko dituzten metodoak
 Galdera.prototype = {
-	gehitu_erantzuna: function(id_erantzuna, testua, zuzena_da) {
-		this.erantzunak[id_erantzuna] = new Erantzuna(id_erantzuna, testua, zuzena_da);
+	gehitu_erantzuna: function(id_erantzuna, testua, zuzena_da, id_erantzuna_db) {
+		this.erantzunak[id_erantzuna] = new Erantzuna(id_erantzuna, testua, zuzena_da, id_erantzuna_db);
 	}
 };
