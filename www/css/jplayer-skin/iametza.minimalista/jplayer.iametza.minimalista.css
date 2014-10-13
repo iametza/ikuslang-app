@@ -1,0 +1,100 @@
+#jp_container_1 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+div.jp-video-play {
+    background-color: #c7d446;
+}
+
+div.jp-video-270p {
+    width: 480px;
+}
+
+div.jp-video-270p div.jp-video-play {
+    height: 270px;
+    margin-top: -270px;
+}
+div.jp-video div.jp-video-play {
+    cursor: pointer;
+    overflow: hidden;
+    width: 100%;
+}
+
+a.jp-video-play-icon {
+    background: url("jplayer.pink.flag.video.play.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    height: 100px;
+    left: 50%;
+    margin-left: -56px;
+    margin-top: -50px;
+    position: relative;
+    text-indent: -9999px;
+    top: 50%;
+    width: 112px;
+}
+
+.jp-controls-holder {
+    float: left;
+}
+
+.jp-aurrerapen-barra-edukinontzia {
+    width: calc(100% - 60px);
+    display: inline-block;
+    margin-left: 5px;
+    margin-top: 0px;
+}
+
+.jp-interface {
+    padding-top: 3px;
+}
+
+/* @group progress bar */
+
+/* The seeking class is added/removed inside jPlayer */
+div.jp-seeking-bg {
+	background: url("jplayer.pink.flag.seeking.gif");
+}
+
+.jp-progress {
+	height: 13px;
+	overflow:hidden;
+}
+
+div.jp-video .jp-progress {
+	border-top:1px solid #180a1f;
+	border-bottom: 1px solid #554560;
+	width: 100%;
+	background-image: none;
+	padding: 0;
+    display: inline-block;
+}
+
+.jp-seek-bar {
+	background: url("jplayer.pink.flag.jpg") 0px -260px repeat-x;
+	width:0px;
+	height: 100%;
+	overflow:hidden;
+	cursor:pointer;
+}
+
+.jp-play-bar {
+	background: url("jplayer.pink.flag.jpg") 0px -280px repeat-x;
+	width:0px;
+	height: 100%;
+	overflow:hidden;
+}
+
+
+/* @end */
+
+.jp-current-time {
+    display: inline-block;
+}
+
+.jp-duration {
+    display: inline-block;
+    float: right;
+}
