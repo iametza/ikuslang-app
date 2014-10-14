@@ -41,11 +41,11 @@ angular.module('ikuslang-app.controllers', [])
     
     $scope.izena = "";
     
-    $scope.hutsuneak_bete = [];
+    var hutsuneak_bete = [];
     
-    $scope.pop;
+    var pop;
     
-    $scope.hasi_berriz = function() {
+    var hasi_berriz = function() {
         
         $("#hutsuneak-bete-transkribapena-edukinontzia input").each(function() {
             $(this).val("");
@@ -54,7 +54,7 @@ angular.module('ikuslang-app.controllers', [])
         
     }
     
-    $scope.egiaztatu = function() {
+    var egiaztatu = function() {
         
         $("#hutsuneak-bete-transkribapena-edukinontzia input").each(function() {
             
@@ -68,7 +68,7 @@ angular.module('ikuslang-app.controllers', [])
         
     }
     
-    $scope.zuzendu = function() {
+    var zuzendu = function() {
         
         var zuzenak = 0;
         var okerrak = 0;
@@ -90,7 +90,7 @@ angular.module('ikuslang-app.controllers', [])
         
     }
     
-    $scope.initTranscript = function(p, hutsuneak) {
+    var initTranscript = function(p, hutsuneak) {
         
         var hutsune_kopurua = hutsuneak.length;
         var hitz_kopurua;
@@ -142,7 +142,7 @@ angular.module('ikuslang-app.controllers', [])
     }
     
     // select text function
-    $scope.getSelText = function() {
+    var getSelText = function() {
         var txt = '';
         if (window.getSelection){
             txt = window.getSelection();
@@ -157,7 +157,7 @@ angular.module('ikuslang-app.controllers', [])
         return txt;
     }
     
-    $scope.eskuratuDatuak = function() {
+    var eskuratuDatuak = function() {
         
         var id_ariketa = 3;
         var id_hizkuntza = 1;
@@ -166,16 +166,16 @@ angular.module('ikuslang-app.controllers', [])
         
         promise.then(function() {
             
-            $scope.hutsuneak_bete = Zerbitzaria.hutsuneak_bete;
+            hutsuneak_bete = Zerbitzaria.hutsuneak_bete;
             
-            console.log($scope.hutsuneak_bete);
+            console.log(hutsuneak_bete);
             
-            $scope.izena = $scope.hutsuneak_bete.izena;
+            $scope.izena = hutsuneak_bete.izena;
             
-            $scope.pop = Popcorn.jplayer("#jquery_jplayer_1", {
+            pop = Popcorn.jplayer("#jquery_jplayer_1", {
                 media: {
-                    m4v: Zerbitzaria.oinarrizko_url + $scope.hutsuneak_bete.bideo_path + $scope.hutsuneak_bete.bideo_mp4,
-                    webmv: Zerbitzaria.oinarrizko_url + $scope.hutsuneak_bete.bideo_path + $scope.hutsuneak_bete.bideo_webm
+                    m4v: Zerbitzaria.oinarrizko_url + hutsuneak_bete.bideo_path + hutsuneak_bete.bideo_mp4,
+                    webmv: Zerbitzaria.oinarrizko_url + hutsuneak_bete.bideo_path + hutsuneak_bete.bideo_webm
                 },
                 options: {
                     solution: "html",
@@ -184,19 +184,19 @@ angular.module('ikuslang-app.controllers', [])
             });
             
             // Azpitituluen fitxategia parseatu bistaratzeko.
-            //$scope.pop.parseSRT("http://asier.ikuslang.ametza.com/azpitituluak/karloszurutuzahd.srt", {target: "bideoa-azpitituluak"});
+            //pop.parseSRT("http://asier.ikuslang.ametza.com/azpitituluak/karloszurutuzahd.srt", {target: "bideoa-azpitituluak"});
             
             // Hipertranskribapenaren testua bistaratu
-            $('#hutsuneak-bete-transkribapena-edukinontzia').html($scope.hutsuneak_bete.hipertranskribapena);
+            $('#hutsuneak-bete-transkribapena-edukinontzia').html(hutsuneak_bete.hipertranskribapena);
             
             // Hipertranskribapenaren oinarrizko funtzionalitatea hasieratu
-            $scope.initTranscript($scope.pop, $scope.hutsuneak_bete.hutsuneak);
+            initTranscript(pop, hutsuneak_bete.hutsuneak);
             
         });
         
     }
     
-    $scope.eskuratuDatuak();
+    eskuratuDatuak();
     
 }])
 
