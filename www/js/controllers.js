@@ -449,7 +449,7 @@ angular.module('ikuslang-app.controllers', [])
                     erreproduzitu_soinua();
                 });
                 
-                soundManager.play(galderak.itzuli_fitxategia());
+                // soundManager.play(galderak.itzuli_fitxategia());
             }
             
         } else if (amaierako_galderak
@@ -481,7 +481,7 @@ angular.module('ikuslang-app.controllers', [])
                     erreproduzitu_soinua();
                 });
                 
-                soundManager.play(galderak.itzuli_fitxategia());
+                // soundManager.play(galderak.itzuli_fitxategia());
             }
             
         }
@@ -742,7 +742,7 @@ angular.module('ikuslang-app.controllers', [])
         $("#guztira").text(galdera_kopurua);
     }
     
-    var aurrera_klik = function() {
+    $scope.aurrera_klik = function() {
         
         // Irudiak ezkutuan daudela ziurtatu
         //$("#irudia").attr("src", "");
@@ -841,7 +841,7 @@ angular.module('ikuslang-app.controllers', [])
                     $(this).addClass("erantzun_zuzena");
                     
                     // Erantzun zuzenari dagokion soinua erreproduzitu
-                    soundManager.play('erantzun_zuzena');
+                    // soundManager.play('erantzun_zuzena');
                     
                     galderak.erantzun_zuzenak_gehi_bat();
                     bistaratu_zuzen_kopurua();
@@ -854,7 +854,7 @@ angular.module('ikuslang-app.controllers', [])
                     $(this).addClass("erantzun_okerra");
                     
                     // Erantzun okerrari dagokion soinua erreproduzitu
-                    soundManager.play('erantzun_okerra');
+                    // soundManager.play('erantzun_okerra');
                         
                     // Erantzun zuzenari/ei dagokion/en estiloa aplikatu
                     var erantzun_zuzenak = galderak.itzuli_erantzun_zuzenak();
@@ -891,7 +891,7 @@ angular.module('ikuslang-app.controllers', [])
                     $(this).addClass("erantzun_zuzena");
                     
                     // Erantzun zuzenari dagokion soinua erreproduzitu
-                    soundManager.play('erantzun_zuzena');
+                    // soundManager.play('erantzun_zuzena');
                     
                     amaierako_galderak.erantzun_zuzenak_gehi_bat();
                     
@@ -905,7 +905,7 @@ angular.module('ikuslang-app.controllers', [])
                     $(this).addClass("erantzun_okerra");
                     
                     // Erantzun okerrari dagokion soinua erreproduzitu
-                    soundManager.play('erantzun_okerra');
+                    // soundManager.play('erantzun_okerra');
                     
                     // Erantzun zuzenari/ei dagokion/en estiloa aplikatu
                     var erantzun_zuzenak = amaierako_galderak.itzuli_erantzun_zuzenak();

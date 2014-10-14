@@ -1,0 +1,127 @@
+#ondo{
+	border: 4px solid #b6e894;
+	background-color:#64a23a;
+	width: 400px;
+	height: 50px;
+	text-align: center;
+	position: absolute;
+	top: 150px;
+	left: 250px;
+	font-size:120%;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	padding:4px;
+	color:#FFF;	
+}
+#edukia {
+	margin: 0 auto;
+	width: 700px;
+}
+
+#galdera_kontainer {
+	color: #000;
+	width: 100%;
+	display: table;
+	height: 150px;
+	overflow: hidden;
+	font-size: 30px;
+}
+
+#galdera {
+	padding: 10px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#erantzunak {
+	height: 210px;
+	width: 100%;
+	display: block;
+}
+
+.erantzuna_div, .erantzunanitza_div {
+	height: 33%;
+	width: 100%;
+	display: table;
+	font-size: 24px;
+	background-color: #EFBA83;
+    border-color: #F47C01;
+    border-radius: 10px 10px 10px 10px;
+    border-style: solid;
+    border-width: 5px;
+	margin-bottom:5px!important;
+	padding: 0px 5px 0px 5px;
+}
+
+.erantzuna_div_div {
+	display: table-cell;
+	vertical-align: middle;
+	width: 100%;
+	padding: 10px;
+}
+
+.erantzun_zuzena {
+	background-color: #64a23a;
+	border-color:#64a23a;
+}
+
+.erantzun_okerra {
+	border-color:#9D140A;
+	background-color: #9D140A;
+}
+
+#galdera_erantzunak_botoiak {
+    text-align: right;
+    margin-top: 40px;
+	width: 725px;
+}
+
+#chaptersMap {
+    position: relative;
+    left: -45px;
+}
+
+#emaitzak {
+    float: right;
+}
+
+#zuzenak_img {
+	height: 30px;
+    margin-bottom: 10px;
+}
+
+#zuzenak {
+    font-size: 2em;
+    padding-right: 20px;
+}
+
+#okerrak_img {
+	height: 30px;
+    margin-bottom: 10px;
+}
+
+#okerrak {
+    font-size: 2em;
+}
+
+#zenbagarrena {
+    font-size: 2em;
+}
+
+#aurrera {
+	font-size: 24px;
+	visibility: hidden; /* Hasieran izkutuan egon behar du */
+	float: right;
+}
+#berriz-hasi-botoia {
+	font-size: 24px;
+	float: left;
+}
+#goikoa {
+	background-color: #fff;
+    border-color: #CDD1F2;
+    border-radius: 10px 10px 10px 10px;
+	padding: 0px 10px 0px 5px;
+    border-style: solid;
+    border-width: 5px;
+}
