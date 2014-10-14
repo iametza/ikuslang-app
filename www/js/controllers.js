@@ -200,13 +200,20 @@ angular.module('ikuslang-app.controllers', [])
     
 }])
 
-.controller('GalderaErantzunakCtrl', ['$scope', 'Zerbitzaria', function($scope, Zerbitzaria) {
+.controller('GalderaErantzunakCtrl', ['$ionicModal', '$scope', 'Zerbitzaria', function($ionicModal, $scope, Zerbitzaria) {
     
     var eredua = {
         izena: ""
     };
     
     $scope.izena = eredua.izena;
+    
+    $ionicModal.fromTemplateUrl('galderak-modala', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.modal = modal;
+    });
     
     var galdera_erantzunak = [];
     
@@ -274,9 +281,7 @@ angular.module('ikuslang-app.controllers', [])
                         // Dagokion galdera prestatu.
                         bistaratu_galdera();
                         
-                        $("#galderak-modala").modal("show", {
-                            backdrop: "static"
-                        });
+                        $scope.modal.show();
                         
                     }
                     
@@ -292,9 +297,7 @@ angular.module('ikuslang-app.controllers', [])
                     // Dagokion galdera prestatu.
                     bistaratu_galdera();
                     
-                    $("#galderak-modala").modal("show", {
-                        backdrop: "static"
-                    });
+                    $scope.modal.show();
                     
                 });
                 
@@ -757,7 +760,7 @@ angular.module('ikuslang-app.controllers', [])
                 || (galderak.itzuliGalderaNoiz(galderak.itzuli_zenbagarren_galdera()) !== galderak.itzuliGalderaNoiz(galderak.itzuli_zenbagarren_galdera() + 1))) {
                 
                 // Modala ezkutatu.
-                $("#galderak-modala").modal("hide");
+                $scope.modal.hide();
                 
                 // Hurrengo galdera kargatu, gero bistaratzeko.
                 // Hurrengo galderarik ez badago false itzultzen du.
@@ -795,7 +798,7 @@ angular.module('ikuslang-app.controllers', [])
             if (amaierako_galderak.itzuli_zenbagarren_galdera() === amaierako_galderak.itzuli_galdera_kopurua()) {
                 
                 // Modala ezkutatu.
-                $("#galderak-modala").modal("hide");
+                $scope.modal.hide();
                 
                 alert("Bukatuttuk");
                 
