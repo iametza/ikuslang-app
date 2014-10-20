@@ -31,9 +31,6 @@ angular.module('ikuslang-app.controllers', [])
       $scope.closeLogin();
     }, 1000);
   };
-  
-    // Erabiltzaileari aurrerapen-barra erabiliz denboran aurrera eta atzera ibiltzea galaraziko diogu.
-    $.jPlayer.prototype.seekBar = function() {};
     
 })
 
@@ -214,6 +211,9 @@ angular.module('ikuslang-app.controllers', [])
     }).then(function(modal) {
         $scope.modal = modal;
     });
+    
+    // Erabiltzaileari aurrerapen-barra erabiliz denboran aurrera eta atzera ibiltzea galaraziko diogu.
+    $.jPlayer.prototype.seekBar = function() {};
     
     var galdera_erantzunak = [];
     
@@ -992,16 +992,6 @@ angular.module('ikuslang-app.controllers', [])
     
 }])
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-})
+.controller('SarreraCtrl', function($scope) {
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
 });

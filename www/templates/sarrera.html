@@ -1,12 +1,12 @@
-<ion-view title="Playlists">
+<ion-view title="Sarrera">
   <ion-nav-buttons side="left">
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
   <ion-content class="has-header">
     <ion-list>
-      <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
-        {{playlist.title}}
-      </ion-item>
+        <ion-item ng-click="login()">Login</ion-item>
+        <ion-item href="#/app/hutsuneak-bete">Hutsuneak-bete</ion-item>
+        <ion-item href="#/app/galdera-erantzunak">Galdera-erantzunak</ion-item>
     </ion-list>
   </ion-content>
 </ion-view>

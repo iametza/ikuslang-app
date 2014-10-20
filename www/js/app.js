@@ -49,26 +49,17 @@ angular.module('ikuslang-app', ['ionic', 'ikuslang-app.controllers', 'ikuslang-a
         }
       }
     })
-    .state('app.playlists', {
-      url: "/playlists",
+    .state('app.sarrera', {
+      url: "/sarrera",
       views: {
         'menuContent' :{
-          templateUrl: "templates/playlists.html",
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
-
-    .state('app.single', {
-      url: "/playlists/:playlistId",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/playlist.html",
-          controller: 'PlaylistCtrl'
+          templateUrl: "templates/sarrera.html",
+          controller: 'SarreraCtrl'
         }
       }
     });
+    
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/sarrera');
 });
 
