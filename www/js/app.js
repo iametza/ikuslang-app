@@ -4,7 +4,12 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('ikuslang-app', ['ionic', 'ikuslang-app.controllers', 'ikuslang-app.services'])
+angular.module('ikuslang-app', [
+    'ionic',
+    'ikuslang-app.controllers',
+    'ikuslang-app.services',
+    'ikuslang-app.directives'
+])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
