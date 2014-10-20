@@ -18,6 +18,9 @@ angular.module('ikuslang-app.directives', [])
                 futureClass: "transcript-grey",
                 target: this,
                 onNewPara: function(parent) {
+                    // Hurrengo errenkadarekin zerbait arraroa gertatzen da.
+                    // $() gabe errorea ematen du: Uncaught TypeError: Object [object Object] has no method 'stop'
+                    // eta $() gehitzean, span guztiek estiloa galtzen dute. Nik uste parent-ekin zerikusia duela.
                     element.stop().scrollTo($(parent), 800, {axis:'y',margin:true,offset:{top:0}});
                 }
             });  
