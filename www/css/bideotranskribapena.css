@@ -14,22 +14,22 @@
     top: 250px;
 }
 
-#hutsuneak-bete-transkribapena-edukinontzia span, #target-content span  {
+#hutsuneak-bete-hipertranskribapena-edukinontzia span, #target-content span  {
     cursor: pointer;
 }    
 
-#hutsuneak-bete-transkribapena-edukinontzia span.transcript-grey:hover, #target-content span.transcript-grey:hover {  
+#hutsuneak-bete-hipertranskribapena-edukinontzia span.transcript-grey:hover, #target-content span.transcript-grey:hover {  
     color: #f9b72b; 
 }
 
-#hutsuneak-bete-transkribapena-edukinontzia span:hover, #target-content span:hover  {  
+#hutsuneak-bete-hipertranskribapena-edukinontzia span:hover, #target-content span:hover  {  
     color: #f9b72b; 
 }
 
-#hutsuneak-bete-transkribapena-edukinontzia span.highlight, #target-content span.highlight {  
+#hutsuneak-bete-hipertranskribapena-edukinontzia span.highlight, #target-content span.highlight {  
     color: #fff; 
 }       
 
-#hutsuneak-bete-transkribapena-edukinontzia span.transcript-grey, #target-content span.transcript-grey {
+#hutsuneak-bete-hipertranskribapena-edukinontzia span.transcript-grey, #target-content span.transcript-grey {
    color: #888;
 }
