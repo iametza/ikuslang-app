@@ -42,18 +42,18 @@ angular.module('ikuslang-app.controllers', [])
     
     $scope.pop;
     
-    var hasi_berriz = function() {
+    $scope.hasi_berriz = function() {
         
-        $("#hutsuneak-bete-transkribapena-edukinontzia input").each(function() {
+        $("#hutsuneak-bete-hipertranskribapena-edukinontzia input").each(function() {
             $(this).val("");
             $(this).removeClass("zuzena").removeClass("okerra");
         });
         
     }
     
-    var egiaztatu = function() {
+    $scope.egiaztatu = function() {
         
-        $("#hutsuneak-bete-transkribapena-edukinontzia input").each(function() {
+        $("#hutsuneak-bete-hipertranskribapena-edukinontzia input").each(function() {
             
             // Erantzun okerrak ezabatu
             if($(this).attr("data-testua") === $(this).val()) {
@@ -65,12 +65,12 @@ angular.module('ikuslang-app.controllers', [])
         
     }
     
-    var zuzendu = function() {
+    $scope.zuzendu = function() {
         
         var zuzenak = 0;
         var okerrak = 0;
         
-        $("#hutsuneak-bete-transkribapena-edukinontzia input").each(function(index, elem) {                        
+        $("#hutsuneak-bete-hipertranskribapena-edukinontzia input").each(function(index, elem) {                        
             if($(this).attr("data-testua") === $(this).val()) {
                 $(this).addClass("zuzena");
                 
@@ -85,22 +85,6 @@ angular.module('ikuslang-app.controllers', [])
         
         alert("Emaitza: " + zuzenak + "/" + (zuzenak + okerrak));
         
-    }
-    
-    // select text function
-    var getSelText = function() {
-        var txt = '';
-        if (window.getSelection){
-            txt = window.getSelection();
-        }
-        else if (document.getSelection){
-            txt = document.getSelection();
-        }
-        else if (document.selection){
-            txt = document.selection.createRange().text;
-        }          
-        
-        return txt;
     }
     
 }])
