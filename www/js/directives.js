@@ -100,4 +100,57 @@ angular.module('ikuslang-app.directives', [])
         }
     }
     
+}])
+
+// direktibaren atributua: hitzak-markatu-hipertranskribapena (marratxoekin) baina direktibaren izena camelCase izan behar du.
+.directive('hitzakMarkatuHipertranskribapena', ['Zerbitzaria', function(Zerbitzaria) {
+    
+    var initTranscript = function(scope, element, attrs, p, hutsuneak) {
+    
+        return {
+            
+            restrict: 'A',
+            
+            priority: 1,
+            
+            link: function(scope, element, attrs) {
+                
+                var id_ariketa = 2;
+                var id_hizkuntza = 1;
+                
+                var promise = Zerbitzaria.eskuratuHitzakMarkatu(id_ariketa, id_hizkuntza);
+                
+                promise.then(function() {
+                    
+                    scope.hitzak_markatu = Zerbitzaria.hitzak_markatu;
+                    
+                    console.log(scope.hitzak_markatu);
+                    
+                    scope.izena = scope.hitzak_markatu.izena;
+                    
+                    scope.pop = Popcorn.jplayer("#jquery_jplayer_1", {
+                        media: {
+                            m4v: Zerbitzaria.oinarrizko_url + scope.hitzak_markatu.bideo_path + scope.hitzak_markatu.bideo_mp4,
+                            webmv: Zerbitzaria.oinarrizko_url + scope.hitzak_markatu.bideo_path + scope.hitzak_markatu.bideo_webm
+                        },
+                        options: {
+                            solution: "html",
+                            supplied: "m4v, webmv"
+                        }
+                    });
+                    
+                    // Azpitituluen fitxategia parseatu bistaratzeko.
+                    //$scope.pop.parseSRT("http://asier.ikuslang.ametza.com/azpitituluak/karloszurutuzahd.srt", {target: "bideoa-azpitituluak"});
+                    
+                    // Hipertranskribapenaren testua bistaratu
+                    element.html(scope.hitzak_markatu.hipertranskribapena);
+                    
+                    // Hipertranskribapenaren oinarrizko funtzionalitatea hasieratu
+                    initTranscript(scope, element, attrs, scope.pop, scope.hitzak_markatu.akatsak);
+                    
+                });
+                
+            }
+        }
+    }
 }]);

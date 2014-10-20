@@ -884,6 +884,16 @@ angular.module('ikuslang-app.controllers', [])
     
 }])
 
+.controller('HitzakMarkatuCtrl', function($scope) {
+    
+    $scope.izena = "";
+    
+    $scope.hitzak_markatu = [];
+    
+    $scope.pop;
+    
+})
+
 .controller('SarreraCtrl', function($scope) {
 
 });

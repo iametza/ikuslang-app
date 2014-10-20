@@ -54,6 +54,17 @@ angular.module('ikuslang-app', [
         }
       }
     })
+
+    .state('app.hitzak-markatu', {
+      url: "/hitzak-markatu",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/hitzak-markatu.html",
+          controller: "HitzakMarkatuCtrl"
+        }
+      }
+    })
+    
     .state('app.sarrera', {
       url: "/sarrera",
       views: {
