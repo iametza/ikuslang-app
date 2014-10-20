@@ -13,23 +13,3 @@
 .bideoa-azpitituluak-behean {
     top: 250px;
 }
-
-#hutsuneak-bete-hipertranskribapena-edukinontzia span, #target-content span  {
-    cursor: pointer;
-}    
-
-#hutsuneak-bete-hipertranskribapena-edukinontzia span.transcript-grey:hover, #target-content span.transcript-grey:hover {  
-    color: #f9b72b; 
-}
-
-#hutsuneak-bete-hipertranskribapena-edukinontzia span:hover, #target-content span:hover  {  
-    color: #f9b72b; 
-}
-
-#hutsuneak-bete-hipertranskribapena-edukinontzia span.highlight, #target-content span.highlight {  
-    color: #fff; 
-}       
-
-#hutsuneak-bete-hipertranskribapena-edukinontzia span.transcript-grey, #target-content span.transcript-grey {
-   color: #888;
-}

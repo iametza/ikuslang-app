@@ -1,38 +1,3 @@
-#hutsuneak-bete-izenburua {
-    color: #444;
-    font-size: 24px;
-    padding: 10px;
-    text-align: center;
-}
-
-#hutsuneak-bete-bideoa-edukinontzia {
-    float: left;
-    width: 50%;
-}
-
-#hutsuneak-bete-transkribapena-edukinontzia {
-    float: right;
-    width: 50%;
-}
-
-#hutsuneak-bete-transkribapena-edukinontzia p {
-    width: 90%;
-}
-
-#jp_container_1 {
-    max-width: 95% !important;
-}
-
-#jquery_jplayer_1 {
-    height: auto !important;
-    width: 100% !important;
-}
-
-#jp_video_0 {
-    height: auto !important;
-    width: 100% !important;
-}
-
 .hutsuneak-bete-input {
     display: inline-block !important;
     width: auto !important;
@@ -51,4 +16,51 @@
 #goiko-botoiak {
     padding: 10px;
     text-align: center;
+}
+
+#hutsuneak-bete-izenburua {
+    color: #444;
+    font-size: 24px;
+    padding: 10px;
+    text-align: center;
+}
+
+#hutsuneak-bete-bideoa-edukinontzia {
+    float: left;
+    width: 50%;
+}
+
+#hutsuneak-bete-hipertranskribapena-edukinontzia {
+    float: right;
+    width: 50%;
+    color: #666;
+    font-family: Georgia,"Times New Roman",Times,serif;
+    font-size: 110%;
+    height: 270px;
+    line-height: 20px;
+    overflow-y: scroll;
+}
+
+#hutsuneak-bete-hipertranskribapena-edukinontzia p {
+    width: 90%;
+}
+
+#hutsuneak-bete-hipertranskribapena-edukinontzia span, #target-content span  {
+    cursor: pointer;
+}    
+
+#hutsuneak-bete-hipertranskribapena-edukinontzia span.transcript-grey:hover, #target-content span.transcript-grey:hover {  
+    color: #f9b72b; 
+}
+
+#hutsuneak-bete-hipertranskribapena-edukinontzia span:hover, #target-content span:hover  {  
+    color: #f9b72b; 
+}
+
+#hutsuneak-bete-hipertranskribapena-edukinontzia span.highlight, #target-content span.highlight {  
+    color: #fff; 
+}       
+
+#hutsuneak-bete-hipertranskribapena-edukinontzia span.transcript-grey, #target-content span.transcript-grey {
+   color: #888;
 }
