@@ -13,8 +13,10 @@
     color: #FF0000 !important;
 }
 
-#goiko-botoiak {
-    padding: 10px;
+#hutsuneak-bete-goiko-botoiak {
+    margin: 10px auto 0 auto;
+    max-width: 480px;
+    width: 90%;
     text-align: center;
 }
 
