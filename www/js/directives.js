@@ -53,6 +53,18 @@ angular.module('ikuslang-app.directives', [])
             
         }
         
+        // Erabiltzaileak transkribapeneko hitz bat klikatzen duenean.
+        $('span', element).on('click', function(e) { 
+            
+            // Klikatutako hitza bideoko zein momenturi dagokion kalkulatu.
+            var jumpTo = $(this).attr(dataMs) / 1000;
+            
+            // Dagokion momentuan hasi bideoa erreproduzitzen.
+            scope.pop.play(jumpTo);
+            
+            return false;
+        });
+        
     }
     
     return {
@@ -152,6 +164,7 @@ angular.module('ikuslang-app.directives', [])
             
             return false;
         });
+        
     }
     
     return {
