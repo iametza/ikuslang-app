@@ -174,6 +174,12 @@ angular.module('ikuslang-app.directives', [])
             return false;
         });
         
+        $(document).on("click", ".hitzak-markatu-hitz-ontzia-spana-x", function() {
+            
+            // Hautatutako elementua zerrendatik kendu.
+			$(this).parent().remove();
+            
+        });
     }
     
     return {
