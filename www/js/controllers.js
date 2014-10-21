@@ -890,6 +890,11 @@ angular.module('ikuslang-app.controllers', [])
     
     $scope.pop;
     
+    $scope.dragStartCallback = function(event, ui) {
+        ui.helper.removeClass("transcript-grey");
+        ui.helper.addClass("hitzak-markatu-hitz-ontzia-spana");
+    }
+    
 })
 
 .controller('SarreraCtrl', function($scope) {

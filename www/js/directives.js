@@ -140,9 +140,11 @@ angular.module('ikuslang-app.directives', [])
             
             $(this).attr("data-drag", "true");
             
+            $(this).attr("data-jqyoui-options", "{'helper': 'clone', 'revert': 'invalid'}");
+            
             // $compile gabe jqyoui-draggable direktibak ez zuen eraginik.
             // Hau ez zait batere gustatu, seguru badagoela hau egiteko modu hobe bat.
-            $compile($(this).attr("jqyoui-draggable", ""))(scope);
+            $compile($(this).attr("jqyoui-draggable", "{'onStart': 'dragStartCallback'}"))(scope);
             
         });
         
