@@ -3,13 +3,14 @@ angular.module('ikuslang-app.directives', [])
 // direktibaren atributua: hutsuneak-bete-hipertranskribapena (marratxoekin) baina direktibaren izena camelCase izan behar du.
 .directive('hutsuneakBeteHipertranskribapena', ['Zerbitzaria', function(Zerbitzaria) {
     
+    var dataMs = "data-ms";
+    
     var initTranscript = function(scope, element, attrs, p, hutsuneak) {
         
         var hutsune_kopurua = hutsuneak.length;
         var hitz_kopurua;
         var hutsunearen_testua = "";
         var $spana;
-        var dataMs = "data-ms";
         
         $("span", element).each(function(i) {
             // doing p.transcript on every word is a bit inefficient - wondering if there is a better way
@@ -105,11 +106,12 @@ angular.module('ikuslang-app.directives', [])
 // direktibaren atributua: hitzak-markatu-hipertranskribapena (marratxoekin) baina direktibaren izena camelCase izan behar du.
 .directive('hitzakMarkatuHipertranskribapena', ['Zerbitzaria', function(Zerbitzaria) {
     
+    var dataMs = "data-ms";
+    
     var initTranscript = function(scope, element, attrs, p, hutsuneak) {
         
         var akats_kopurua = scope.hitzak_markatu.akatsak.length;
         var hitz_kopurua;
-        var dataMs = "data-ms";
         
         //console.log("initTranscript in "+(new Date()-startTimer));
         $("span", element).each(function(i) {  
@@ -134,10 +136,22 @@ angular.module('ikuslang-app.directives', [])
                 $("span[data-ms='" + scope.hitzak_markatu.akatsak[i].hitzak[j].denbora + "']", element).text(scope.hitzak_markatu.akatsak[i].hitzak[j].okerra);
                 
                 $("span[data-ms='" + scope.hitzak_markatu.akatsak[i].hitzak[j].denbora + "']", element).attr("data-id-akatsa", scope.hitzak_markatu.akatsak[i].id);
+                
             }
             
         }
         
+        // Erabiltzaileak transkribapeneko hitz bat klikatzen duenean.
+        $('span', element).on('click', function(e) { 
+            
+            // Klikatutako hitza bideoko zein momenturi dagokion kalkulatu.
+            var jumpTo = $(this).attr(dataMs) / 1000;
+            
+            // Dagokion momentuan hasi bideoa erreproduzitzen.
+            scope.pop.play(jumpTo);
+            
+            return false;
+        });
     }
     
     return {
