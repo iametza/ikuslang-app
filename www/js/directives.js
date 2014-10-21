@@ -169,6 +169,7 @@ angular.module('ikuslang-app.directives', [])
         }
         
         // Hipertranskribapenaren altuera egokitu pantailaren neurrietara.
+        // Izenburuaren altuera?
         $("#hitzak-markatu-hipertranskribapena-edukinontzia").height(window.screen.height                                   // Pantailaren altuera
                                                                      - $("ion-nav-bar").outerHeight(true)                   // Nabigazio barraren altuera osoa
                                                                      - $("#hitzak-markatu-hitz-ontzia").outerHeight(true)   // Hitz-ontziaren altuera osoa
