@@ -6,6 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('ikuslang-app', [
     'ionic',
+    'ngDragDrop',
     'ikuslang-app.controllers',
     'ikuslang-app.services',
     'ikuslang-app.directives'

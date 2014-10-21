@@ -116,7 +116,7 @@ angular.module('ikuslang-app.directives', [])
 }])
 
 // direktibaren atributua: hitzak-markatu-hipertranskribapena (marratxoekin) baina direktibaren izena camelCase izan behar du.
-.directive('hitzakMarkatuHipertranskribapena', ['Zerbitzaria', function(Zerbitzaria) {
+.directive('hitzakMarkatuHipertranskribapena', ['$compile', 'Zerbitzaria', function($compile, Zerbitzaria) {
     
     var dataMs = "data-ms";
     
@@ -126,7 +126,8 @@ angular.module('ikuslang-app.directives', [])
         var hitz_kopurua;
         
         //console.log("initTranscript in "+(new Date()-startTimer));
-        $("span", element).each(function(i) {  
+        $("span", element).each(function(i) {
+            
             // doing p.transcript on every word is a bit inefficient - wondering if there is a better way
             p.transcript({
                 time: $(this).attr(dataMs) / 1000, // seconds
@@ -136,6 +137,12 @@ angular.module('ikuslang-app.directives', [])
                     $(element).stop().scrollTo($(parent), 800, {axis:'y',margin:true,offset:{top:0}});
                 }
             });
+            
+            $(this).attr("data-drag", "true");
+            
+            // $compile gabe jqyoui-draggable direktibak ez zuen eraginik.
+            // Hau ez zait batere gustatu, seguru badagoela hau egiteko modu hobe bat.
+            $compile($(this).attr("jqyoui-draggable", ""))(scope);
             
         });
         
