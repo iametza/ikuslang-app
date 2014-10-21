@@ -895,6 +895,63 @@ angular.module('ikuslang-app.controllers', [])
         ui.helper.addClass("hitzak-markatu-hitz-ontzia-spana");
     }
     
+    $scope.dropCallback = function(event, ui) {
+        
+        var spana = $(ui.draggable).clone();
+        
+        var zerrendan = false;
+        
+        $("#hitzak-markatu-hitz-ontzia .hitzak-markatu-hitz-ontzia-spana").each(function() {
+            
+            // Zerrendako elementuaren denborak bat badatoz hautapenarekin.
+            if ($(this).attr("data-ms") == spana.attr("data-ms")) {
+                
+                zerrendan = true;
+                
+            }
+            
+        });
+        
+        if (!zerrendan) {
+            
+            spana.removeClass("transcript-grey");
+            spana.addClass("hitzak-markatu-hitz-ontzia-spana");
+            
+            spana.append("<span class='hitzak-markatu-hitz-ontzia-spana-x'>x</span>");
+            
+            // Hitzik ez badago...
+            if ($("#hitzak-markatu-hitz-ontzia .hitzak-markatu-hitz-ontzia-spana").length === 0) {
+                
+                $("#hitzak-markatu-hitz-ontzia").append(spana);
+                
+            } else {
+                
+                // Hitz guztiak banan bana pasako ditugu hitz berria non txertatu erabakitzeko.
+                $("#hitzak-markatu-hitz-ontzia .hitzak-markatu-hitz-ontzia-spana").each(function() {
+                    
+                    // Hitz berria uneko hitza baino lehenago bada...
+                    if (parseInt($(this).attr("data-ms"), 10) > parseInt(spana.attr("data-ms"), 10)) {
+                        
+                        // Uneko hitzaren aurretik txertatuko dugu.
+                        $(this).before(spana);
+                        
+                        return false;
+                    }
+                    
+                    // Azken hitzean bagaude eta oraindik ez badugu hitz berria txertatu, azkenaren ondoren txertatuko dugu
+                    $(this).after(spana);
+                    
+                });
+                
+            }
+            
+        } else {
+            
+            alert("Hautapena dagoeneko zerrendan dago!");
+            
+        }
+        
+    }
 })
 
 .controller('SarreraCtrl', function($scope) {
