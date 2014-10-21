@@ -106,6 +106,38 @@ angular.module('ikuslang-app.directives', [])
 .directive('hitzakMarkatuHipertranskribapena', ['Zerbitzaria', function(Zerbitzaria) {
     
     var initTranscript = function(scope, element, attrs, p, hutsuneak) {
+        
+        var akats_kopurua = scope.hitzak_markatu.akatsak.length;
+        var hitz_kopurua;
+        var dataMs = "data-ms";
+        
+        //console.log("initTranscript in "+(new Date()-startTimer));
+        $("span", element).each(function(i) {  
+            // doing p.transcript on every word is a bit inefficient - wondering if there is a better way
+            p.transcript({
+                time: $(this).attr(dataMs) / 1000, // seconds
+                futureClass: "transcript-grey",
+                target: this,
+                onNewPara: function(parent) {
+                    $(element).stop().scrollTo($(parent), 800, {axis:'y',margin:true,offset:{top:0}});
+                }
+            });
+            
+        });
+        
+        for (var i = 0; i < akats_kopurua; i++) {
+            
+            hitz_kopurua = scope.hitzak_markatu.akatsak[i].hitzak.length;
+            
+            for (var j = 0; j < hitz_kopurua; j++) {
+                
+                $("span[data-ms='" + scope.hitzak_markatu.akatsak[i].hitzak[j].denbora + "']", element).text(scope.hitzak_markatu.akatsak[i].hitzak[j].okerra);
+                
+                $("span[data-ms='" + scope.hitzak_markatu.akatsak[i].hitzak[j].denbora + "']", element).attr("data-id-akatsa", scope.hitzak_markatu.akatsak[i].id);
+            }
+            
+        }
+        
     }
     
     return {
@@ -126,8 +158,6 @@ angular.module('ikuslang-app.directives', [])
                 scope.hitzak_markatu = Zerbitzaria.hitzak_markatu;
                 
                 console.log(scope.hitzak_markatu);
-                
-                scope.izena = scope.hitzak_markatu.izena;
                 
                 scope.pop = Popcorn.jplayer("#jquery_jplayer_1", {
                     media: {
