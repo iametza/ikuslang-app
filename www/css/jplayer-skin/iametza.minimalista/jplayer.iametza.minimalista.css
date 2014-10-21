@@ -5,12 +5,19 @@
     margin-bottom: 20px;
 }
 
-div.jp-video-play {
-    background-color: #c7d446;
+div.jp-video-270p {
+    max-width: 480px;
+    width: 90%;
 }
 
-div.jp-video-270p {
-    width: 480px;
+#jquery_jplayer_1 {
+    width: 100% !important;
+    height: auto !important;
+}
+
+#jp_video_0 {
+    width: 100% !important;
+    height: auto !important;    
 }
 
 div.jp-video-270p div.jp-video-play {
