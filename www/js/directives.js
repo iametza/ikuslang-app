@@ -409,11 +409,24 @@ angular.module('ikuslang-app.directives', [])
                 //pop.parseSRT("http://asier.ikuslang.ametza.com/azpitituluak/karloszurutuzahd.srt", {target: "bideoa-azpitituluak"});
                 
                 // Hipertranskribapenaren oinarrizko funtzionalitatea hasieratu
-                //initTranscript(pop, $scope.hutsuneak_bete.hutsuneak);
+                initTranscript(pop);
                 
             });
             
-            var initTranscript = function() {
+            var initTranscript = function(p) {
+                
+                $("span", element).each(function(i) {
+                // doing p.transcript on every word is a bit inefficient - wondering if there is a better way
+                p.transcript({
+                    time: $(this).attr(dataMs) / 1000, // seconds
+                    futureClass: "transcript-grey",
+                    target: this,
+                    onNewPara: function(parent) {
+                        $(element).stop().scrollTo($(parent), 800, {axis:'y',margin:true,offset:{top:0}});
+                    }
+                });  
+            });
+                
             }
             
             // Dagokion galdera bistaratzen du
