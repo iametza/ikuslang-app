@@ -13,6 +13,22 @@
 	padding:4px;
 	color:#FFF;	
 }
+
+#galdera-erantzunak-multimedia-edukinontzia {
+    float: left;
+    width: 50%;
+}
+
+#galdera-erantzunak-hipertranskribapena-edukinontzia {
+    float: right;
+    width: 50%;
+    color: #666;
+    font-family: Georgia,"Times New Roman",Times,serif;
+    font-size: 110%;
+    line-height: 20px;
+    overflow-y: scroll;
+}
+
 #edukia {
 	margin: 0 auto;
 	width: 700px;
