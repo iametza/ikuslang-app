@@ -425,7 +425,7 @@ angular.module('ikuslang-app.directives', [])
                 bistaratu_galdera_kopurua();
                 
                 // Hasieran aurrera joateko botoiak desgaituta egon behar du
-                desgaitu_botoia("#aurrera");
+                desgaitu_botoia("#galdera-erantzunak-aurrera-botoia");
                 
                 // Erabiltzaileari erantzuteko aukera eman
                 if (!galderak_bukatu_dira
@@ -558,7 +558,7 @@ angular.module('ikuslang-app.directives', [])
                         //$("#zuzendu").css("visibility", "visible");
                         $("#zuzendu").show();
                         
-                        gaitu_botoia($("#zuzendu"));
+                        gaitu_botoia($("#galdera-erantzunak-aurrera-botoia"));
                         
                     } else {
                         
@@ -643,7 +643,7 @@ angular.module('ikuslang-app.directives', [])
                         //$("#zuzendu").css("visibility", "visible");
                         $("#zuzendu").show();
                         
-                        gaitu_botoia($("#zuzendu"));
+                        gaitu_botoia($("#galdera-erantzunak-aurrera-botoia"));
                         
                     } else {
                         
@@ -884,7 +884,7 @@ angular.module('ikuslang-app.directives', [])
                         galderak.desgaitu_erantzunak();
                         
                         // Aurrera joateko botoia gaitu
-                        gaitu_botoia("#aurrera");
+                        gaitu_botoia("#galdera-erantzunak-aurrera-botoia");
                         
                     }
                     
@@ -936,7 +936,7 @@ angular.module('ikuslang-app.directives', [])
                         amaierako_galderak.desgaitu_erantzunak();
                         
                         // Aurrera joateko botoia gaitu
-                        gaitu_botoia("#aurrera");
+                        gaitu_botoia("#galdera-erantzunak-aurrera-botoia");
                         
                     }
                     
@@ -986,7 +986,7 @@ angular.module('ikuslang-app.directives', [])
                         bistaratu_zenbagarrena();
                         
                         // Botoia desgaitu erabiltzaileari erantzun bat hautatzera behartzeko
-                        desgaitu_botoia("#aurrera");
+                        desgaitu_botoia("#galdera-erantzunak-aurrera-botoia");
                         
                         // Erabiltzaileari erantzuteko aukera eman
                         galderak.gaitu_erantzunak();
@@ -1015,7 +1015,7 @@ angular.module('ikuslang-app.directives', [])
                         bistaratu_zenbagarrena();
                         
                         // Botoia desgaitu erabiltzaileari erantzun bat hautatzera behartzeko
-                        desgaitu_botoia("#aurrera");
+                        desgaitu_botoia("#galdera-erantzunak-aurrera-botoia");
                         
                         // Erabiltzaileari erantzuteko aukera eman
                         amaierako_galderak.gaitu_erantzunak();
