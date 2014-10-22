@@ -95,7 +95,8 @@ angular.module('ikuslang-app.controllers', [])
     
     $ionicModal.fromTemplateUrl('galderak-modala', {
         scope: $scope,
-        animation: 'slide-in-up'
+        animation: 'slide-in-up',
+        backdropClickToClose: false     // Whether to close the modal on clicking the backdrop. Default: true.
     }).then(function(modal) {
         $scope.modal = modal;
     });
