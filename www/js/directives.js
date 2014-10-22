@@ -255,6 +255,18 @@ angular.module('ikuslang-app.directives', [])
             var id_ariketa = 1;
             var id_hizkuntza = 1;
             
+            var galdera_erantzunak = [];
+            
+            var galderak = false;
+            var amaierako_galderak = false;
+            
+            // Galdera arruntak bukatu diren ala ez. Amaierako galderak ez ditu kontutan hartzen.
+            var galderak_bukatu_dira = false;
+            
+            var pop;
+            
+            var dataMs = "data-ms";
+            
             var promise = Zerbitzaria.eskuratuGalderaErantzunak(id_ariketa, id_hizkuntza);
             
             promise.then(function() {
@@ -398,8 +410,6 @@ angular.module('ikuslang-app.directives', [])
                 
             });
             
-            var dataMs = "data-ms";
-            
             var initTranscript = function(scope, element, attrs) {
             }
             
@@ -418,20 +428,20 @@ angular.module('ikuslang-app.directives', [])
                 desgaitu_botoia("#aurrera");
                 
                 // Erabiltzaileari erantzuteko aukera eman
-                if (!scope.galderak_bukatu_dira
+                if (!galderak_bukatu_dira
                     && galderak
                     && galderak.itzuli_zenbagarren_galdera() <= galderak.itzuli_galdera_kopurua()) {
                     
                     galderak.gaitu_erantzunak();
                     
-                } else if (scope.amaierako_galderak
+                } else if (amaierako_galderak
                            && amaierako_galderak.itzuli_zenbagarren_galdera() <= amaierako_galderak.itzuli_galdera_kopurua()) {
                     
                     amaierako_galderak.gaitu_erantzunak();
                     
                 }
                 
-                if (!scope.galderak_bukatu_dira
+                if (!galderak_bukatu_dira
                     && galderak
                     && galderak.itzuli_zenbagarren_galdera() <= galderak.itzuli_galdera_kopurua()) {
                     
@@ -501,7 +511,7 @@ angular.module('ikuslang-app.directives', [])
                 // Galdera erantzunanitzaren div-ak ezabatu
                 $(".erantzunanitza_div").remove();
                 
-                if (!scope.galderak_bukatu_dira
+                if (!galderak_bukatu_dira
                     && galderak
                     && galderak.itzuli_zenbagarren_galdera() <= galderak.itzuli_galdera_kopurua()) {
                     
@@ -933,6 +943,92 @@ angular.module('ikuslang-app.directives', [])
                 }
                 
             }
+            
+            var aurrera_klik = function() {
+                
+                // Irudiak ezkutuan daudela ziurtatu
+                //$("#irudia").attr("src", "");
+                $("#irudia").remove();
+                
+                //$("#play").css("visibility", "hidden");
+                $("#play").remove();
+                
+                if (!galderak_bukatu_dira
+                    && galderak
+                    && galderak.itzuli_zenbagarren_galdera() <= galderak.itzuli_galdera_kopurua()) {
+                    
+                    // Sortako azken galderan bagaude edo hurrengo galdera ez bada unekoaren denbora berean.
+                    if ((galderak.itzuli_zenbagarren_galdera() === galderak.itzuli_galdera_kopurua())
+                        || (galderak.itzuliGalderaNoiz(galderak.itzuli_zenbagarren_galdera()) !== galderak.itzuliGalderaNoiz(galderak.itzuli_zenbagarren_galdera() + 1))) {
+                        
+                        // Modala ezkutatu.
+                        scope.modal.hide();
+                        
+                        // Hurrengo galdera kargatu, gero bistaratzeko.
+                        // Hurrengo galderarik ez badago false itzultzen du.
+                        if (!galderak.hurrengo_galdera()) {
+                            
+                            galderak_bukatu_dira = true;
+                            
+                        }
+                        
+                        // Multimedia erreproduzitzen hasi berriz ere.
+                        pop.play();
+                        
+                    } else {
+                        
+                        galderak.hurrengo_galdera();
+                        
+                        // Hurrengo galdera bistaratu
+                        bistaratu_galdera();
+                        
+                        // Zenbagarren galdera den bistaratu
+                        bistaratu_zenbagarrena();
+                        
+                        // Botoia desgaitu erabiltzaileari erantzun bat hautatzera behartzeko
+                        desgaitu_botoia("#aurrera");
+                        
+                        // Erabiltzaileari erantzuteko aukera eman
+                        galderak.gaitu_erantzunak();
+                        
+                    }
+                    
+                } else if (amaierako_galderak
+                           && amaierako_galderak.itzuli_zenbagarren_galdera() <= amaierako_galderak.itzuli_galdera_kopurua()) {
+                    
+                    // Sortako azken galderan bagaude
+                    if (amaierako_galderak.itzuli_zenbagarren_galdera() === amaierako_galderak.itzuli_galdera_kopurua()) {
+                        
+                        // Modala ezkutatu.
+                        scope.modal.hide();
+                        
+                        alert("Bukatuttuk");
+                        
+                    } else {
+                        
+                        amaierako_galderak.hurrengo_galdera();
+                        
+                        // Hurrengo galdera bistaratu
+                        bistaratu_galdera();
+                        
+                        // Zenbagarren galdera den bistaratu
+                        bistaratu_zenbagarrena();
+                        
+                        // Botoia desgaitu erabiltzaileari erantzun bat hautatzera behartzeko
+                        desgaitu_botoia("#aurrera");
+                        
+                        // Erabiltzaileari erantzuteko aukera eman
+                        amaierako_galderak.gaitu_erantzunak();
+                        
+                    }
+                    
+                }
+                
+            }
+            
+            $(document).on("click", "#galdera-erantzunak-aurrera-botoia", function() {
+                aurrera_klik();
+            });
             
         }
     }
