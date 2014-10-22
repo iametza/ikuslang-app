@@ -83,11 +83,11 @@
 
 #emaitzak {
     float: right;
+    padding: 2px 0 0 0;
 }
 
 #zuzenak_img {
-	height: 30px;
-    margin-bottom: 10px;
+	height: 20px;
 }
 
 #zuzenak {
@@ -96,8 +96,7 @@
 }
 
 #okerrak_img {
-	height: 30px;
-    margin-bottom: 10px;
+	height: 20px;
 }
 
 #okerrak {
@@ -124,4 +123,5 @@
 	padding: 0px 10px 0px 5px;
     border-style: solid;
     border-width: 5px;
+    width: 100%;
 }
