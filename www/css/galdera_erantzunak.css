@@ -137,3 +137,27 @@
 	padding: 5px 10px 0px 5px;
     width: 100%;
 }
+
+#galdera-erantzunak-hipertranskribapena-edukinontzia p {
+    width: 90%;
+}
+
+#galdera-erantzunak-hipertranskribapena-edukinontzia span, #target-content span  {
+    cursor: pointer;
+}    
+
+#galdera-erantzunak-hipertranskribapena-edukinontzia span.transcript-grey:hover, #target-content span.transcript-grey:hover {  
+    color: #f9b72b; 
+}
+
+#galdera-erantzunak-hipertranskribapena-edukinontzia span:hover, #target-content span:hover  {  
+    color: #f9b72b; 
+}
+
+#galdera-erantzunak-hipertranskribapena-edukinontzia span.highlight, #target-content span.highlight {  
+    color: #fff; 
+}       
+
+#galdera-erantzunak-hipertranskribapena-edukinontzia span.transcript-grey, #target-content span.transcript-grey {
+   color: #888;
+}
