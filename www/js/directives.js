@@ -239,4 +239,171 @@ angular.module('ikuslang-app.directives', [])
         }
     }
     
+}])
+
+// direktibaren atributua: hutsuneak-bete-hipertranskribapena (marratxoekin) baina direktibaren izena camelCase izan behar du.
+.directive('galderaErantzunakHipertranskribapena', ['Zerbitzaria', function(Zerbitzaria) {
+    
+    var dataMs = "data-ms";
+    
+    var initTranscript = function(scope, element, attrs) {
+    }
+    
+    return {
+        
+        restrict: 'A',
+        
+        priority: 1,
+        
+        link: function(scope, element, attrs) {
+            
+            var id_ariketa = 1;
+            var id_hizkuntza = 1;
+            
+            var promise = Zerbitzaria.eskuratuGalderaErantzunak(id_ariketa, id_hizkuntza);
+            
+            promise.then(function() {
+                
+                galdera_erantzunak = Zerbitzaria.galdera_erantzunak;
+                
+                console.log(galdera_erantzunak);
+                
+                scope.izena = galdera_erantzunak.izena;
+                
+                if (galdera_erantzunak.ikus_entzunezkoa.mota === "bideoa") {
+                    
+                    pop = Popcorn.jplayer("#jquery_jplayer_1", {
+                        media: {
+                            m4v: Zerbitzaria.oinarrizko_url + galdera_erantzunak.ikus_entzunezkoa.bideo_path + galdera_erantzunak.ikus_entzunezkoa.bideo_mp4,
+                            webmv: Zerbitzaria.oinarrizko_url + galdera_erantzunak.ikus_entzunezkoa.bideo_path + galdera_erantzunak.ikus_entzunezkoa.bideo_webm
+                        },
+                        options: {
+                            solution: "html",
+                            supplied: "m4v, webmv"
+                        }
+                    });
+                    
+                } else if (galdera_erantzunak.ikus_entzunezkoa.mota === "audioa") {
+                    
+                    pop = Popcorn.jplayer("#jquery_jplayer_1", {
+                        media: {
+                            mp3: Zerbitzaria.oinarrizko_url + galdera_erantzunak.ikus_entzunezkoa.audio_path + galdera_erantzunak.ikus_entzunezkoa.audio_mp3,
+                            ogg: Zerbitzaria.oinarrizko_url + galdera_erantzunak.ikus_entzunezkoa.audio_path + galdera_erantzunak.ikus_entzunezkoa.audio_ogg
+                        },
+                        options: {
+                            solution: "html",
+                            supplied: "mp3, ogg"
+                        }
+                    });
+                    
+                }
+                
+                for (var i = 0; i < galdera_erantzunak.galderak.length; i++) {
+                    
+                    pop.code({
+                        
+                        start: galdera_erantzunak.galderak[i].denbora,
+                        end: galdera_erantzunak.galderak[i].denbora + 1,
+                        onStart: function() {
+                            
+                            pop.pause();
+                            
+                            // Dagokion galdera prestatu.
+                            bistaratu_galdera();
+                            
+                            $scope.modal.show();
+                            
+                        }
+                        
+                    });
+                    
+                }
+                
+                // Multimedia amaitzean bistaratu beharreko galderak badaude...
+                if (galdera_erantzunak.amaierako_galderak.length > 0) {
+                    
+                    pop.on("ended", function() {
+                        
+                        // Dagokion galdera prestatu.
+                        bistaratu_galdera();
+                        
+                        $scope.modal.show();
+                        
+                    });
+                    
+                }
+                
+                if (galdera_erantzunak.galderak.length > 0) {
+                    
+                    // Galderak objektu berri bat sortu
+                    galderak = new Galderak({
+                        
+                        galderak_desordenatu: false
+                        
+                    });
+                    
+                }
+                
+                if (galdera_erantzunak.amaierako_galderak.length > 0) {
+                    
+                    // Amaierako galderentzat objektu berri bat sortu.
+                    amaierako_galderak = new Galderak({
+                        
+                        galderak_desordenatu: true
+                        
+                    });
+                    
+                }
+                
+                for (var i = 0; i < galdera_erantzunak.galderak.length; i++) {
+                    
+                    galderak.gehitu_galdera({
+                        id_galdera: i,
+                        testua: galdera_erantzunak.galderak[i].galdera,
+                        noiz: galdera_erantzunak.galderak[i].denbora
+                    });
+                    
+                    for (var j = 0; j < galdera_erantzunak.galderak[i].erantzunak.length; j++) {
+                        
+                        galderak.gehitu_erantzuna(i,
+                                                  j,
+                                                  galdera_erantzunak.galderak[i].erantzunak[j].erantzuna,
+                                                  galdera_erantzunak.galderak[i].erantzunak[j].zuzena);
+                        
+                    }
+                }
+                
+                for (var i = 0; i < galdera_erantzunak.amaierako_galderak.length; i++) {
+                    
+                    amaierako_galderak.gehitu_galdera({
+                        id_galdera: i,
+                        testua: galdera_erantzunak.amaierako_galderak[i].galdera,
+                        noiz: galdera_erantzunak.amaierako_galderak[i].denbora
+                    });
+                    
+                    for (var j = 0; j < galdera_erantzunak.amaierako_galderak[i].erantzunak.length; j++) {
+                        
+                        amaierako_galderak.gehitu_erantzuna(i,
+                                                            j,
+                                                            galdera_erantzunak.amaierako_galderak[i].erantzunak[j].erantzuna,
+                                                            galdera_erantzunak.amaierako_galderak[i].erantzunak[j].zuzena);
+                        
+                    }
+                }
+                
+                // Hasteko prestatu
+                galderak && galderak.hasieratu();
+                amaierako_galderak && amaierako_galderak.hasieratu();
+                
+                // Azpitituluen fitxategia parseatu bistaratzeko.
+                //pop.parseSRT("http://asier.ikuslang.ametza.com/azpitituluak/karloszurutuzahd.srt", {target: "bideoa-azpitituluak"});
+                
+                // Hipertranskribapenaren oinarrizko funtzionalitatea hasieratu
+                //initTranscript(pop, $scope.hutsuneak_bete.hutsuneak);
+                
+            });
+            
+        }
+    }
+    
 }]);
