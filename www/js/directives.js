@@ -252,7 +252,7 @@ angular.module('ikuslang-app.directives', [])
         
         link: function(scope, element, attrs) {
             
-            var id_ariketa = 1;
+            var id_ariketa = 21;
             var id_hizkuntza = 1;
             
             var galdera_erantzunak = [];
@@ -276,6 +276,9 @@ angular.module('ikuslang-app.directives', [])
                 console.log(galdera_erantzunak);
                 
                 scope.izena = galdera_erantzunak.izena;
+                
+                // Hipertranskribapenaren testua bistaratu
+                element.html(galdera_erantzunak.ikus_entzunezkoa.hipertranskribapena);
                 
                 if (galdera_erantzunak.ikus_entzunezkoa.mota === "bideoa") {
                     
@@ -410,7 +413,7 @@ angular.module('ikuslang-app.directives', [])
                 
             });
             
-            var initTranscript = function(scope, element, attrs) {
+            var initTranscript = function() {
             }
             
             // Dagokion galdera bistaratzen du
