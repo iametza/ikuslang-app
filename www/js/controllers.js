@@ -184,6 +184,10 @@ angular.module('ikuslang-app.controllers', [])
     
     $scope.multzokatu = [];
     
+    $scope.sortable_options = {
+        connectWith: ".sortable"
+    }
+    
     var id_ariketa = 4;
     var id_hizkuntza = 1;
     

@@ -7,6 +7,7 @@
 angular.module('ikuslang-app', [
     'ionic',
     'ngDragDrop',
+    'ui.sortable',
     'ikuslang-app.controllers',
     'ikuslang-app.services',
     'ikuslang-app.directives'
