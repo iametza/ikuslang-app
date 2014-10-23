@@ -213,6 +213,8 @@ angular.module('ikuslang-app.directives', [])
                 
                 console.log(scope.hitzak_markatu);
                 
+                scope.izena = scope.hitzak_markatu.izena;
+                
                 scope.pop = Popcorn.jplayer("#jquery_jplayer_1", {
                     media: {
                         m4v: Zerbitzaria.oinarrizko_url + scope.hitzak_markatu.bideo_path + scope.hitzak_markatu.bideo_mp4,
