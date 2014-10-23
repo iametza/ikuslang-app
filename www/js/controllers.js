@@ -199,4 +199,18 @@ angular.module('ikuslang-app.controllers', [])
         
     });
     
+    $scope.berrizHasi = function() {
+        
+        $(".multzokatu-helburua").each(function() {
+            
+            // Helburuko zutabeetan dauden elementu guztiak pasako ditugu.
+            $(this).children("li").each(function() {
+                
+                // Hasierako zutabera gehitu.
+                $("#multzokatu-jatorria").append($(this));
+                
+            });
+        });
+    };
+    
 }]);

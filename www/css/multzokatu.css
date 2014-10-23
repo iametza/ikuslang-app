@@ -2,10 +2,16 @@
     text-align: center;
 }
 
+#multzokatu-botoiak {
+    text-align: center;
+    margin: 10px 0 0 0;
+}
+
 .sortable {
-    border-color: #ddd;
     background-color: #fff;
+    border-color: #ddd;
     border-width: 1px;
     border-style: solid;
+    border-radius: 4px;
     min-height: 300px;
 }
