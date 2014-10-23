@@ -172,7 +172,7 @@ angular.module('ikuslang-app.directives', [])
         $("#hitzak-markatu-hipertranskribapena-edukinontzia").height(window.screen.height                                   // Pantailaren altuera
                                                                      - $("ion-nav-bar").outerHeight(true)                   // Nabigazio barraren altuera osoa
                                                                      - $("#hitzak-markatu-hitz-ontzia").outerHeight(true)   // Hitz-ontziaren altuera osoa
-                                                                     - 50);                                                 // Beheko margina. Zergatik 50???
+                                                                     - 10);                                                 // Beheko margina.
         
         // Erabiltzaileak transkribapeneko hitz bat klikatzen duenean.
         $('span', element).on('click', function(e) { 
