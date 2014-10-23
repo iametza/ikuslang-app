@@ -7,14 +7,14 @@
         <div class="row">
             <section class="col">
                 <h3 class="multzokatu-taldea-izenburua">Elementuak</h3>
-                <ul id="multzokatu-jatorria" class="sortable list-group">
-                    <li class='list-group-item' ng-repeat="elementua in multzokatu.elementuak" data-elementua='elementua.id' data-taldea='elementuak.id_taldea'>{{ elementua.izena }}</li>
+                <ul id="multzokatu-jatorria" class="sortable list">
+                    <li class='item' ng-repeat="elementua in multzokatu.elementuak" data-elementua='elementua.id' data-taldea='elementuak.id_taldea'>{{ elementua.izena }}</li>
                 </ul>
             </section>
             
             <section class="col" ng-repeat="taldea in multzokatu.taldeak">
                 <h3 class="multzokatu-taldea-izenburua">{{ taldea.izena }}</h3>
-                <ul id="{{ 'helburua_' + taldea.id }}" class="sortable list-group helburua" data-taldea="taldea.id"></ul>
+                <ul id="{{ 'helburua_' + taldea.id }}" class="sortable list" data-taldea="taldea.id"></ul>
             </section>
         </div>
     </ion-content>
