@@ -178,4 +178,8 @@ angular.module('ikuslang-app.controllers', [])
 
 .controller('SarreraCtrl', function($scope) {
 
+})
+
+.controller('MultzokatuCtrl', function($scope) {
+
 });

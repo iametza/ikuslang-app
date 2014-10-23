@@ -66,6 +66,16 @@ angular.module('ikuslang-app', [
       }
     })
     
+    .state('app.multzokatu', {
+      url: "/multzokatu",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/multzokatu.html",
+          controller: "MultzokatuCtrl"
+        }
+      }
+    })
+    
     .state('app.sarrera', {
       url: "/sarrera",
       views: {
