@@ -213,4 +213,28 @@ angular.module('ikuslang-app.controllers', [])
         });
     };
     
+    $scope.egiaztatu = function() {
+        
+        // Helburuko zutabe bakoitza pasako dugu.
+        $(".multzokatu-helburua").each(function() {
+            
+            // Taldearen id-a eskuratuko dugu.
+            var id_taldea = $(this).attr("data-taldea");
+            
+            // Talde honetako elementu guztiak pasako ditugu.
+            $(this).children("li").each(function() {
+                
+                // Elementuaren taldearen id-a eskuratuko dugu.
+                var id_elementuaren_taldea = $(this).attr("data-taldea");
+                
+                // Elementua ez badago dagokion taldean.
+                if (id_elementuaren_taldea !== id_taldea) {
+                    
+                    // Jatorrizko zerrendara eraman.
+                    $("#multzokatu-jatorria").append($(this));
+                }
+            });
+        });
+    };
+    
 }]);

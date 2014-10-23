@@ -7,7 +7,7 @@
         
         <div id="multzokatu-botoiak">
             <button id="multzokatu-berriz-hasi-botoia" class="button" ng-click="berrizHasi()">Berriz hasi</button>
-            <button id="multzokatu-egiaztatu-botoia" class="button">Egiaztatu</button>
+            <button id="multzokatu-egiaztatu-botoia" class="button" ng-click="egiaztatu()">Egiaztatu</button>
             <button id="multzokatu-zuzendu-botoia" class="button">Zuzendu</button>
         </div>
         
@@ -15,13 +15,13 @@
             <section class="col">
                 <h3 class="multzokatu-taldea-izenburua">Elementuak</h3>
                 <ul ui-sortable="sortable_options" id="multzokatu-jatorria" class="list sortable">
-                    <li class='item' ng-repeat="elementua in multzokatu.elementuak" data-elementua='elementua.id' data-taldea='elementuak.id_taldea'>{{ elementua.izena }}</li>
+                    <li class='item' ng-repeat="elementua in multzokatu.elementuak" data-elementua='{{ elementua.id }}' data-taldea='{{ elementua.id_taldea }}'>{{ elementua.izena }}</li>
                 </ul>
             </section>
             
             <section class="col" ng-repeat="taldea in multzokatu.taldeak">
                 <h3 class="multzokatu-taldea-izenburua">{{ taldea.izena }}</h3>
-                <ul ui-sortable="sortable_options" id="{{ 'helburua_' + taldea.id }}" class="multzokatu-helburua sortable" class="list" data-taldea="taldea.id"></ul>
+                <ul ui-sortable="sortable_options" id="{{ 'helburua_' + taldea.id }}" class="multzokatu-helburua sortable" class="list" data-taldea="{{ taldea.id }}"></ul>
             </section>
         </div>
     </ion-content>
