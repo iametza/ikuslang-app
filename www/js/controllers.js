@@ -180,6 +180,19 @@ angular.module('ikuslang-app.controllers', [])
 
 })
 
-.controller('MultzokatuCtrl', function($scope) {
-
-});
+.controller('MultzokatuCtrl', ['$scope', 'Zerbitzaria', function($scope, Zerbitzaria) {
+    
+    $scope.multzokatu = [];
+    
+    var id_ariketa = 4;
+    var id_hizkuntza = 1;
+    
+    var promise = Zerbitzaria.eskuratuMultzokatu(id_ariketa, id_hizkuntza);
+    
+    promise.then(function() {
+        
+        $scope.multzokatu = Zerbitzaria.multzokatu;
+        
+    });
+    
+}]);

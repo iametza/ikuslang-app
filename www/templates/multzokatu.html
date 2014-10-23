@@ -4,5 +4,16 @@
     </ion-nav-buttons>
     
     <ion-content class="has-header">
+        <section class="col-md-4">
+            <h3>Elementuak</h3>
+            <ul id="jatorria" class="sortable list-group">
+                <li class='list-group-item' ng-repeat="elementua in multzokatu.elementuak" data-elementua='elementua.id' data-taldea='elementuak.id_taldea'>{{ elementua.izena }}</li>
+            </ul>
+        </section>
+        
+        <section ng-repeat="taldea in multzokatu.taldeak">
+            <h3>{{ taldea.izena }}</h3>
+            <ul id="{{ 'helburua_' + taldea.id }}" class="sortable list-group helburua" data-taldea="taldea.id"></ul>
+        </section>
     </ion-content>
 </ion-view>
