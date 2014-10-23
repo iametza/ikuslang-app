@@ -237,4 +237,91 @@ angular.module('ikuslang-app.controllers', [])
         });
     };
     
+    $scope.zuzendu = function() {
+        
+        var zuzenak = [];
+        var okerrak = [];
+        
+        // Helburuko zutabe bakoitza pasako dugu.
+        $(".multzokatu-helburua").each(function() {
+            
+            // Taldearen id-a eskuratuko dugu.
+            var id_taldea = $(this).attr("data-taldea");
+            
+            // Talde honetako elementu guztiak pasako ditugu.
+            $(this).children("li").each(function() {
+                
+                // Elementuaren id-a eskuratuko dugu.
+                var id_elementua = $(this).attr("data-elementua");
+                
+                // Elementuaren taldearen id-a eskuratuko dugu.
+                var id_elementuaren_taldea = $(this).attr("data-taldea");
+                
+                // Elementu hau ez badago dagoeneko zuzenduta.
+                if (!$(this).attr("data-zuzenduta")) {
+                    
+                    // Elementua ez badago dagokion taldean.
+                    if (id_elementuaren_taldea !== id_taldea) {
+                        
+                        // Elementua zuzenduta dagoela adieraziko dugu.
+                        // Bestela dagokion zerrendara eraman ondoren bigarren aldiz kontatzeko arriskua dago.
+                        $(this).attr("data-zuzenduta", true);
+                        
+                        // Dagokion zerrendara eramango dugu.
+                        $("#multzokatu-helburua_" + id_elementuaren_taldea).append($(this));
+                        
+                        // Okerren zerrendara gehituko dugu.
+                        okerrak.push(id_elementua);
+                        
+                    } else {
+                        
+                        // Zuzenen zerrendara gehituko dugu.
+                        zuzenak.push(id_elementua);
+                        
+                    }
+                    
+                }
+                
+            });
+            
+        });
+        
+        // Jatorrizko zutabeko elementu guztiak pasako dugu.
+        $("#multzokatu-jatorria").children("li").each(function() {
+            
+            // Elementuaren id-a eskuratuko dugu.
+            var id_elementua = $(this).attr("data-elementua");
+            
+            // Elementuaren taldearen id-a eskuratuko dugu.
+            var id_elementuaren_taldea = $(this).attr("data-taldea");
+            
+            // Dagokion zerrendara eramango dugu.
+            $("#multzokatu-helburua_" + id_elementuaren_taldea).append($(this));
+            
+            // Okerren zerrendara gehituko dugu.
+            okerrak.push(id_elementua);
+            
+        });
+        
+        alert("Zuzenak: " + zuzenak.length + " - Okerrak: " + okerrak.length);
+        
+        /*$.post(Zerbitzaria.api_url + "API/v1/multzokatu",
+            {
+                "id_ariketa": $scope.id_ariketa,
+                "id_ikaslea": $scope.id_ikaslea,
+                "zuzenak": zuzenak,
+                "okerrak": okerrak
+            }
+        )
+        .done(function(data) {
+            console.log(data);
+        })
+        .fail(function() {
+        });*/
+        
+        console.log(zuzenak);
+        console.log(okerrak);
+        
+    }
+    
 }]);

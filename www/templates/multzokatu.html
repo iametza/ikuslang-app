@@ -8,7 +8,7 @@
         <div id="multzokatu-botoiak">
             <button id="multzokatu-berriz-hasi-botoia" class="button" ng-click="berrizHasi()">Berriz hasi</button>
             <button id="multzokatu-egiaztatu-botoia" class="button" ng-click="egiaztatu()">Egiaztatu</button>
-            <button id="multzokatu-zuzendu-botoia" class="button">Zuzendu</button>
+            <button id="multzokatu-zuzendu-botoia" class="button" ng-click="zuzendu()">Zuzendu</button>
         </div>
         
         <div class="row">
@@ -21,7 +21,7 @@
             
             <section class="col" ng-repeat="taldea in multzokatu.taldeak">
                 <h3 class="multzokatu-taldea-izenburua">{{ taldea.izena }}</h3>
-                <ul ui-sortable="sortable_options" id="{{ 'helburua_' + taldea.id }}" class="multzokatu-helburua sortable" class="list" data-taldea="{{ taldea.id }}"></ul>
+                <ul ui-sortable="sortable_options" id="{{ 'multzokatu-helburua_' + taldea.id }}" class="multzokatu-helburua sortable" class="list" data-taldea="{{ taldea.id }}"></ul>
             </section>
         </div>
     </ion-content>
