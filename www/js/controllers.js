@@ -328,4 +328,39 @@ angular.module('ikuslang-app.controllers', [])
 
 .controller('EsaldiakOrdenatuCtrl', function($scope) {
 
+    function hasi() {
+        
+        var esaldiak = [["Hau","beste","proba","bat","da"],["Hau","laugarren","proba","da"]];
+        var ordenak = [[[0,1,2,3,4]],[[0,1,2,3,4]]];
+        
+        $(".jMyPuzzle").html("");
+        
+        var ausazko_indizea = randomFromInterval(0, esaldiak.length-1);
+        
+        $(".jMyPuzzle").jMyPuzzle({
+            phrase: esaldiak[ausazko_indizea],
+            answers: ordenak[ausazko_indizea], //ordena_zuzenak,
+            //phrase: ["a", "b", "c"],
+            //answers: [[0, 1, 2], [2, 1, 0]],
+            language: "eu",
+            maxTrials: 5,
+            visible: '100%', // ez da erabiltzen ????
+            fnOnCheck: function(jSonResults){
+                alert("Estatistikak:"
+                        + "\n\tErantzun zuzenak: " + jSonResults.nb_valid
+                        + "\n\tErantzun okerrak: " + jSonResults.nb_not_valid
+                        + "\n\tErantzun erdi-zuzenak: " + jSonResults.nb_mi_valid
+                        + "\n\tPortzentaia: %" + jSonResults.success_rate);
+            }
+        });
+    }
+    
+    $scope.hurrengoEsaldia = function(){
+        
+        hasi();
+        
+        $("#hurrengo-esaldia-botoia").html('Beste esaldi bat!');
+        
+    };
+    
 });
