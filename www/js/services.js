@@ -14,6 +14,7 @@ angular.module('ikuslang-app.services', [])
     factory.hitzak_markatu = [];
     factory.galdera_erantzunak = [];
     factory.multzokatu = [];
+    factory.esaldiak_zuzendu = [];
     
     factory.eskuratuHutsuneakBete = function(id_ariketa, id_hizkuntza) {
         
@@ -88,6 +89,27 @@ angular.module('ikuslang-app.services', [])
             }
         }).success(function(data, status, headers) {
             factory.multzokatu = data.multzokatu;
+            d.resolve();
+        }).error(function(data, status, headers) {            
+            console.log(data);
+            console.log(status);
+            console.log(headers);
+            d.reject();
+        });
+        
+        return d.promise;
+    }
+
+    factory.eskuratuEsaldiakZuzendu = function(id_ariketa, id_hizkuntza) {
+        
+        var d = $q.defer();
+        
+        $http.get(factory.api_url + 'esaldiak-ordenatu/' + id_ariketa, {
+            params: {
+                "id_hizkuntza": id_hizkuntza
+            }
+        }).success(function(data, status, headers) {
+            factory.esaldiak_zuzendu = data.esaldiak_zuzendu;
             d.resolve();
         }).error(function(data, status, headers) {            
             console.log(data);

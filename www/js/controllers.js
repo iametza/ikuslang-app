@@ -326,12 +326,36 @@ angular.module('ikuslang-app.controllers', [])
     
 }])
 
-.controller('EsaldiakOrdenatuCtrl', function($scope) {
-
+.controller('EsaldiakOrdenatuCtrl', ['$scope', 'Zerbitzaria', function($scope, Zerbitzaria) {
+    
+    $scope.esaldiak_zuzendu;
+    
+    var id_ariketa = 16;
+    var id_hizkuntza = 1;
+    
+    var esaldiak = [];
+    var ordenak = [];
+    
+    var promise = Zerbitzaria.eskuratuEsaldiakZuzendu(id_ariketa, id_hizkuntza);
+    
+    promise.then(function() {
+        
+        $scope.esaldiak_zuzendu = Zerbitzaria.esaldiak_zuzendu;
+        
+        for (var i = 0; i < $scope.esaldiak_zuzendu.esaldiak.length; i++) {
+            
+            ordenak.push(JSON.parse($scope.esaldiak_zuzendu.esaldiak[i].ordenak));
+            
+            esaldiak.push($scope.esaldiak_zuzendu.esaldiak[i].testua.split(" "));
+            
+        }
+        
+    });
+    
     function hasi() {
         
-        var esaldiak = [["Hau","beste","proba","bat","da"],["Hau","laugarren","proba","da"]];
-        var ordenak = [[[0,1,2,3,4]],[[0,1,2,3,4]]];
+        //var esaldiak = [["Hau","beste","proba","bat","da"],["Hau","laugarren","proba","da"]];
+        //var ordenak = [[[0,1,2,3,4]],[[0,1,2,3,4]]];
         
         $(".jMyPuzzle").html("");
         
@@ -363,4 +387,4 @@ angular.module('ikuslang-app.controllers', [])
         
     };
     
-});
+}]);
