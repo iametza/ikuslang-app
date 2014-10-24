@@ -76,6 +76,16 @@ angular.module('ikuslang-app', [
         }
       }
     })
+
+    .state('app.esaldiak-ordenatu', {
+      url: "/esaldiak-ordenatu",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/esaldiak-ordenatu.html",
+          controller: "EsaldiakOrdenatuCtrl"
+        }
+      }
+    })
     
     .state('app.sarrera', {
       url: "/sarrera",

@@ -324,4 +324,8 @@ angular.module('ikuslang-app.controllers', [])
         
     }
     
-}]);
+}])
+
+.controller('EsaldiakOrdenatuCtrl', function($scope) {
+
+});
