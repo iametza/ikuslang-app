@@ -1,4 +1,4 @@
-<ion-view title="Sarrera">
+<ion-view title="Nire txokoa">
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
@@ -13,47 +13,61 @@
                 
                 <h3>Egin beharreko ariketak</h3>
                 
-                <table class="table table-striped">
-                    
-                    <thead>
-                        <td>Izena</td>
-                        <td>Mota</td>
-                        <td>Epea</td>
-                    </thead>
-                    
-                    <tr ng-click="kargatuAriketa(1)">
-                        <td>Lehenaldiaren zurrunbiloan (audioa)</td>
-                        <td>Galdera-erantzunak</td>
-                        <td>2014-10-10 09:00</td>
-                    </tr>
-                    <tr ng-click="kargatuAriketa(21)">
-                        <td>Janzkera lengoaia bat da (bideoa)</td>
-                        <td>Galdera-erantzunak</td>
-                        <td>2014-10-10 09:00</td>
-                    </tr>
-                    <tr ng-click="kargatuAriketa(4)">
-                        <td>Hizkiak eta zenbakiak</td>
-                        <td>Multzokatu</td>
-                        <td>2014-10-10 09:00</td>
-                    </tr>
-                    <tr ng-click="kargatuAriketa(2)">
-                        <td>Karlos Zurutuza laburrean</td>
-                        <td>Hitzak markatu</td>
-                        <td>2014-09-10 09:00</td>
-                    </tr>
-                    
-                </table>
+                <a class="item item-icon-left" href="#/app/ariketak/1">
+                    <i class="icon ion-help"></i>
+                        Lehenaldiaren zurrunbiloan (audioa)
+                    <span class="item-note">
+                        2014-10-10 09:00
+                    </span>
+                </a>
+                
+                <a class="item item-icon-left" href="#/app/ariketak/21">
+                    <i class="icon ion-help"></i>
+                        Janzkera lengoaia bat da (bideoa)
+                    <span class="item-note">
+                        2014-10-10 09:00
+                    </span>
+                </a>
+                
+                <a class="item item-icon-left" href="#/app/ariketak/4">
+                    <i class="icon ion-nuclear"></i>
+                        Hizkiak eta zenbakiak
+                    <span class="item-note">
+                        2014-10-10 09:00
+                    </span>
+                </a>
+                
+                <a class="item item-icon-left" href="#/app/ariketak/2">
+                    <i class="icon ion-model-s"></i>
+                        Karlos Zurutuza laburrean
+                    <span class="item-note">
+                        2014-10-10 09:00
+                    </span>
+                </a>
                 
             </div>
             
-            <ion-list class="col">
-                <ion-item href="#/app/hutsuneak-bete">Hutsuneak-bete</ion-item>
-                <ion-item href="#/app/galdera-erantzunak">Galdera-erantzunak</ion-item>
-                <ion-item href="#/app/hitzak-markatu">Hitzak markatu</ion-item>
-                <ion-item href="#/app/multzokatu">Multzokatu</ion-item>
-                <ion-item href="#/app/esaldiak-ordenatu">Esaldiak ordenatu</ion-item>
-                <ion-item href="#/app/amaitu-saioa">Amaitu saioa</ion-item>
-            </ion-list>
+            <div class="col">
+                
+                <h3>Egindako ariketak</h3>
+                
+                <a class="item item-icon-left" href="#/app/ariketak/3">
+                    <i class="icon ion-compose"></i>
+                        Karlos Zurutuza laburrean
+                    <span class="item-note">
+                        2014-09-04 19:34
+                    </span>
+                </a>
+                
+                <a class="item item-icon-left" href="#/app/ariketak/16">
+                    <i class="icon ion-beer"></i>
+                        Esaldiak zuzendu proba
+                    <span class="item-note">
+                        2014-09-04 19:14
+                    </span>
+                </a>
+                
+            </div>
             
         </div>
         
