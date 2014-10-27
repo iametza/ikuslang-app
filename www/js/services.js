@@ -1,5 +1,52 @@
 angular.module('ikuslang-app.services', [])
 
+.factory('Erabiltzailea', function() {
+    
+    var factory = {};
+    
+    factory.id = "";
+    factory.izena = "";
+    factory.abizenak = "";
+    
+    factory.ezarriId = function(id) {
+        
+        factory.id = id;
+        
+    }
+    
+    factory.eskuratuId = function(id) {
+        
+        return factory.id;
+        
+    }
+    
+    factory.ezarriIzena = function(izena) {
+        
+        factory.izena = izena;
+        
+    }
+    
+    factory.eskuratuIzena = function(izena) {
+        
+        return factory.izena;
+        
+    }
+    
+    factory.ezarriAbizenak = function(abizenak) {
+        
+        factory.abizenak = abizenak;
+        
+    }
+    
+    factory.eskuratuAbizenak = function(abizenak) {
+        
+        return factory.abizenak;
+        
+    }
+    
+    return factory;
+})
+
 /**
  * Zerbitzaritik datuak eskuratzeko zerbitzua.
  */

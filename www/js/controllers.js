@@ -4,7 +4,7 @@ angular.module('ikuslang-app.controllers', [])
     
 })
 
-.controller('LoginCtrl', ['$scope', 'Zerbitzaria', function($scope, Zerbitzaria) {
+.controller('LoginCtrl', ['$http', '$scope', '$state', 'Erabiltzailea', 'Zerbitzaria', function($http, $scope, $state, Erabiltzailea, Zerbitzaria) {
     
     // Form data for the login modal
     $scope.loginData = {};
@@ -12,17 +12,27 @@ angular.module('ikuslang-app.controllers', [])
     // Perform the login action when the user submits the login form
     $scope.doLogin = function() {
         
-        console.log('Doing login', $scope.loginData);
-        
-        $.post(Zerbitzaria.api_url + "login", {
-            "e_posta": $scope.loginData.e_posta,
-            "pasahitza": $scope.loginData.pasahitza
+        $http({
+            method: 'POST',
+            url: Zerbitzaria.api_url + "login",
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            data: $.param($scope.loginData)
         })
-        .done(function(data) {
+        .success(function(data, status, headers, config) {
+            
             console.log(data);
+            
+            Erabiltzailea.ezarriId(data.id_erabiltzailea);
+            Erabiltzailea.ezarriIzena(data.izena);
+            Erabiltzailea.ezarriAbizenak(data.abizenak);
+            
+            $state.go('app.sarrera');
+            
         })
-        .fail(function() {
+        .error(function(data, status, headers, config) {
+            
             console.log("Fail!");
+            
         });
         
     };
@@ -171,9 +181,12 @@ angular.module('ikuslang-app.controllers', [])
     }
 })
 
-.controller('SarreraCtrl', function($scope) {
-
-})
+.controller('SarreraCtrl', ['$scope', 'Erabiltzailea', function($scope, Erabiltzailea) {
+    
+    $scope.izena = Erabiltzailea.eskuratuIzena();
+    $scope.abizenak = Erabiltzailea.eskuratuAbizenak();
+    
+}])
 
 .controller('MultzokatuCtrl', ['$scope', 'Zerbitzaria', function($scope, Zerbitzaria) {
     
