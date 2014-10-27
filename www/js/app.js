@@ -28,8 +28,15 @@ angular.module('ikuslang-app', [
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
-
+    
+    $stateProvider
+    
+    .state('login', {
+        url: "/login",
+        templateUrl: "templates/login.html",
+        controller: 'LoginCtrl'
+    })
+    
     .state('app', {
       url: "/app",
       abstract: true,
@@ -95,19 +102,9 @@ angular.module('ikuslang-app', [
           controller: 'SarreraCtrl'
         }
       }
-    })
-    
-    .state('app.login', {
-      url: "/login",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/login.html",
-          controller: 'LoginCtrl'
-        }
-      }
     });
     
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/login');
+  $urlRouterProvider.otherwise('/login');
 });
 
