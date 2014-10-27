@@ -1,16 +1,62 @@
 <ion-view title="Sarrera">
-  <ion-nav-buttons side="left">
-    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-  </ion-nav-buttons>
-  <ion-content class="has-header">
-    <h2>Kaixo {{ izena + ' ' + abizenak }}</h2>
-    <ion-list>
-        <ion-item href="#/app/hutsuneak-bete">Hutsuneak-bete</ion-item>
-        <ion-item href="#/app/galdera-erantzunak">Galdera-erantzunak</ion-item>
-        <ion-item href="#/app/hitzak-markatu">Hitzak markatu</ion-item>
-        <ion-item href="#/app/multzokatu">Multzokatu</ion-item>
-        <ion-item href="#/app/esaldiak-ordenatu">Esaldiak ordenatu</ion-item>
-        <ion-item href="#/app/amaitu-saioa">Amaitu saioa</ion-item>
-    </ion-list>
-  </ion-content>
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    
+    <ion-content class="has-header">
+        
+        <h2>Kaixo {{ izena + ' ' + abizenak }}</h2>
+        
+        <div class="row">
+            
+            <div class="col">
+                
+                <h3>Egin beharreko ariketak</h3>
+                
+                <table class="table table-striped">
+                    
+                    <thead>
+                        <td>Izena</td>
+                        <td>Mota</td>
+                        <td>Epea</td>
+                    </thead>
+                    
+                    <tr ng-click="kargatuAriketa(1)">
+                        <td>Lehenaldiaren zurrunbiloan (audioa)</td>
+                        <td>Galdera-erantzunak</td>
+                        <td>2014-10-10 09:00</td>
+                    </tr>
+                    <tr ng-click="kargatuAriketa(21)">
+                        <td>Janzkera lengoaia bat da (bideoa)</td>
+                        <td>Galdera-erantzunak</td>
+                        <td>2014-10-10 09:00</td>
+                    </tr>
+                    <tr ng-click="kargatuAriketa(4)">
+                        <td>Hizkiak eta zenbakiak</td>
+                        <td>Multzokatu</td>
+                        <td>2014-10-10 09:00</td>
+                    </tr>
+                    <tr ng-click="kargatuAriketa(2)">
+                        <td>Karlos Zurutuza laburrean</td>
+                        <td>Hitzak markatu</td>
+                        <td>2014-09-10 09:00</td>
+                    </tr>
+                    
+                </table>
+                
+            </div>
+            
+            <ion-list class="col">
+                <ion-item href="#/app/hutsuneak-bete">Hutsuneak-bete</ion-item>
+                <ion-item href="#/app/galdera-erantzunak">Galdera-erantzunak</ion-item>
+                <ion-item href="#/app/hitzak-markatu">Hitzak markatu</ion-item>
+                <ion-item href="#/app/multzokatu">Multzokatu</ion-item>
+                <ion-item href="#/app/esaldiak-ordenatu">Esaldiak ordenatu</ion-item>
+                <ion-item href="#/app/amaitu-saioa">Amaitu saioa</ion-item>
+            </ion-list>
+            
+        </div>
+        
+    </ion-content>
+    
 </ion-view>

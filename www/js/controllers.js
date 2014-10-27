@@ -186,6 +186,10 @@ angular.module('ikuslang-app.controllers', [])
     $scope.izena = Erabiltzailea.eskuratuIzena();
     $scope.abizenak = Erabiltzailea.eskuratuAbizenak();
     
+    $scope.kargatuAriketa = function(id_ariketa) {
+        console.log(id_ariketa);
+    }
+    
 }])
 
 .controller('MultzokatuCtrl', ['$scope', 'Zerbitzaria', function($scope, Zerbitzaria) {
