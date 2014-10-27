@@ -14,6 +14,17 @@ angular.module('ikuslang-app.controllers', [])
         
         console.log('Doing login', $scope.loginData);
         
+        $.post(Zerbitzaria.api_url + "login", {
+            "e_posta": $scope.loginData.e_posta,
+            "pasahitza": $scope.loginData.pasahitza
+        })
+        .done(function(data) {
+            console.log(data);
+        })
+        .fail(function() {
+            console.log("Fail!");
+        });
+        
     };
     
 }])
