@@ -26,7 +26,7 @@ angular.module('ikuslang-app.controllers', [])
             Erabiltzailea.ezarriIzena(data.izena);
             Erabiltzailea.ezarriAbizenak(data.abizenak);
             
-            $state.go('app.nire-txokoa');
+            $state.go('nire-txokoa');
             
         })
         .error(function(data, status, headers, config) {

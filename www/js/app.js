@@ -37,21 +37,17 @@ angular.module('ikuslang-app', [
         controller: 'LoginCtrl'
     })
     
+    .state('nire-txokoa', {
+        url: "/nire-txokoa",
+        templateUrl: "templates/nire-txokoa.html",
+        controller: 'NireTxokoaCtrl'
+    })
+    
     .state('app', {
       url: "/app",
       abstract: true,
       templateUrl: "templates/menu.html",
       controller: 'AppCtrl'
-    })
-    
-    .state('app.nire-txokoa', {
-      url: "/nire-txokoa",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/nire-txokoa.html",
-          controller: 'NireTxokoaCtrl'
-        }
-      }
     })
     
     .state('app.hutsuneak-bete', {
