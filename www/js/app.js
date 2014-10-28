@@ -75,7 +75,7 @@ angular.module('ikuslang-app', [
     })
 
     .state('app.hitzak-markatu', {
-      url: "/hitzak-markatu",
+      url: "/hitzak-markatu/{id_ariketa}",
       views: {
         'menuContent' :{
           templateUrl: "templates/hitzak-markatu.html",

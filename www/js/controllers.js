@@ -59,7 +59,9 @@ angular.module('ikuslang-app.controllers', [])
                 break;
             
             case 3:
-                $state.go('app.hitzak-markatu');
+                $state.go('app.hitzak-markatu', {
+                    'id_ariketa': id_ariketa
+                });
                 break;
             
             case 4:
@@ -155,7 +157,9 @@ angular.module('ikuslang-app.controllers', [])
     
 }])
 
-.controller('HitzakMarkatuCtrl', function($scope) {
+.controller('HitzakMarkatuCtrl', ['$scope', '$stateParams', function($scope, $stateParams) {
+    
+    $scope.id_ariketa = $stateParams.id_ariketa;
     
     $scope.hitzak_markatu = [];
     
@@ -223,7 +227,7 @@ angular.module('ikuslang-app.controllers', [])
         }
         
     }
-})
+}])
 
 .controller('MultzokatuCtrl', ['$scope', 'Zerbitzaria', function($scope, Zerbitzaria) {
     
