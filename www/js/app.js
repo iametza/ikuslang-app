@@ -95,7 +95,7 @@ angular.module('ikuslang-app', [
     })
 
     .state('app.esaldiak-ordenatu', {
-      url: "/esaldiak-ordenatu",
+      url: "/esaldiak-ordenatu/{id_ariketa}",
       views: {
         'menuContent' :{
           templateUrl: "templates/esaldiak-ordenatu.html",

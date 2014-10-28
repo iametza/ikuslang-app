@@ -49,7 +49,9 @@ angular.module('ikuslang-app.controllers', [])
         switch (id_ariketa_mota) {
             
             case 1:
-                $state.go('app.esaldiak-ordenatu');
+                $state.go('app.esaldiak-ordenatu', {
+                    'id_ariketa': id_ariketa
+                });
                 break;
             
             case 2:
@@ -375,11 +377,12 @@ angular.module('ikuslang-app.controllers', [])
     
 }])
 
-.controller('EsaldiakOrdenatuCtrl', ['$scope', 'Zerbitzaria', function($scope, Zerbitzaria) {
+.controller('EsaldiakOrdenatuCtrl', ['$scope', '$stateParams', 'Zerbitzaria', function($scope, $stateParams, Zerbitzaria) {
     
     $scope.esaldiak_zuzendu;
     
-    var id_ariketa = 16;
+    var id_ariketa = $stateParams.id_ariketa;
+    
     var id_hizkuntza = 1;
     
     var esaldiak = [];
