@@ -49,6 +49,14 @@ angular.module('ikuslang-app.controllers', [])
         egindakoak: []
     }
     
+    $scope.ikonoak = {
+        '1': 'ion-beer',
+        '2': 'ion-help',
+        '3': 'ion-model-s',
+        '4': 'ion-compose',
+        '5': 'ion-nuclear',
+    }
+    
     var id_hizkuntza = 1;
     
     var promise = Zerbitzaria.eskuratuEgitekoAriketak(Erabiltzailea.eskuratuId(), id_hizkuntza);

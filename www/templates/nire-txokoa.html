@@ -12,35 +12,11 @@
                 
                 <h3>Egin beharreko ariketak</h3>
                 
-                <a class="item item-icon-left" ng-click="bistaratuAriketa(1, 2)">
-                    <i class="icon ion-help"></i>
-                        Lehenaldiaren zurrunbiloan (audioa)
+                <a ng-repeat="egitekoa in ariketak.egitekoak" class="item item-icon-left" ng-click="bistaratuAriketa({{ egitekoa.id }}, {{ egitekoa.id_ariketa_mota }})">
+                    <i class="icon" ng-class="ikonoak[egitekoa.id_ariketa_mota]"></i>
+                        {{ egitekoa.izena }}
                     <span class="item-note">
-                        2014-10-10 09:00
-                    </span>
-                </a>
-                
-                <a class="item item-icon-left" ng-click="bistaratuAriketa(21, 2)">
-                    <i class="icon ion-help"></i>
-                        Janzkera lengoaia bat da (bideoa)
-                    <span class="item-note">
-                        2014-10-10 09:00
-                    </span>
-                </a>
-                
-                <a class="item item-icon-left" ng-click="bistaratuAriketa(4, 5)">
-                    <i class="icon ion-nuclear"></i>
-                        Hizkiak eta zenbakiak
-                    <span class="item-note">
-                        2014-10-10 09:00
-                    </span>
-                </a>
-                
-                <a class="item item-icon-left" ng-click="bistaratuAriketa(2, 3)">
-                    <i class="icon ion-model-s"></i>
-                        Karlos Zurutuza laburrean
-                    <span class="item-note">
-                        2014-10-10 09:00
+                        {{ egitekoa.bukaera_data }}
                     </span>
                 </a>
                 
