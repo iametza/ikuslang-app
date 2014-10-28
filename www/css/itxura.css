@@ -1,7 +1,15 @@
-.bar {
+.bar.bar-stable {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-.bar .title {
+.bar.bar-stable .title {
+    color: #ffffff;
+}
+
+.bar-stable .button {
+    color: #ffffff;
+}
+
+.bar-stable .button.button-clear {
     color: #ffffff;
 }
