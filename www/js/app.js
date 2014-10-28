@@ -43,7 +43,17 @@ angular.module('ikuslang-app', [
       templateUrl: "templates/menu.html",
       controller: 'AppCtrl'
     })
-
+    
+    .state('app.nire-txokoa', {
+      url: "/nire-txokoa",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/nire-txokoa.html",
+          controller: 'NireTxokoaCtrl'
+        }
+      }
+    })
+    
     .state('app.hutsuneak-bete', {
       url: "/hutsuneak-bete",
       views: {
@@ -90,16 +100,6 @@ angular.module('ikuslang-app', [
         'menuContent' :{
           templateUrl: "templates/esaldiak-ordenatu.html",
           controller: "EsaldiakOrdenatuCtrl"
-        }
-      }
-    })
-    
-    .state('app.sarrera', {
-      url: "/sarrera",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/sarrera.html",
-          controller: 'SarreraCtrl'
         }
       }
     });

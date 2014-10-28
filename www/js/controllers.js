@@ -26,7 +26,7 @@ angular.module('ikuslang-app.controllers', [])
             Erabiltzailea.ezarriIzena(data.izena);
             Erabiltzailea.ezarriAbizenak(data.abizenak);
             
-            $state.go('app.sarrera');
+            $state.go('app.nire-txokoa');
             
         })
         .error(function(data, status, headers, config) {
@@ -36,6 +36,17 @@ angular.module('ikuslang-app.controllers', [])
         });
         
     };
+    
+}])
+
+.controller('NireTxokoaCtrl', ['$scope', 'Erabiltzailea', function($scope, Erabiltzailea) {
+    
+    $scope.izena = Erabiltzailea.eskuratuIzena();
+    $scope.abizenak = Erabiltzailea.eskuratuAbizenak();
+    
+    $scope.kargatuAriketa = function(id_ariketa) {
+        console.log(id_ariketa);
+    }
     
 }])
 
@@ -180,17 +191,6 @@ angular.module('ikuslang-app.controllers', [])
         
     }
 })
-
-.controller('SarreraCtrl', ['$scope', 'Erabiltzailea', function($scope, Erabiltzailea) {
-    
-    $scope.izena = Erabiltzailea.eskuratuIzena();
-    $scope.abizenak = Erabiltzailea.eskuratuAbizenak();
-    
-    $scope.kargatuAriketa = function(id_ariketa) {
-        console.log(id_ariketa);
-    }
-    
-}])
 
 .controller('MultzokatuCtrl', ['$scope', 'Zerbitzaria', function($scope, Zerbitzaria) {
     
