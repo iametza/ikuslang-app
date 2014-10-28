@@ -4,9 +4,10 @@ angular.module('ikuslang-app.services', [])
     
     var factory = {};
     
-    factory.id = "";
-    factory.izena = "";
-    factory.abizenak = "";
+    // Momentuz probak egiteko Asier-en erabiltzailea jarri.
+    factory.id = 6;
+    factory.izena = "Asier";
+    factory.abizenak = "Iturralde";
     
     factory.ezarriId = function(id) {
         
