@@ -39,13 +39,38 @@ angular.module('ikuslang-app.controllers', [])
     
 }])
 
-.controller('NireTxokoaCtrl', ['$scope', 'Erabiltzailea', function($scope, Erabiltzailea) {
+.controller('NireTxokoaCtrl', ['$scope', '$state', 'Erabiltzailea', function($scope, $state, Erabiltzailea) {
     
     $scope.izena = Erabiltzailea.eskuratuIzena();
     $scope.abizenak = Erabiltzailea.eskuratuAbizenak();
     
-    $scope.kargatuAriketa = function(id_ariketa) {
-        console.log(id_ariketa);
+    $scope.bistaratuAriketa = function(id_ariketa, id_ariketa_mota) {
+        
+        switch (id_ariketa_mota) {
+            
+            case 1:
+                $state.go('app.esaldiak-ordenatu');
+                break;
+            
+            case 2:
+                $state.go('app.galdera-erantzunak');
+                break;
+            
+            case 3:
+                $state.go('app.hitzak-markatu');
+                break;
+            
+            case 4:
+                $state.go('app.hutsuneak-bete');
+                break;
+            
+            case 5:
+                $state.go('app.multzokatu');
+                break;
+            
+            default:
+                
+        }
     }
     
 }])
