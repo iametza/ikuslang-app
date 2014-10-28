@@ -39,10 +39,25 @@ angular.module('ikuslang-app.controllers', [])
     
 }])
 
-.controller('NireTxokoaCtrl', ['$scope', '$state', 'Erabiltzailea', function($scope, $state, Erabiltzailea) {
+.controller('NireTxokoaCtrl', ['$scope', '$state', 'Erabiltzailea', 'Zerbitzaria', function($scope, $state, Erabiltzailea, Zerbitzaria) {
     
     $scope.izena = Erabiltzailea.eskuratuIzena();
     $scope.abizenak = Erabiltzailea.eskuratuAbizenak();
+    
+    $scope.ariketak = {
+        egitekoak: [],
+        egindakoak: []
+    }
+    
+    var id_hizkuntza = 1;
+    
+    var promise = Zerbitzaria.eskuratuEgitekoAriketak(Erabiltzailea.eskuratuId(), id_hizkuntza);
+    
+    promise.then(function() {
+        
+        $scope.ariketak.egitekoak = Zerbitzaria.ariketak.egitekoak;
+        
+    });
     
     $scope.bistaratuAriketa = function(id_ariketa, id_ariketa_mota) {
         
