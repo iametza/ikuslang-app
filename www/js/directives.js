@@ -253,7 +253,7 @@ angular.module('ikuslang-app.directives', [])
         
         link: function(scope, element, attrs) {
             
-            var id_ariketa = 21;
+            var id_ariketa = scope.id_ariketa;
             var id_hizkuntza = 1;
             
             var galdera_erantzunak = [];

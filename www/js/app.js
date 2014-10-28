@@ -65,7 +65,7 @@ angular.module('ikuslang-app', [
     })
 
     .state('app.galdera-erantzunak', {
-      url: "/galdera-erantzunak",
+      url: "/galdera-erantzunak/{id_ariketa}",
       views: {
         'menuContent' :{
           templateUrl: "templates/galdera-erantzunak.html",

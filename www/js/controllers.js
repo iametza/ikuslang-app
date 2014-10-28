@@ -53,7 +53,9 @@ angular.module('ikuslang-app.controllers', [])
                 break;
             
             case 2:
-                $state.go('app.galdera-erantzunak');
+                $state.go('app.galdera-erantzunak', {
+                    'id_ariketa': id_ariketa
+                });
                 break;
             
             case 3:
@@ -134,7 +136,9 @@ angular.module('ikuslang-app.controllers', [])
     
 }])
 
-.controller('GalderaErantzunakCtrl', ['$ionicModal', '$scope', 'Zerbitzaria', function($ionicModal, $scope, Zerbitzaria) {
+.controller('GalderaErantzunakCtrl', ['$ionicModal', '$scope', '$stateParams', 'Zerbitzaria', function($ionicModal, $scope, $stateParams, Zerbitzaria) {
+    
+    $scope.id_ariketa = $stateParams.id_ariketa;
     
     $scope.izena = "";
     
