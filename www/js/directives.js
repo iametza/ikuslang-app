@@ -80,7 +80,7 @@ angular.module('ikuslang-app.directives', [])
         
         link: function(scope, element, attrs) {
             
-            var id_ariketa = 3;
+            var id_ariketa = scope.id_ariketa;
             var id_hizkuntza = 1;
             
             var promise = Zerbitzaria.eskuratuHutsuneakBete(id_ariketa, id_hizkuntza);

@@ -55,13 +55,13 @@ angular.module('ikuslang-app', [
     })
     
     .state('app.hutsuneak-bete', {
-      url: "/hutsuneak-bete",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/hutsuneak-bete.html",
-          controller: "HutsuneakBeteCtrl"
+        url: "/hutsuneak-bete/{id_ariketa}",
+        views: {
+            'menuContent' :{
+                templateUrl: "templates/hutsuneak-bete.html",
+                controller: "HutsuneakBeteCtrl"
+            }
         }
-      }
     })
 
     .state('app.galdera-erantzunak', {

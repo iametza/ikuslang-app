@@ -61,7 +61,9 @@ angular.module('ikuslang-app.controllers', [])
                 break;
             
             case 4:
-                $state.go('app.hutsuneak-bete');
+                $state.go('app.hutsuneak-bete', {
+                    'id_ariketa': id_ariketa
+                });
                 break;
             
             case 5:
@@ -75,7 +77,9 @@ angular.module('ikuslang-app.controllers', [])
     
 }])
 
-.controller('HutsuneakBeteCtrl', ['$scope', 'Zerbitzaria', function($scope, Zerbitzaria) {
+.controller('HutsuneakBeteCtrl', ['$scope', '$stateParams', 'Zerbitzaria', function($scope, $stateParams, Zerbitzaria) {
+    
+    $scope.id_ariketa = $stateParams.id_ariketa;
     
     $scope.izena = "";
     
