@@ -85,7 +85,7 @@ angular.module('ikuslang-app', [
     })
     
     .state('app.multzokatu', {
-      url: "/multzokatu",
+      url: "/multzokatu/{id_ariketa}",
       views: {
         'menuContent' :{
           templateUrl: "templates/multzokatu.html",

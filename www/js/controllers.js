@@ -73,7 +73,9 @@ angular.module('ikuslang-app.controllers', [])
                 break;
             
             case 5:
-                $state.go('app.multzokatu');
+                $state.go('app.multzokatu', {
+                    'id_ariketa': id_ariketa
+                });
                 break;
             
             default:
@@ -231,7 +233,9 @@ angular.module('ikuslang-app.controllers', [])
     }
 }])
 
-.controller('MultzokatuCtrl', ['$scope', 'Zerbitzaria', function($scope, Zerbitzaria) {
+.controller('MultzokatuCtrl', ['$scope', '$stateParams', 'Zerbitzaria', function($scope, $stateParams, Zerbitzaria) {
+    
+    $scope.id_ariketa = $stateParams.id_ariketa;
     
     $scope.multzokatu = [];
     
