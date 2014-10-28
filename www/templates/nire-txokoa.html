@@ -42,6 +42,14 @@
                     </span>
                 </a>
                 
+                <a ng-repeat="egindakoa in ariketak.egindakoak" class="item item-icon-left" ng-click="bistaratuAriketa({{ egindakoa.id }}, {{ egindakoa.id_ariketa_mota }})">
+                    <i class="icon" ng-class="ikonoak[egitekoa.id_ariketa_mota]"></i>
+                        {{ egindakoa.izena }}
+                    <span class="item-note">
+                        {{ egindakoa.bukaera_data }}
+                    </span>
+                </a>
+                
             </div>
             
         </div>
