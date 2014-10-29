@@ -67,6 +67,14 @@ angular.module('ikuslang-app.controllers', [])
         
     });
     
+    var promise = Zerbitzaria.eskuratuEgindakoAriketak(Erabiltzailea.eskuratuId(), id_hizkuntza);
+    
+    promise.then(function() {
+        
+        $scope.ariketak.egindakoak = Zerbitzaria.ariketak.egindakoak;
+        
+    });
+    
     $scope.bistaratuAriketa = function(id_ariketa, id_ariketa_mota) {
         
         switch (id_ariketa_mota) {

@@ -195,6 +195,28 @@ angular.module('ikuslang-app.services', [])
         
         return d.promise;
     }
+
+    factory.eskuratuEgindakoAriketak = function(id_ikaslea, id_hizkuntza) {
+        
+        var d = $q.defer();
+        
+        $http.get(factory.api_url + 'ariketak/egindakoak/', {
+            params: {
+                "id_ikaslea": id_ikaslea,
+                "hizkuntza": id_hizkuntza
+            }
+        }).success(function(data, status, headers) {
+            factory.ariketak.egindakoak = data.egindakoak;
+            d.resolve();
+        }).error(function(data, status, headers) {            
+            console.log(data);
+            console.log(status);
+            console.log(headers);
+            d.reject();
+        });
+        
+        return d.promise;
+    }
     
     return factory;
 
