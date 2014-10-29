@@ -1,5 +1,5 @@
 .bar.bar-stable {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: #333333;
 }
 
 .bar.bar-stable .title {
@@ -12,4 +12,14 @@
 
 .bar-stable .button.button-clear {
     color: #ffffff;
+}
+
+.tabs-top.tabs-striped .tab-item.tab-item-active, .tabs-top.tabs-striped .tab-item.active, .tabs-top.tabs-striped .tab-item.activated {
+    border-width: 0px 0px 6px 0px !important;
+}
+
+.tabs-striped.tabs-light .tab-item.tab-item-active, .tabs-striped.tabs-light .tab-item.active, .tabs-striped.tabs-light .tab-item.activated {
+    color: #F8CE44;
+    border-color: #F8CE44;
+    
 }
