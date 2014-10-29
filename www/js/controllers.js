@@ -118,6 +118,10 @@ angular.module('ikuslang-app.controllers', [])
     
 }])
 
+.controller('EzarpenakCtrl', function($scope) {
+    
+})
+
 .controller('HutsuneakBeteCtrl', ['$scope', '$stateParams', 'Zerbitzaria', function($scope, $stateParams, Zerbitzaria) {
     
     $scope.id_ariketa = $stateParams.id_ariketa;

@@ -43,6 +43,12 @@ angular.module('ikuslang-app', [
         controller: 'NireTxokoaCtrl'
     })
     
+    .state('ezarpenak', {
+        url: "/ezarpenak",
+        templateUrl: "templates/ezarpenak.html",
+        controller: 'EzarpenakCtrl'
+    })
+    
     .state('app', {
       url: "/app",
       abstract: true,
