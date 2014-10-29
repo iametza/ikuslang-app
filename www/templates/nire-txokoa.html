@@ -26,22 +26,6 @@
                 
                 <h3>Egindako ariketak</h3>
                 
-                <a class="item item-icon-left" ng-click="bistaratuAriketa(3, 4)">
-                    <i class="icon ion-compose"></i>
-                        Karlos Zurutuza laburrean
-                    <span class="item-note">
-                        2014-09-04 19:34
-                    </span>
-                </a>
-                
-                <a class="item item-icon-left" ng-click="bistaratuAriketa(16, 1)">
-                    <i class="icon ion-beer"></i>
-                        Esaldiak zuzendu proba
-                    <span class="item-note">
-                        2014-09-04 19:14
-                    </span>
-                </a>
-                
                 <a ng-repeat="egindakoa in ariketak.egindakoak" class="item item-icon-left" ng-click="bistaratuAriketa({{ egindakoa.id }}, {{ egindakoa.id_ariketa_mota }})">
                     <i class="icon" ng-class="ikonoak[egindakoa.id_ariketa_mota]"></i>
                         {{ egindakoa.izena }}
