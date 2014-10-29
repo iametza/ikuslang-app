@@ -1,40 +1,44 @@
 <ion-view title="Nire txokoa">
     
-    <ion-nav-bar class="bar-stable nav-title-slide-ios7"></ion-nav-bar>
+    <ion-nav-bar class="bar-stable nav-title-slide-ios7">
+    </ion-nav-bar>
+    
+    <div class="tabs-striped tabs-top tabs-light">
+        <div class="tabs">
+            <a class="tab-item" ng-class="zeinFitxa == 'egitekoak' ? 'active' : ''" href="" ng-click="zeinFitxa = 'egitekoak'">
+                Egin beharreko ariketak
+            </a>
+            <a class="tab-item" ng-class="zeinFitxa == 'egindakoak' ? 'active' : ''" href="" ng-click="zeinFitxa = 'egindakoak'">
+                Egindako ariketak
+            </a>
+        </div>
+    </div>
     
     <ion-content class="has-header">
         
-        <h2>Kaixo {{ izena + ' ' + abizenak }}</h2>
+        <!-- <h2>Kaixo {{ izena + ' ' + abizenak }}</h2> -->
         
-        <div class="row">
+        <div ng-show="zeinFitxa ==='egitekoak'">
             
-            <div class="col">
-                
-                <h3>Egin beharreko ariketak</h3>
-                
-                <a ng-repeat="egitekoa in ariketak.egitekoak" class="item item-icon-left" ng-click="bistaratuAriketa({{ egitekoa.id }}, {{ egitekoa.id_ariketa_mota }})">
-                    <i class="icon" ng-class="ikonoak[egitekoa.id_ariketa_mota]"></i>
-                        {{ egitekoa.izena }}
-                    <span class="item-note">
-                        {{ egitekoa.bukaera_data }}
-                    </span>
-                </a>
-                
-            </div>
+            <a ng-repeat="egitekoa in ariketak.egitekoak" class="item item-icon-left" ng-click="bistaratuAriketa({{ egitekoa.id }}, {{ egitekoa.id_ariketa_mota }})">
+                <i class="icon" ng-class="ikonoak[egitekoa.id_ariketa_mota]"></i>
+                    {{ egitekoa.izena }}
+                <span class="item-note">
+                    {{ egitekoa.bukaera_data }}
+                </span>
+            </a>
             
-            <div class="col">
-                
-                <h3>Egindako ariketak</h3>
-                
-                <a ng-repeat="egindakoa in ariketak.egindakoak" class="item item-icon-left" ng-click="bistaratuAriketa({{ egindakoa.id }}, {{ egindakoa.id_ariketa_mota }})">
-                    <i class="icon" ng-class="ikonoak[egindakoa.id_ariketa_mota]"></i>
-                        {{ egindakoa.izena }}
-                    <span class="item-note">
-                        {{ egindakoa.egindako_data }}
-                    </span>
-                </a>
-                
-            </div>
+        </div>
+        
+        <div ng-show="zeinFitxa ==='egindakoak'">
+            
+            <a ng-repeat="egindakoa in ariketak.egindakoak" class="item item-icon-left" ng-click="bistaratuAriketa({{ egindakoa.id }}, {{ egindakoa.id_ariketa_mota }})">
+                <i class="icon" ng-class="ikonoak[egindakoa.id_ariketa_mota]"></i>
+                    {{ egindakoa.izena }}
+                <span class="item-note">
+                    {{ egindakoa.egindako_data }}
+                </span>
+            </a>
             
         </div>
         

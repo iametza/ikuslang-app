@@ -54,8 +54,10 @@ angular.module('ikuslang-app.controllers', [])
         '2': 'ion-help',
         '3': 'ion-model-s',
         '4': 'ion-compose',
-        '5': 'ion-nuclear',
+        '5': 'ion-nuclear'
     }
+    
+    $scope.zeinFitxa = 'egitekoak';
     
     var id_hizkuntza = 1;
     
