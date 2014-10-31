@@ -57,7 +57,7 @@ angular.module('ikuslang-app', [
     })
     
     .state('app.hutsuneak-bete', {
-        url: "/hutsuneak-bete/{id_ariketa}",
+        url: "/hutsuneak-bete/?id_ariketa&id_ikasgaia",
         views: {
             'menuContent' :{
                 templateUrl: "templates/hutsuneak-bete.html",
@@ -67,7 +67,7 @@ angular.module('ikuslang-app', [
     })
 
     .state('app.galdera-erantzunak', {
-      url: "/galdera-erantzunak/{id_ariketa}",
+      url: "/galdera-erantzunak/?id_ariketa&id_ikasgaia",
       views: {
         'menuContent' :{
           templateUrl: "templates/galdera-erantzunak.html",
@@ -77,7 +77,7 @@ angular.module('ikuslang-app', [
     })
 
     .state('app.hitzak-markatu', {
-      url: "/hitzak-markatu/{id_ariketa}",
+      url: "/hitzak-markatu/?id_ariketa&id_ikasgaia",
       views: {
         'menuContent' :{
           templateUrl: "templates/hitzak-markatu.html",
@@ -97,7 +97,7 @@ angular.module('ikuslang-app', [
     })
 
     .state('app.esaldiak-ordenatu', {
-      url: "/esaldiak-ordenatu/{id_ariketa}",
+      url: "/esaldiak-ordenatu/?id_ariketa&id_ikasgaia",
       views: {
         'menuContent' :{
           templateUrl: "templates/esaldiak-ordenatu.html",

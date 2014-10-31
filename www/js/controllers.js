@@ -127,7 +127,7 @@ angular.module('ikuslang-app.controllers', [])
     
 })
 
-.controller('HutsuneakBeteCtrl', ['$scope', '$stateParams', 'Zerbitzaria', function($scope, $stateParams, Zerbitzaria) {
+.controller('HutsuneakBeteCtrl', ['$scope', '$stateParams', 'Erabiltzailea', 'Zerbitzaria', function($scope, $stateParams, Erabiltzailea, Zerbitzaria) {
     
     $scope.id_ariketa = $stateParams.id_ariketa;
     $scope.id_ikasgaia = $stateParams.id_ikasgaia;
@@ -163,23 +163,36 @@ angular.module('ikuslang-app.controllers', [])
     
     $scope.zuzendu = function() {
         
-        var zuzenak = 0;
-        var okerrak = 0;
+        var zuzenak = [];
+        var okerrak = [];
         
-        $("#hutsuneak-bete-hipertranskribapena-edukinontzia input").each(function(index, elem) {                        
+        $("#hutsuneak-bete-hipertranskribapena-edukinontzia input").each(function(index, elem) {
+            
+            var id_hutsunea = $(this).attr("data-id-hutsunea");
+            
             if($(this).attr("data-testua") === $(this).val()) {
+                
                 $(this).addClass("zuzena");
                 
-                zuzenak++;
+                zuzenak.push(id_hutsunea);
+                
             } else {
+                
                 $(this).val($(elem).attr("data-testua"));
                 $(this).addClass("okerra");
                 
-                okerrak++;
+                okerrak.push(id_hutsunea);
+                
             }
+            
         });
         
-        alert("Emaitza: " + zuzenak + "/" + (zuzenak + okerrak));
+        alert("Emaitza: " + zuzenak.length + "/" + (zuzenak.length + okerrak.length));
+        
+        Zerbitzaria.bidaliEmaitzak($scope.id_ikasgaia, $scope.id_ariketa, Erabiltzailea.eskuratuId(), zuzenak, okerrak);
+        
+        console.log(zuzenak);
+        console.log(okerrak);
         
     }
     

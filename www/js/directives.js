@@ -27,7 +27,7 @@ angular.module('ikuslang-app.directives', [])
         // Hutsuneak gehitu dagokion lekuan.
         for (var i = 0; i < hutsune_kopurua; i++) {
             
-            hitz_kopurua = hutsuneak[i].length;
+            hitz_kopurua = hutsuneak[i].hitzak.length;
             
             hutsunearen_testua = "";
             
@@ -35,21 +35,23 @@ angular.module('ikuslang-app.directives', [])
             while (--hitz_kopurua) {
                 
                 // Hutsunearen testua osatzen joan.
-                hutsunearen_testua = hutsuneak[i][hitz_kopurua].testua + " " + hutsunearen_testua;
+                hutsunearen_testua = hutsuneak[i].hitzak[hitz_kopurua].testua + " " + hutsunearen_testua;
                 
                 // Span-a ezabatu.
-                $("span[data-ms='" + hutsuneak[i][hitz_kopurua].denbora + "']", element).remove();
+                $("span[data-ms='" + hutsuneak[i].hitzak[hitz_kopurua].denbora + "']", element).remove();
                 
             }
             
             // Lehen hitza gehitu hutsunearen testuari. Hitz bakarreko hutsunea bada, hau izango da hitz bakarra.
-            hutsunearen_testua = hutsuneak[i][0].testua + " " + hutsunearen_testua;
+            hutsunearen_testua = hutsuneak[i].hitzak[0].testua + " " + hutsunearen_testua;
             
             // Bukaerako zuriunea kendu.
             hutsunearen_testua = $.trim(hutsunearen_testua);
             
+            console.log(hutsuneak[i]);
+            
             // Lehen hitzaren span-a input text batekin ordezkatu.
-            $("span[data-ms='" + hutsuneak[i][0].denbora + "']", element).replaceWith("<input type='text' class='hutsuneak-bete-input' data-testua='" + hutsunearen_testua + "' />");
+            $("span[data-ms='" + hutsuneak[i].hitzak[0].denbora + "']", element).replaceWith("<input type='text' class='hutsuneak-bete-input' data-id-hutsunea='" + hutsuneak[i].id + "' data-testua='" + hutsunearen_testua + "' />");
             
         }
         
