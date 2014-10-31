@@ -69,17 +69,25 @@ angular.module('ikuslang-app.services', [])
         egindakoak: []
     }
     
-    factory.bidaliEmaitzak = function(id_ikasgaia, id_ariketa, id_ikaslea, zuzenak, okerrak, id_hizkuntza) {
+    factory.bidaliEmaitzak = function(id_ikasgaia, id_ariketa, id_ikaslea, zuzenak, okerrak) {
         
         var d = $q.defer();
         
-        $http.post(factory.api_url + 'ariketak/emaitzak/', {
-            params: {
-                "id_ikasgaia": id_ikasgaia,
-                "id_ariketa": id_ariketa,
-                "id_ikaslea": id_ikaslea,
-                "zuzenak": zuzenak,
-                "okerrak": okerrak
+        $http({
+            method: 'POST',
+            url: factory.api_url + 'ariketak/emaitzak/',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            transformRequest: function(obj) {
+                var str = [];
+                for(var p in obj)
+                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+            },
+            data: {"id_ikasgaia": id_ikasgaia,
+                    "id_ariketa": id_ariketa,
+                    "id_ikaslea": id_ikaslea,
+                    "zuzenak": zuzenak,
+                    "okerrak": okerrak
             }
         }).success(function(data, status, headers) {
             

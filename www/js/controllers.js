@@ -278,10 +278,14 @@ angular.module('ikuslang-app.controllers', [])
     }
 }])
 
-.controller('MultzokatuCtrl', ['$scope', '$stateParams', 'Zerbitzaria', function($scope, $stateParams, Zerbitzaria) {
+.controller('MultzokatuCtrl', ['$scope', '$stateParams', 'Erabiltzailea', 'Zerbitzaria', function($scope, $stateParams, Erabiltzailea, Zerbitzaria) {
     
     $scope.id_ariketa = $stateParams.id_ariketa;
     $scope.id_ikasgaia = $stateParams.id_ikasgaia;
+    
+    console.log($stateParams);
+    console.log($scope.id_ariketa);
+    console.log($scope.id_ikasgaia);
     
     $scope.multzokatu = [];
     
@@ -406,19 +410,7 @@ angular.module('ikuslang-app.controllers', [])
         
         alert("Zuzenak: " + zuzenak.length + " - Okerrak: " + okerrak.length);
         
-        /*$.post(Zerbitzaria.api_url + "API/v1/multzokatu",
-            {
-                "id_ariketa": $scope.id_ariketa,
-                "id_ikaslea": $scope.id_ikaslea,
-                "zuzenak": zuzenak,
-                "okerrak": okerrak
-            }
-        )
-        .done(function(data) {
-            console.log(data);
-        })
-        .fail(function() {
-        });*/
+        Zerbitzaria.bidaliEmaitzak($scope.id_ikasgaia, $scope.id_ariketa, Erabiltzailea.eskuratuId(), zuzenak, okerrak);
         
         console.log(zuzenak);
         console.log(okerrak);
