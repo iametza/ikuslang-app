@@ -50,11 +50,11 @@ angular.module('ikuslang-app.controllers', [])
     }
     
     $scope.ikonoak = {
-        '1': 'ion-beer',
+        '1': 'ion-shuffle',
         '2': 'ion-help',
-        '3': 'ion-model-s',
+        '3': 'ion-archive',
         '4': 'ion-compose',
-        '5': 'ion-nuclear'
+        '5': 'ion-cube'
     }
     
     $scope.zeinFitxa = 'egitekoak';
