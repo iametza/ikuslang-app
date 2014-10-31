@@ -77,37 +77,42 @@ angular.module('ikuslang-app.controllers', [])
         
     });
     
-    $scope.bistaratuAriketa = function(id_ariketa, id_ariketa_mota) {
+    $scope.bistaratuAriketa = function(id_ariketa, id_ariketa_mota, id_ikasgaia) {
         
         switch (id_ariketa_mota) {
             
             case 1:
                 $state.go('app.esaldiak-ordenatu', {
-                    'id_ariketa': id_ariketa
+                    'id_ariketa': id_ariketa,
+                    'id_ikasgaia': id_ikasgaia
                 });
                 break;
             
             case 2:
                 $state.go('app.galdera-erantzunak', {
-                    'id_ariketa': id_ariketa
+                    'id_ariketa': id_ariketa,
+                    'id_ikasgaia': id_ikasgaia
                 });
                 break;
             
             case 3:
                 $state.go('app.hitzak-markatu', {
-                    'id_ariketa': id_ariketa
+                    'id_ariketa': id_ariketa,
+                    'id_ikasgaia': id_ikasgaia
                 });
                 break;
             
             case 4:
                 $state.go('app.hutsuneak-bete', {
-                    'id_ariketa': id_ariketa
+                    'id_ariketa': id_ariketa,
+                    'id_ikasgaia': id_ikasgaia
                 });
                 break;
             
             case 5:
                 $state.go('app.multzokatu', {
-                    'id_ariketa': id_ariketa
+                    'id_ariketa': id_ariketa,
+                    'id_ikasgaia': id_ikasgaia
                 });
                 break;
             
@@ -125,6 +130,7 @@ angular.module('ikuslang-app.controllers', [])
 .controller('HutsuneakBeteCtrl', ['$scope', '$stateParams', 'Zerbitzaria', function($scope, $stateParams, Zerbitzaria) {
     
     $scope.id_ariketa = $stateParams.id_ariketa;
+    $scope.id_ikasgaia = $stateParams.id_ikasgaia;
     
     $scope.izena = "";
     
@@ -182,6 +188,7 @@ angular.module('ikuslang-app.controllers', [])
 .controller('GalderaErantzunakCtrl', ['$ionicModal', '$scope', '$stateParams', 'Zerbitzaria', function($ionicModal, $scope, $stateParams, Zerbitzaria) {
     
     $scope.id_ariketa = $stateParams.id_ariketa;
+    $scope.id_ikasgaia = $stateParams.id_ikasgaia;
     
     $scope.izena = "";
     
@@ -201,6 +208,7 @@ angular.module('ikuslang-app.controllers', [])
 .controller('HitzakMarkatuCtrl', ['$scope', '$stateParams', function($scope, $stateParams) {
     
     $scope.id_ariketa = $stateParams.id_ariketa;
+    $scope.id_ikasgaia = $stateParams.id_ikasgaia;
     
     $scope.hitzak_markatu = [];
     
@@ -273,6 +281,7 @@ angular.module('ikuslang-app.controllers', [])
 .controller('MultzokatuCtrl', ['$scope', '$stateParams', 'Zerbitzaria', function($scope, $stateParams, Zerbitzaria) {
     
     $scope.id_ariketa = $stateParams.id_ariketa;
+    $scope.id_ikasgaia = $stateParams.id_ikasgaia;
     
     $scope.multzokatu = [];
     
@@ -423,6 +432,7 @@ angular.module('ikuslang-app.controllers', [])
     $scope.esaldiak_zuzendu;
     
     var id_ariketa = $stateParams.id_ariketa;
+    $scope.id_ikasgaia = $stateParams.id_ikasgaia;
     
     var id_hizkuntza = 1;
     
