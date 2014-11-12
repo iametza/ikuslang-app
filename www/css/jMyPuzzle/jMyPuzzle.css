@@ -10,21 +10,43 @@
     border-right: 1px solid #e2e2e2;
 }
 
-#zenbagarrena {
+#jMyPuzzle-buttons {
+    width: 60%;
+    bottom: 0px;
+    position: absolute;
+    left: 20%;
+    height: 60px;
 }
 
-#emaitzak {
+#esaldiak-zuzendu-zenbagarrena {
+}
+
+#esaldiak-zuzendu-emaitzak {
     float: right;
 }
 
-#zuzenak_img {
-    height: 30px;
-    margin-bottom: 10px;
+#esaldiak-zuzendu-zuzenak_img {
+    height: 20px;
+    position: absolute;
+    right: 170px;
 }
 
-#okerrak_img {
-    height: 30px;
-    margin-bottom: 10px;
+#esaldiak-zuzendu-zuzenak {
+    position: absolute;
+    right: 150px;
+    top: 8px;
+}
+
+#esaldiak-zuzendu-okerrak_img {
+    height: 20px;
+    position: absolute;
+    right: 120px;
+}
+
+#esaldiak-zuzendu-okerrak {
+    position: absolute;
+    right: 100px;
+    top: 8px;
 }
 
 div.jMyPuzzle #aurrera-botoia {
@@ -62,6 +84,7 @@ div.jMyPuzzle {
      height: 200px;
      margin: auto;
      width: 70%;
+    position: relative;
 }
 
 div.jMyPuzzle ul {
@@ -98,23 +121,18 @@ div.jMyPuzzle input.button:hover {
 }
 
 div.jMyPuzzle input#reset.button {
-     background: url("lightning.png") no-repeat scroll 5% center transparent;
-     float: right;
-     font-size: 1.2em;
-     margin-right: 110px;
-     margin-top: 100px;
-     padding: 3px 3px 3px 40px;
-     width: 155px;
+	background: url("lightning.png") no-repeat scroll 5% center transparent;
+	font-size: 1.2em;
+	padding: 3px 3px 3px 25px;
+	width: 45%;
 }
 
 div.jMyPuzzle input#check.button {
-     background: url("check.png") no-repeat scroll 5% center transparent;
-     float: right;
-     font-size: 1.2em;
-     margin-right: 20px;
-     margin-top: 100px;
-     padding: 3px 3px 3px 40px;
-     width: 155px;
+	background: url("check.png") no-repeat scroll 5% center transparent;
+	float: right;
+	font-size: 1.2em;
+	padding: 3px 3px 3px 40px;
+	width: 45%;
 }
 
 div.jMyPuzzle #trials {

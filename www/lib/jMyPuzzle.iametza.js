@@ -79,11 +79,14 @@ $.fn.jMyPuzzle = function(o) {
 		// Create the ul element to contain the parts of the phrase and append it to the container div
 		$(this).append("<ul id='parts'></ul>");
 		
+        //
+        $(this).append('<div id="jMyPuzzle-buttons"></div>');
+        
 		// Create the reset button and append it to the container div
-		$(this).append('<input type="button" class="button" id="reset" value="' + i18n[o.language].textResetButton + '" />');
+		$("#jMyPuzzle-buttons").append('<input type="button" class="button" id="reset" value="' + i18n[o.language].textResetButton + '" />');
 		
 		// Create the check button and append it to the container div
-		$(this).append('<input type="button" class="button" id="check" value="' + i18n[o.language].textCheckButton + '" />');
+		$("#jMyPuzzle-buttons").append('<input type="button" class="button" id="check" value="' + i18n[o.language].textCheckButton + '" />');
 		
 		// Create an unordered array with as much elements as words are in the phrase
 		var unordered = [];
