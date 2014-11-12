@@ -444,6 +444,14 @@ angular.module('ikuslang-app.controllers', [])
     var esaldiak = [];
     var ordenak = [];
     
+    var zenbagarren_esaldia = 0;
+    
+    // Esaldiak zein ordenatan erakutsi behar diren.
+    var esaldien_ordena = [];
+    
+    var zuzen_kop = 0;
+    var oker_kop = 0;
+    
     var promise = Zerbitzaria.eskuratuEsaldiakZuzendu(id_ariketa, id_hizkuntza);
     
     promise.then(function() {
@@ -458,41 +466,165 @@ angular.module('ikuslang-app.controllers', [])
             
         }
         
-    });
-    
-    function hasi() {
+        // esaldiak arrayak dituen elementuak adina elementu gehituko ditugu array berrira.
+        for (var i = 0; i < esaldiak.length; i++) {
+            
+            esaldien_ordena.push(i);
+            
+        }
         
-        //var esaldiak = [["Hau","beste","proba","bat","da"],["Hau","laugarren","proba","da"]];
-        //var ordenak = [[[0,1,2,3,4]],[[0,1,2,3,4]]];
-        
-        $(".jMyPuzzle").html("");
-        
-        var ausazko_indizea = randomFromInterval(0, esaldiak.length-1);
-        
-        $(".jMyPuzzle").jMyPuzzle({
-            phrase: esaldiak[ausazko_indizea],
-            answers: ordenak[ausazko_indizea], //ordena_zuzenak,
-            //phrase: ["a", "b", "c"],
-            //answers: [[0, 1, 2], [2, 1, 0]],
-            language: "eu",
-            maxTrials: 5,
-            visible: '100%', // ez da erabiltzen ????
-            fnOnCheck: function(jSonResults){
-                alert("Estatistikak:"
-                        + "\n\tErantzun zuzenak: " + jSonResults.nb_valid
-                        + "\n\tErantzun okerrak: " + jSonResults.nb_not_valid
-                        + "\n\tErantzun erdi-zuzenak: " + jSonResults.nb_mi_valid
-                        + "\n\tPortzentaia: %" + jSonResults.success_rate);
-            }
-        });
-    }
-    
-    $scope.hurrengoEsaldia = function(){
+        // Array berria desordenatuko dugu.
+        esaldien_ordena = shuffle(esaldien_ordena);
         
         hasi();
         
-        $("#hurrengo-esaldia-botoia").html('Beste esaldi bat!');
+    });
+    
+    function bistaratu_zenbagarrena() {
         
-    };
+        $("#unekoa").text(zenbagarren_esaldia + 1);
+    }
+    
+    function bistaratu_zuzen_kopurua() {
+        
+        $("#zuzenak").text(zuzen_kop);
+    }
+    
+    function bistaratu_oker_kopurua() {
+        
+        $("#okerrak").text(oker_kop);
+        
+    }
+    
+    function bistaratu_galdera_kopurua() {
+        
+        $("#guztira").text(esaldiak.length);
+    }
+    
+    function shuffle(array) {
+        
+        var counter = array.length, temp, index;
+        
+        // While there are elements in the array
+        while (counter > 0) {
+            
+            // Pick a random index
+            index = Math.floor(Math.random() * counter);
+            
+            // Decrease counter by 1
+            counter--;
+            
+            // And swap the last element with it
+            temp = array[counter];
+            array[counter] = array[index];
+            array[index] = temp;
+            
+        }
+        
+        return array;
+        
+    }
+
+    function bistaratuEsaldia() {
+        
+        $(".jMyPuzzle").html("");
+        
+        $(".jMyPuzzle").jMyPuzzle({
+            phrase: esaldiak[esaldien_ordena[zenbagarren_esaldia]],
+            answers: ordenak[esaldien_ordena[zenbagarren_esaldia]], //ordena_zuzenak,
+            //phrase: ["a", "b", "c"],
+            //answers: [[0, 1, 2], [2, 1, 0]],
+            language: "eu",
+            maxTrials: 1,
+            showTrials: false,
+            visible: '100%', // ez da erabiltzen ????
+            fnOnCheck: function(jSonResults){  
+                /*alert("Estatistikak:"
+                      + "\n\tErantzun zuzenak: " + jSonResults.nb_valid
+                      + "\n\tErantzun okerrak: " + jSonResults.nb_not_valid
+                      + "\n\tErantzun erdi-zuzenak: " + jSonResults.nb_mi_valid
+                      + "\n\tPortzentaia: %" + jSonResults.success_rate);*/
+                
+                if (jSonResults.nb_not_valid === 0) {
+                    zuzen_kop++;
+                } else {
+                    oker_kop++;
+                }
+                
+                bistaratu_zuzen_kopurua();
+                
+                bistaratu_oker_kopurua();
+                
+                zenbagarren_esaldia++;
+                
+                // Erabiltzaileari ordena aldatzen ez utzi.
+                $("#parts li").draggable("disable");
+                
+                // Zuzendu eta berrezarri botoiak kendu.
+                $(".jMyPuzzle input").remove();
+                
+                if (zenbagarren_esaldia < esaldiak.length) {
+                    
+                    // Aurrera botoia gehitu.
+                    $(".jMyPuzzle").append("<input type='button' value='Aurrera' id='aurrera-botoia' />");
+                    
+                } else {
+                    
+                    alert("Ariketa amaitu da!");
+                    
+                    // Berriz hasi botoia gehitu.
+                    $(".jMyPuzzle").append("<input type='button' value='Berriz hasi' id='berriz-hasi-botoia' />");
+                    
+                }
+            }
+        });
+        
+    }
+    
+    function hasi() {
+        
+        bistaratuEsaldia();
+        
+        bistaratu_zuzen_kopurua();
+        
+        bistaratu_oker_kopurua();
+        
+        bistaratu_zenbagarrena();
+        
+        bistaratu_galdera_kopurua();
+        
+        $(document).on("click", ".jMyPuzzle #aurrera-botoia", function() {
+            
+            bistaratu_zenbagarrena();
+            
+            bistaratuEsaldia();
+            
+        });
+        
+        $(document).on("click", ".jMyPuzzle #berriz-hasi-botoia", function() {
+            
+            // Aldagaiak zeroratuko ditugu.
+            zuzen_kop = 0;
+            oker_kop = 0;
+            zenbagarren_esaldia = 0;
+            
+            // Arraya berriz desordenatuko dugu.
+            esaldien_ordena = shuffle(esaldien_ordena);
+            
+            bistaratuEsaldia();
+            
+            bistaratu_zuzen_kopurua();
+            
+            bistaratu_oker_kopurua();
+            
+            bistaratu_zenbagarrena();
+            
+            bistaratu_galdera_kopurua();
+            
+        });
+        
+    }
+    
+    
     
 }]);

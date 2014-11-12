@@ -30,6 +30,7 @@ $.fn.jMyPuzzle = function(o) {
 		language: 'eu',							// the language of the user interface
 		
         maxTrials:3,							// maximum number of trials, 0 for unlimited
+        showTrials:true,                        // Whether to show the number of trials or not
         classOnValid:'valid',					// class to apply to the element when valid
         classOnNotValid:'notValid',				// class to apply to the element when not valid
         classOnMiValid:'miValid',				// class to apply to the element when mi valid
@@ -60,7 +61,7 @@ $.fn.jMyPuzzle = function(o) {
 				'textResetButton': 'reset'
 			},
 			eu: {
-				'textCheckButton': 'egiaztatu',
+				'textCheckButton': 'zuzendu',
 				'textResetButton': 'berrezarri'
 			},
 			es: {
@@ -71,7 +72,9 @@ $.fn.jMyPuzzle = function(o) {
 	
 	return this.each(function() {
 		// Create the p element to show the current/total number of trials and append it to the container div
-		$(this).append("<p id='trials'></p>");
+        if (o.showTrials) {
+            $(this).append("<p id='trials'></p>");
+        }
 		
 		// Create the ul element to contain the parts of the phrase and append it to the container div
 		$(this).append("<ul id='parts'></ul>");
@@ -136,7 +139,7 @@ $.fn.jMyPuzzle = function(o) {
 				'position':'absolute'
 				});
 		
-		if(o.maxTrials > 0 && $('#trials').length){					// initial filling of the trial layer 
+		if(o.showTrials && o.maxTrials > 0 && $('#trials').length){					// initial filling of the trial layer 
 			$('#trials').html(0 + '/' + o.maxTrials);
 		}
 		
@@ -187,7 +190,10 @@ $.fn.jMyPuzzle = function(o) {
 				if(o.maxTrials > 0){								// set the trials counter and display update
 					if(nbTrials >= o.maxTrials){ return; }			// If the number of trials is bigger than the max number of trials return
 					nbTrials++;										// Add one to the number of trials
-					$('#trials').html(nbTrials + '/' + o.maxTrials);// Display the new number of trials / max number of trials
+                    
+                    if (o.showTrials) {
+                        $('#trials').html(nbTrials + '/' + o.maxTrials);// Display the new number of trials / max number of trials
+                    }
 				}
 				
 				return show(0, check(correct_answers));							// call the check function and show the results.

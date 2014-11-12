@@ -1,3 +1,55 @@
+#esaldiak-zuzendu-markagailua {
+    margin: 20px auto 0px auto;
+    width: 70%;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 1.8em;
+    padding:5px;
+    border-top: 1px solid #e2e2e2;
+    border-left: 1px solid #e2e2e2;
+    border-right: 1px solid #e2e2e2;
+}
+
+#zenbagarrena {
+}
+
+#emaitzak {
+    float: right;
+}
+
+#zuzenak_img {
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+#okerrak_img {
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+div.jMyPuzzle #aurrera-botoia {
+    float: right;
+    font-size: 1.2em;
+     margin-right: 190px;
+     margin-top: 100px;
+    padding: 3px 3px 3px 3px;
+    width: 155px;
+    background-color:  #e2e2e2 ! important;
+     border: 1px solid  #e2e2e2;
+     color: #000000;
+     border-radius:4px;
+     cursor: pointer;
+}
+
+div.jMyPuzzle #berriz-hasi-botoia {
+    float: right;
+    font-size: 1.2em;
+    margin-right: 20px;
+    margin-top: 100px;
+    padding: 3px 3px 3px 3px;
+    width: 155px;
+}
+
 div.jMyPuzzle p {
      margin: 0px;
      padding: 0px;
@@ -5,11 +57,11 @@ div.jMyPuzzle p {
 
 div.jMyPuzzle {
      background-color: #FFFFFF;
-     border: 1px solid #000000;
+     border: 1px solid #e2e2e2;
      display: block;
      height: 200px;
      margin: auto;
-     width: 80%;
+     width: 70%;
 }
 
 div.jMyPuzzle ul {
@@ -20,9 +72,9 @@ div.jMyPuzzle ul {
 }
 
 div.jMyPuzzle ul li {
-     background-color: #CCCCCC;
+     background-color: #f8ce44!important;
      border-radius: 6px 6px 6px 6px;
-     border: 2px solid #CCCCCC;
+     border: 2px solid #f8ce44;
      color: #000000;
      cursor: pointer;
      display: block;
@@ -34,9 +86,10 @@ div.jMyPuzzle ul li {
 }
 
 div.jMyPuzzle input.button {
-     background-color: #B9D305 ! important;
-     border: 1px solid #000000;
+     background-color:  #e2e2e2 ! important;
+     border: 1px solid  #e2e2e2;
      color: #000000;
+     border-radius:4px;
      cursor: pointer;
 }
 
@@ -48,7 +101,7 @@ div.jMyPuzzle input#reset.button {
      background: url("lightning.png") no-repeat scroll 5% center transparent;
      float: right;
      font-size: 1.2em;
-     margin-right: 20px;
+     margin-right: 110px;
      margin-top: 100px;
      padding: 3px 3px 3px 40px;
      width: 155px;
