@@ -482,23 +482,23 @@ angular.module('ikuslang-app.controllers', [])
     
     function bistaratu_zenbagarrena() {
         
-        $("#unekoa").text(zenbagarren_esaldia + 1);
+        $("#esaldiak-zuzendu-unekoa").text(zenbagarren_esaldia + 1);
     }
     
     function bistaratu_zuzen_kopurua() {
         
-        $("#zuzenak").text(zuzen_kop);
+        $("#esaldiak-zuzendu-zuzenak").text(zuzen_kop);
     }
     
     function bistaratu_oker_kopurua() {
         
-        $("#okerrak").text(oker_kop);
+        $("#esaldiak-zuzendu-okerrak").text(oker_kop);
         
     }
     
     function bistaratu_galdera_kopurua() {
         
-        $("#guztira").text(esaldiak.length);
+        $("#esaldiak-zuzendu-guztira").text(esaldiak.length);
     }
     
     function shuffle(array) {
@@ -566,14 +566,14 @@ angular.module('ikuslang-app.controllers', [])
                 if (zenbagarren_esaldia < esaldiak.length) {
                     
                     // Aurrera botoia gehitu.
-                    $(".jMyPuzzle").append("<input type='button' value='Aurrera' id='aurrera-botoia' />");
+                    $("#jMyPuzzle-buttons").append("<input type='button' class='button' value='Aurrera' id='esaldiak-zuzendu-aurrera-botoia' />");
                     
                 } else {
                     
                     alert("Ariketa amaitu da!");
                     
                     // Berriz hasi botoia gehitu.
-                    $(".jMyPuzzle").append("<input type='button' value='Berriz hasi' id='berriz-hasi-botoia' />");
+                    $("#jMyPuzzle-buttons").append("<input type='button' class='button' value='Berriz hasi' id='esaldiak-zuzendu-berriz-hasi-botoia' />");
                     
                 }
             }
@@ -593,7 +593,7 @@ angular.module('ikuslang-app.controllers', [])
         
         bistaratu_galdera_kopurua();
         
-        $(document).on("click", ".jMyPuzzle #aurrera-botoia", function() {
+        $(document).on("click", ".jMyPuzzle #esaldiak-zuzendu-aurrera-botoia", function() {
             
             bistaratu_zenbagarrena();
             
@@ -601,7 +601,7 @@ angular.module('ikuslang-app.controllers', [])
             
         });
         
-        $(document).on("click", ".jMyPuzzle #berriz-hasi-botoia", function() {
+        $(document).on("click", ".jMyPuzzle #esaldiak-zuzendu-berriz-hasi-botoia", function() {
             
             // Aldagaiak zeroratuko ditugu.
             zuzen_kop = 0;
