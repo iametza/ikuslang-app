@@ -147,20 +147,6 @@ angular.module('ikuslang-app.controllers', [])
         
     }
     
-    $scope.egiaztatu = function() {
-        
-        $("#hutsuneak-bete-hipertranskribapena-edukinontzia input").each(function() {
-            
-            // Erantzun okerrak ezabatu
-            if($(this).attr("data-testua") === $(this).val()) {
-                $(this).addClass("zuzena");
-            } else {
-                $(this).val("");
-            }
-        });
-        
-    }
-    
     $scope.zuzendu = function() {
         
         var zuzenak = [];
