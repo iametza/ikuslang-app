@@ -1,4 +1,5 @@
 #esaldiak-zuzendu-markagailua {
+    position: relative;
     margin: 20px auto 0px auto;
     width: 70%;
     background-color: #ffffff;
@@ -28,25 +29,25 @@
 #esaldiak-zuzendu-zuzenak_img {
     height: 20px;
     position: absolute;
-    right: 170px;
+    right: 100px;
 }
 
 #esaldiak-zuzendu-zuzenak {
     position: absolute;
-    right: 150px;
-    top: 8px;
+    right: 80px;
+    top: 6px;
 }
 
 #esaldiak-zuzendu-okerrak_img {
     height: 20px;
     position: absolute;
-    right: 120px;
+    right: 30px;
 }
 
 #esaldiak-zuzendu-okerrak {
     position: absolute;
-    right: 100px;
-    top: 8px;
+    right: 10px;
+    top: 6px;
 }
 
 div.jMyPuzzle #aurrera-botoia {
