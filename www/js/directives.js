@@ -324,6 +324,19 @@ angular.module('ikuslang-app.directives', [])
             Zerbitzaria.bidaliEmaitzak(scope.id_ikasgaia, scope.id_ariketa, Erabiltzailea.eskuratuId(), zuzenak, okerrak);
             
         });
+        
+        $(document).on("click", "#hitzak-markatu-berriz-hasi-botoia", function() {
+            
+            // Hitz ontzia hustu.
+            $("#hitzak-markatu-hitz-ontzia").empty();
+            
+            // Hipertranskribapeneko hitzei klaseak kendu.
+            $("#hitzak-markatu-hipertranskribapena-edukia span").each(function(i) {
+                $(this).removeClass("hitzak-markatu-hipertranskribapena-erantzun-okerra").removeClass("hitzak-markatu-hipertranskribapena-erantzun-zuzena");
+            })
+            
+        });
+        
     }
     
     return {

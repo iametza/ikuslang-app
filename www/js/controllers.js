@@ -274,12 +274,6 @@ angular.module('ikuslang-app.controllers', [])
         
     }
     
-    $scope.hasi_berriz = function() {
-        
-        
-        
-    }
-    
 }])
 
 .controller('MultzokatuCtrl', ['$scope', '$stateParams', 'Erabiltzailea', 'Zerbitzaria', function($scope, $stateParams, Erabiltzailea, Zerbitzaria) {
