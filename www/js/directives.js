@@ -123,7 +123,7 @@ angular.module('ikuslang-app.directives', [])
 }])
 
 // direktibaren atributua: hitzak-markatu-hipertranskribapena (marratxoekin) baina direktibaren izena camelCase izan behar du.
-.directive('hitzakMarkatuHipertranskribapena', ['$compile', 'Zerbitzaria', function($compile, Zerbitzaria) {
+.directive('hitzakMarkatuHipertranskribapena', ['$compile', 'Erabiltzailea', 'Zerbitzaria', function($compile, Erabiltzailea, Zerbitzaria) {
     
     var dataMs = "data-ms";
     
@@ -320,6 +320,8 @@ angular.module('ikuslang-app.directives', [])
             
             console.log(zuzenak);
             console.log(okerrak);
+            
+            Zerbitzaria.bidaliEmaitzak(scope.id_ikasgaia, scope.id_ariketa, Erabiltzailea.eskuratuId(), zuzenak, okerrak);
             
         });
     }
