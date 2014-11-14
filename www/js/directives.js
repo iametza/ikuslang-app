@@ -127,9 +127,11 @@ angular.module('ikuslang-app.directives', [])
     
     var dataMs = "data-ms";
     
+    var hitzak_markatu = {};
+    
     var initTranscript = function(scope, element, attrs, p, hutsuneak) {
         
-        var akats_kopurua = scope.hitzak_markatu.akatsak.length;
+        var akats_kopurua = hitzak_markatu.akatsak.length;
         var hitz_kopurua;
         
         //console.log("initTranscript in "+(new Date()-startTimer));
@@ -157,13 +159,13 @@ angular.module('ikuslang-app.directives', [])
         
         for (var i = 0; i < akats_kopurua; i++) {
             
-            hitz_kopurua = scope.hitzak_markatu.akatsak[i].hitzak.length;
+            hitz_kopurua = hitzak_markatu.akatsak[i].hitzak.length;
             
             for (var j = 0; j < hitz_kopurua; j++) {
                 
-                $("span[data-ms='" + scope.hitzak_markatu.akatsak[i].hitzak[j].denbora + "']", element).text(scope.hitzak_markatu.akatsak[i].hitzak[j].okerra);
+                $("span[data-ms='" + hitzak_markatu.akatsak[i].hitzak[j].denbora + "']", element).text(hitzak_markatu.akatsak[i].hitzak[j].okerra);
                 
-                $("span[data-ms='" + scope.hitzak_markatu.akatsak[i].hitzak[j].denbora + "']", element).attr("data-id-akatsa", scope.hitzak_markatu.akatsak[i].id);
+                $("span[data-ms='" + hitzak_markatu.akatsak[i].hitzak[j].denbora + "']", element).attr("data-id-akatsa", hitzak_markatu.akatsak[i].id);
                 
             }
             
@@ -194,6 +196,132 @@ angular.module('ikuslang-app.directives', [])
 			$(this).parent().remove();
             
         });
+        
+        $(document).on("click", "#hitzak-markatu-zuzendu-botoia", function() {
+            
+            // Momentuko erantzuna zuzena den ala ez adierazten du.
+            var zuzena_da = false;
+            
+            var akats_kopurua = hitzak_markatu.akatsak.length;
+            
+            var zuzenak = [];
+            var okerrak = [];
+            
+            // Erabiltzaileak zerrendara gehitutako erantzun zuzen eta okerren hitzen denborak, hipertranskribapenean nabarmentzeko.
+            var zuzenen_denborak = [];
+            var okerren_denborak = [];
+            
+            // Elementuaren id-a eskuratuko dugu.
+            var id_akatsa;
+            
+            $("#hitzak-markatu-hitz-ontzia .hitzak-markatu-hitz-ontzia-spana").each(function() {
+                
+                // Erantzunaren denborak eskuratuko ditugu.
+                var denborak = [$(this).attr("data-ms")];
+                
+                // Kontrakoa frogatu bitartean erantzuna okerra da:
+                zuzena_da = false;
+                
+                // Erantzuna zuzena den ala ez ikusteko akats guztiak pasako ditugu banan bana.
+                for (var i = 0; i < akats_kopurua; i++) {
+                    
+                    // Erantzunaren hitzen denborak akatsekoekin bat datozen begiratuko dugu.
+                    for (var j = 0; j < hitzak_markatu.akatsak[i].hitzak.length; j++) {
+                        
+                        if (hitzak_markatu.akatsak[i].hitzak[j].denbora == denborak[j]) {
+                            
+                            zuzena_da = true;
+                            
+                        } else {
+                            
+                            // Erantzuneko denbora bat ez datorrenez bat ez dago egiaztatzen jarraitu beharrik.
+                            break;
+                            
+                        }
+                        
+                    }
+                    
+                    if (zuzena_da) {
+                        
+                        // Erantzuna zuzena denez begiztatik atera gaitezke.
+                        break;
+                        
+                    }
+                    
+                }
+                
+                if (zuzena_da) {
+                    
+                    // Erantzun zuzenaren estiloa eman zerrendako elementu honi.
+                    $(this).addClass("hitzak-markatu-zerrenda-erantzun-zuzena");
+                    
+                    // Hitzen denborak zuzenen zerrendan gordeko ditugu.
+                    zuzenen_denborak = zuzenen_denborak.concat(denborak);
+                    
+                    id_akatsa = $(this).attr("data-id-akatsa");
+                    
+                    zuzenak.push(id_akatsa);
+                    
+                } else {
+                    
+                    // Erantzun okerraren estiloa eman zerrendako elementu honi.
+                    $(this).addClass("hitzak-markatu-zerrenda-erantzun-okerra");
+                    
+                    // Hitzen denborak okerren zerrendan gordeko ditugu.
+                    okerren_denborak = okerren_denborak.concat(denborak);
+                    
+                }
+                
+                // zuzenen_denborak: Erabiltzaileak aurkitutako akatsen denboren zerrenda -> berdez.
+                // okerren_denborak: Erabiltzaileak zerrendara gehitu dituen baina akatsak ez ziren hitzen zerrenda. -> Oraingoz ez dugu erabiliko.
+                // akatsak: Aurkitu beharreko akats guztiak biltzen dituen objektuen arraya.
+                
+                zuzen_kopurua = zuzenen_denborak.length;
+                
+                // Zerrendara gehitutako akatsei (asmatutakoak) dagokien estiloa emango diegu transkribapenean.
+                for (var i = 0; i < zuzen_kopurua; i++) {
+                    
+                    // Erantzun zuzenaren estiloa eman hipertranskribapeneko elementu honi.
+                    $("#hitzak-markatu-hipertranskribapena-edukinontzia span[data-ms='" + zuzenen_denborak[i] + "']").addClass("hitzak-markatu-hipertranskribapena-erantzun-zuzena");
+                    
+                }
+                
+                // Erabiltzaileak aurkitu ez dituen akatsak aurkitu behar ditugu.
+                for (var i = 0; i < akats_kopurua; i++) {
+                    
+                    hitz_kopurua = hitzak_markatu.akatsak[i].hitzak.length;
+                    
+                    for (var j = 0; j < hitz_kopurua; j++) {
+                        
+                        // Dagoeneko erantzun zuzenaren estiloa eman ez badiogu erantzun okerraren estiloa eman hipertranskribapeneko elementu honi.
+                        if (!$("#hitzak-markatu-hipertranskribapena-edukinontzia span[data-ms='" + hitzak_markatu.akatsak[i].hitzak[j].denbora + "']").hasClass("hitzak-markatu-hipertranskribapena-erantzun-zuzena")) {
+                            
+                            // Akatsaren lehen hitza bada okerren zerrendara gehituko dugu bere id-a.
+                            if (j === 0) {
+                                
+                                id_akatsa = $("#hitzak-markatu-hipertranskribapena-edukinontzia span[data-ms='" + hitzak_markatu.akatsak[i].hitzak[j].denbora + "']").attr("data-id-akatsa");
+                                
+                                // Erantzun okerraren estiloa eman hipertranskribapeneko elementu honi.
+                                $("#hitzak-markatu-hipertranskribapena-edukinontzia span[data-ms='" + hitzak_markatu.akatsak[i].hitzak[j].denbora + "']").addClass("hitzak-markatu-hipertranskribapena-erantzun-okerra");
+                                
+                                okerrak.push(id_akatsa);
+                                
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                }
+                
+            });    
+            
+            //alert("Emaitza: " + zuzenak.length + "/" + hitzak_markatu.akatsak.length);
+            
+            console.log(zuzenak);
+            console.log(okerrak);
+            
+        });
     }
     
     return {
@@ -211,16 +339,16 @@ angular.module('ikuslang-app.directives', [])
             
             promise.then(function() {
                 
-                scope.hitzak_markatu = Zerbitzaria.hitzak_markatu;
+                hitzak_markatu = Zerbitzaria.hitzak_markatu;
                 
-                console.log(scope.hitzak_markatu);
+                console.log(hitzak_markatu);
                 
-                scope.izena = scope.hitzak_markatu.izena;
+                scope.izena = hitzak_markatu.izena;
                 
                 scope.pop = Popcorn.jplayer("#jquery_jplayer_1", {
                     media: {
-                        m4v: Zerbitzaria.oinarrizko_url + scope.hitzak_markatu.bideo_path + scope.hitzak_markatu.bideo_mp4,
-                        webmv: Zerbitzaria.oinarrizko_url + scope.hitzak_markatu.bideo_path + scope.hitzak_markatu.bideo_webm
+                        m4v: Zerbitzaria.oinarrizko_url + hitzak_markatu.bideo_path + hitzak_markatu.bideo_mp4,
+                        webmv: Zerbitzaria.oinarrizko_url + hitzak_markatu.bideo_path + hitzak_markatu.bideo_webm
                     },
                     options: {
                         solution: "html",
@@ -232,10 +360,10 @@ angular.module('ikuslang-app.directives', [])
                 //$scope.pop.parseSRT("http://asier.ikuslang.ametza.com/azpitituluak/karloszurutuzahd.srt", {target: "bideoa-azpitituluak"});
                 
                 // Hipertranskribapenaren testua bistaratu
-                element.html(scope.hitzak_markatu.hipertranskribapena);
+                element.html(hitzak_markatu.hipertranskribapena);
                 
                 // Hipertranskribapenaren oinarrizko funtzionalitatea hasieratu
-                initTranscript(scope, element, attrs, scope.pop, scope.hitzak_markatu.akatsak);
+                initTranscript(scope, element, attrs, scope.pop, hitzak_markatu.akatsak);
                 
             });
             

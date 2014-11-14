@@ -46,11 +46,36 @@
 }
 
 .hitzak-markatu-hitz-ontzia-spana-x {
-    color: #000000;
+    color: #333;
     font-weight: bold;
     margin-left: 4px;
-    opacity: 0.2;
     cursor: pointer;
+}
+
+.hitzak-markatu-zerrenda-erantzun-zuzena .hitzak-markatu-hitz-ontzia-spana-x {
+    color: #FFF;
+}
+
+.hitzak-markatu-zerrenda-erantzun-okerra .hitzak-markatu-hitz-ontzia-spana-x {
+    color: #FFF;
+}
+
+.hitzak-markatu-zerrenda-erantzun-zuzena {
+    background-color: green;
+    color:#FFF;
+}
+
+.hitzak-markatu-zerrenda-erantzun-okerra {
+    background-color: red;
+    color:#FFF;
+}
+
+#hitzak-markatu-hipertranskribapena-edukinontzia span.hitzak-markatu-hipertranskribapena-erantzun-zuzena, #target-content span.hitzak-markatu-hipertranskribapena-erantzun-zuzena {
+    color: green !important;
+}
+
+#hitzak-markatu-hipertranskribapena-edukinontzia span.hitzak-markatu-hipertranskribapena-erantzun-okerra, #target-content span.hitzak-markatu-hipertranskribapena-erantzun-okerra {
+    color: red !important;
 }
 
 #hitzak-markatu-hipertranskribapena-edukinontzia {

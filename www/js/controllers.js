@@ -209,8 +209,6 @@ angular.module('ikuslang-app.controllers', [])
     $scope.id_ariketa = $stateParams.id_ariketa;
     $scope.id_ikasgaia = $stateParams.id_ikasgaia;
     
-    $scope.hitzak_markatu = [];
-    
     $scope.pop;
     
     $scope.dragStartCallback = function(event, ui) {
@@ -277,12 +275,6 @@ angular.module('ikuslang-app.controllers', [])
     }
     
     $scope.hasi_berriz = function() {
-        
-        
-        
-    }
-    
-    $scope.zuzendu = function() {
         
         
         
