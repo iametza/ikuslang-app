@@ -7,7 +7,6 @@
         
         <div id="multzokatu-botoiak">
             <button id="multzokatu-berriz-hasi-botoia" class="button" ng-click="berrizHasi()">Berriz hasi</button>
-            <button id="multzokatu-egiaztatu-botoia" class="button" ng-click="egiaztatu()">Egiaztatu</button>
             <button id="multzokatu-zuzendu-botoia" class="button" ng-click="zuzendu()">Zuzendu</button>
         </div>
         
@@ -15,7 +14,7 @@
             <section class="col">
                 <h3 class="multzokatu-taldea-izenburua">Elementuak</h3>
                 <ul ui-sortable="sortable_options" id="multzokatu-jatorria" class="list sortable">
-                    <li class='item' ng-repeat="elementua in multzokatu.elementuak" data-elementua='{{ elementua.id }}' data-taldea='{{ elementua.id_taldea }}'>{{ elementua.izena }}</li>
+                    <li class='item item-icon-right' ng-repeat="elementua in multzokatu.elementuak" data-elementua='{{ elementua.id }}' data-taldea='{{ elementua.id_taldea }}'>{{ elementua.izena }}</li>
                 </ul>
             </section>
             

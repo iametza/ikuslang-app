@@ -281,10 +281,6 @@ angular.module('ikuslang-app.controllers', [])
     $scope.id_ariketa = $stateParams.id_ariketa;
     $scope.id_ikasgaia = $stateParams.id_ikasgaia;
     
-    console.log($stateParams);
-    console.log($scope.id_ariketa);
-    console.log($scope.id_ikasgaia);
-    
     $scope.multzokatu = [];
     
     $scope.sortable_options = {
@@ -312,30 +308,6 @@ angular.module('ikuslang-app.controllers', [])
                 // Hasierako zutabera gehitu.
                 $("#multzokatu-jatorria").append($(this));
                 
-            });
-        });
-    };
-    
-    $scope.egiaztatu = function() {
-        
-        // Helburuko zutabe bakoitza pasako dugu.
-        $(".multzokatu-helburua").each(function() {
-            
-            // Taldearen id-a eskuratuko dugu.
-            var id_taldea = $(this).attr("data-taldea");
-            
-            // Talde honetako elementu guztiak pasako ditugu.
-            $(this).children("li").each(function() {
-                
-                // Elementuaren taldearen id-a eskuratuko dugu.
-                var id_elementuaren_taldea = $(this).attr("data-taldea");
-                
-                // Elementua ez badago dagokion taldean.
-                if (id_elementuaren_taldea !== id_taldea) {
-                    
-                    // Jatorrizko zerrendara eraman.
-                    $("#multzokatu-jatorria").append($(this));
-                }
             });
         });
     };
@@ -371,12 +343,18 @@ angular.module('ikuslang-app.controllers', [])
                         $(this).attr("data-zuzenduta", true);
                         
                         // Dagokion zerrendara eramango dugu.
-                        $("#multzokatu-helburua_" + id_elementuaren_taldea).append($(this));
+                        //$("#multzokatu-helburua_" + id_elementuaren_taldea).append($(this));
+                        
+                        // Erantzun okerra dela adierazten duen ikonoa jarri.
+                        $(this).append('<i class="icon ion-close-round multzokatu-erantzun-okerra"></i>');
                         
                         // Okerren zerrendara gehituko dugu.
                         okerrak.push(id_elementua);
                         
                     } else {
+                        
+                        // Erantzun zuzena dela adierazten duen ikonoa jarri. Ionicons-ak erabili!
+                        $(this).append('<i class="icon ion-checkmark-round multzokatu-erantzun-zuzena"></i>');
                         
                         // Zuzenen zerrendara gehituko dugu.
                         zuzenak.push(id_elementua);
@@ -399,7 +377,10 @@ angular.module('ikuslang-app.controllers', [])
             var id_elementuaren_taldea = $(this).attr("data-taldea");
             
             // Dagokion zerrendara eramango dugu.
-            $("#multzokatu-helburua_" + id_elementuaren_taldea).append($(this));
+            //$("#multzokatu-helburua_" + id_elementuaren_taldea).append($(this));
+            
+            // Erantzun okerra dela adierazten duen ikonoa jarri. Ionicons-ak erabili!
+            $(this).append('<i class="icon ion-close-round multzokatu-erantzun-okerra"></i>');
             
             // Okerren zerrendara gehituko dugu.
             okerrak.push(id_elementua);
