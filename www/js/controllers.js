@@ -305,11 +305,29 @@ angular.module('ikuslang-app.controllers', [])
             // Helburuko zutabeetan dauden elementu guztiak pasako ditugu.
             $(this).children("li").each(function() {
                 
+                // Zuzena ala okerra den adierazten duen ikonoa kendu.
+                $(this).children().remove();
+                
+                // data-zuzenduta atributua hasieratu.
+                $(this).attr("data-zuzenduta", "");
+                
                 // Hasierako zutabera gehitu.
                 $("#multzokatu-jatorria").append($(this));
                 
             });
         });
+        
+        // Helburuko zutabeetan dauden elementu guztiak pasako ditugu.
+        $("#multzokatu-jatorria").children("li").each(function() {
+            
+            // Zuzena ala okerra den adierazten duen ikonoa kendu.
+            $(this).children().remove();
+            
+            // data-zuzenduta atributua hasieratu.
+            $(this).attr("data-zuzenduta", "");
+            
+        });
+        
     };
     
     $scope.zuzendu = function() {
