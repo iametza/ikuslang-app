@@ -331,7 +331,7 @@ angular.module('ikuslang-app.directives', [])
             $("#hitzak-markatu-hitz-ontzia").empty();
             
             // Hipertranskribapeneko hitzei klaseak kendu.
-            $("#hitzak-markatu-hipertranskribapena-edukia span").each(function(i) {
+            $("#hitzak-markatu-hipertranskribapena-edukinontzia span").each(function(i) {
                 $(this).removeClass("hitzak-markatu-hipertranskribapena-erantzun-okerra").removeClass("hitzak-markatu-hipertranskribapena-erantzun-zuzena");
             })
             
