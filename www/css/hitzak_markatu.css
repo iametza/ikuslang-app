@@ -68,6 +68,8 @@
 
 #hitzak-markatu-hipertranskribapena-edukinontzia span, #target-content span  {
     cursor: pointer;
+    font-size: 1.5em;
+    line-height: 1.5em;
 }    
 
 #hitzak-markatu-hipertranskribapena-edukinontzia span.transcript-grey:hover, #target-content span.transcript-grey:hover {  
