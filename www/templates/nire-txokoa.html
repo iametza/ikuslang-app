@@ -20,9 +20,9 @@
         
         <div ng-show="zeinFitxa ==='egitekoak'" class="list list-inset">
             
-            <a ng-repeat="egitekoa in ariketak.egitekoak" class="item item-icon-left" ng-click="bistaratuAriketa({{ egitekoa.id }}, {{ egitekoa.id_ariketa_mota }}, {{ egitekoa.id_ikasgaia }})">
-                <i class="icon" ng-class="ikonoak[egitekoa.id_ariketa_mota]"></i>
-                    {{ egitekoa.izena }}
+            <a ng-repeat="egitekoa in ariketak.egitekoak" class="item" ng-click="bistaratuAriketa({{ egitekoa.id }}, {{ egitekoa.id_ariketa_mota }}, {{ egitekoa.id_ikasgaia }})">
+                <h2>{{ egitekoa.izena }}</h2>
+                <p>{{ egitekoa.ariketa_mota }}</p>
                 <span class="item-note">
                     {{ egitekoa.bukaera_data }}
                 </span>
@@ -32,9 +32,9 @@
         
         <div ng-show="zeinFitxa ==='egindakoak'" class="list list-inset">
             
-            <a ng-repeat="egindakoa in ariketak.egindakoak" class="item item-icon-left" ng-click="bistaratuAriketa({{ egindakoa.id }}, {{ egindakoa.id_ariketa_mota }})">
-                <i class="icon" ng-class="ikonoak[egindakoa.id_ariketa_mota]"></i>
-                    {{ egindakoa.izena }}
+            <a ng-repeat="egindakoa in ariketak.egindakoak" class="item" ng-click="bistaratuAriketa({{ egindakoa.id }}, {{ egindakoa.id_ariketa_mota }})">
+                <h2>{{ egindakoa.izena }}</h2>
+                <p>{{ egindakoa.ariketa_mota }}</p>
                 <span class="item-note">
                     {{ egindakoa.egindako_data }}
                 </span>
