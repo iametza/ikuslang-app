@@ -4,7 +4,7 @@ angular.module('ikuslang-app.controllers', [])
     
 })
 
-.controller('LoginCtrl', ['$http', '$scope', '$state', 'Erabiltzailea', 'Zerbitzaria', function($http, $scope, $state, Erabiltzailea, Zerbitzaria) {
+.controller('LoginCtrl', ['$http', '$ionicPopup', '$scope', '$state', 'Erabiltzailea', 'Zerbitzaria', function($http, $ionicPopup, $scope, $state, Erabiltzailea, Zerbitzaria) {
     
     // Form data for the login modal
     $scope.loginData = {};
@@ -31,7 +31,25 @@ angular.module('ikuslang-app.controllers', [])
         })
         .error(function(data, status, headers, config) {
             
+            $scope.bistaratuErroreMezua(data.mezua);
+            
             console.log("Fail!");
+            
+        });
+        
+    };
+    
+    $scope.bistaratuErroreMezua = function(testua) {
+        
+        var alertPopup = $ionicPopup.alert({
+            title: 'Errorea',
+            template: testua
+        });
+        
+        alertPopup.then(function(res) {
+            
+            $scope.loginData.e_posta = "";
+            $scope.loginData.pasahitza = "";
             
         });
         
