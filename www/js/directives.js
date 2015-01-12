@@ -480,10 +480,10 @@ angular.module('ikuslang-app.directives', [])
                     
                     pop.on("ended", function() {
                         
+                        scope.modal.show();
+                        
                         // Dagokion galdera prestatu.
                         bistaratu_galdera();
-                        
-                        scope.modal.show();
                         
                     });
                     
