@@ -108,6 +108,7 @@
 #emaitzak {
     float: right;
     padding: 2px 0 0 0;
+    width: 145px;
 }
 
 #zuzenak_img {
@@ -125,6 +126,7 @@
 
 #okerrak {
     font-size: 2em;
+    padding-left: 3px;
 }
 
 #zenbagarrena {
