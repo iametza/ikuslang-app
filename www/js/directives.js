@@ -464,10 +464,10 @@ angular.module('ikuslang-app.directives', [])
                             
                             pop.pause();
                             
+                            scope.modal.show();
+                            
                             // Dagokion galdera prestatu.
                             bistaratu_galdera();
-                            
-                            scope.modal.show();
                             
                         }
                         
