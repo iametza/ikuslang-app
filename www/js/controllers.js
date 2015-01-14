@@ -202,7 +202,7 @@ angular.module('ikuslang-app.controllers', [])
     
 }])
 
-.controller('GalderaErantzunakCtrl', ['$ionicModal', '$scope', '$stateParams', 'Zerbitzaria', function($ionicModal, $scope, $stateParams, Zerbitzaria) {
+.controller('GalderaErantzunakCtrl', ['$ionicModal', '$scope', '$stateParams', '$timeout', 'Zerbitzaria', function($ionicModal, $scope, $stateParams, $timeout, Zerbitzaria) {
     
     $scope.id_ariketa = $stateParams.id_ariketa;
     $scope.id_ikasgaia = $stateParams.id_ikasgaia;
@@ -215,6 +215,15 @@ angular.module('ikuslang-app.controllers', [])
         backdropClickToClose: false     // Whether to close the modal on clicking the backdrop. Default: true.
     }).then(function(modal) {
         $scope.modal = modal;
+    });
+    
+    $ionicModal.fromTemplateUrl('templates/emaitza-modala.html', {
+        scope: $scope,
+        animation: 'slide-in-up',
+        backdropClickToClose: false     // Whether to close the modal on clicking the backdrop. Default: true.
+    }).then(function(modal) {
+        $scope.emaitzenModala = modal;
+        $scope.emaitzenModala.show();
     });
     
     // Erabiltzaileari aurrerapen-barra erabiliz denboran aurrera eta atzera ibiltzea galaraziko diogu.
