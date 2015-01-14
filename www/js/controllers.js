@@ -194,8 +194,6 @@ angular.module('ikuslang-app.controllers', [])
             
         });
         
-        alert("Emaitza: " + zuzenak.length + "/" + (zuzenak.length + okerrak.length));
-        
         $scope.zuzen_kop = zuzenak.length;
         $scope.oker_kop = okerrak.length;
         
