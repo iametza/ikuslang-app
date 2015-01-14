@@ -209,6 +209,9 @@ angular.module('ikuslang-app.controllers', [])
     
     $scope.izena = "";
     
+    $scope.zuzen_kop = 0;
+    $scope.oker_kop = 0;
+    
     $ionicModal.fromTemplateUrl('galderak-modala', {
         scope: $scope,
         animation: 'slide-in-up',
@@ -223,7 +226,6 @@ angular.module('ikuslang-app.controllers', [])
         backdropClickToClose: false     // Whether to close the modal on clicking the backdrop. Default: true.
     }).then(function(modal) {
         $scope.emaitzenModala = modal;
-        $scope.emaitzenModala.show();
     });
     
     // Erabiltzaileari aurrerapen-barra erabiliz denboran aurrera eta atzera ibiltzea galaraziko diogu.
