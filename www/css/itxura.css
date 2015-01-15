@@ -23,3 +23,26 @@
     border-color: #F8CE44;
     
 }
+
+.emaitzak-modala-izenburua {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.emaitzak-modala-emaitzak {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.emaitzak-modala-zuzenak-irudia {
+    width: 60px;
+}
+
+.emaitzak-modala-zuzenak, .emaitzak-modala-okerrak {
+    font-size: 48px;
+}
+
+.emaitzak-modala-okerrak-irudia {
+    margin-left: 60px;
+    width: 45px;
+}
