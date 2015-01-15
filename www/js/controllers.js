@@ -247,12 +247,15 @@ angular.module('ikuslang-app.controllers', [])
     
 }])
 
-.controller('HitzakMarkatuCtrl', ['$scope', '$stateParams', function($scope, $stateParams) {
+.controller('HitzakMarkatuCtrl', ['$ionicModal', '$scope', '$stateParams', function($ionicModal, $scope, $stateParams) {
     
     $scope.id_ariketa = $stateParams.id_ariketa;
     $scope.id_ikasgaia = $stateParams.id_ikasgaia;
     
     $scope.pop;
+    
+    $scope.zuzen_kop = 0;
+    $scope.oker_kop = 0;
     
     $scope.dragStartCallback = function(event, ui) {
         ui.helper.removeClass("transcript-grey");
@@ -316,6 +319,14 @@ angular.module('ikuslang-app.controllers', [])
         }
         
     }
+    
+    $ionicModal.fromTemplateUrl('templates/emaitza-modala.html', {
+        scope: $scope,
+        animation: 'slide-in-up',
+        backdropClickToClose: false     // Whether to close the modal on clicking the backdrop. Default: true.
+    }).then(function(modal) {
+        $scope.emaitzenModala = modal;
+    });
     
 }])
 

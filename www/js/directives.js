@@ -314,15 +314,15 @@ angular.module('ikuslang-app.directives', [])
                     
                 }
                 
-            }  
-            
-            //alert("Emaitza: " + zuzenak.length + "/" + hitzak_markatu.akatsak.length);
-            
-            console.log(zuzenak);
-            console.log(okerrak);
+            }
             
             Zerbitzaria.bidaliEmaitzak(scope.id_ikasgaia, scope.id_ariketa, Erabiltzailea.eskuratuId(), zuzenak, okerrak);
             
+            scope.emaitzenModala.show();
+            
+            // Ez zait batere gustatzen hau, baina funtzionatzen du.
+            $(".emaitzak-modala-zuzenak").text(zuzenak.length);
+            $(".emaitzak-modala-okerrak").text(okerrak.length);
         });
         
         $(document).on("click", "#hitzak-markatu-berriz-hasi-botoia", function() {
