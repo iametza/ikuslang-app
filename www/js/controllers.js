@@ -482,9 +482,12 @@ angular.module('ikuslang-app.controllers', [])
     
 }])
 
-.controller('EsaldiakOrdenatuCtrl', ['$scope', '$stateParams', 'Zerbitzaria', function($scope, $stateParams, Zerbitzaria) {
+.controller('EsaldiakOrdenatuCtrl', ['$ionicModal', '$scope', '$stateParams', 'Zerbitzaria', function($ionicModal, $scope, $stateParams, Zerbitzaria) {
     
     $scope.esaldiak_zuzendu;
+    
+    $scope.zuzen_kop = 0;
+    $scope.oker_kop = 0;
     
     var id_ariketa = $stateParams.id_ariketa;
     $scope.id_ikasgaia = $stateParams.id_ikasgaia;
@@ -498,9 +501,6 @@ angular.module('ikuslang-app.controllers', [])
     
     // Esaldiak zein ordenatan erakutsi behar diren.
     var esaldien_ordena = [];
-    
-    var zuzen_kop = 0;
-    var oker_kop = 0;
     
     var promise = Zerbitzaria.eskuratuEsaldiakZuzendu(id_ariketa, id_hizkuntza);
     
@@ -537,12 +537,12 @@ angular.module('ikuslang-app.controllers', [])
     
     function bistaratu_zuzen_kopurua() {
         
-        $("#esaldiak-zuzendu-zuzenak").text(zuzen_kop);
+        $("#esaldiak-zuzendu-zuzenak").text($scope.zuzen_kop);
     }
     
     function bistaratu_oker_kopurua() {
         
-        $("#esaldiak-zuzendu-okerrak").text(oker_kop);
+        $("#esaldiak-zuzendu-okerrak").text($scope.oker_kop);
         
     }
     
@@ -596,9 +596,9 @@ angular.module('ikuslang-app.controllers', [])
                       + "\n\tPortzentaia: %" + jSonResults.success_rate);*/
                 
                 if (jSonResults.nb_not_valid === 0) {
-                    zuzen_kop++;
+                    $scope.zuzen_kop++;
                 } else {
-                    oker_kop++;
+                    $scope.oker_kop++;
                 }
                 
                 bistaratu_zuzen_kopurua();
@@ -620,7 +620,7 @@ angular.module('ikuslang-app.controllers', [])
                     
                 } else {
                     
-                    alert("Ariketa amaitu da!");
+                    $scope.emaitzenModala.show();
                     
                     // Berriz hasi botoia gehitu.
                     $("#jMyPuzzle-buttons").append("<input type='button' class='button' value='Berriz hasi' id='esaldiak-zuzendu-berriz-hasi-botoia' />");
@@ -675,6 +675,12 @@ angular.module('ikuslang-app.controllers', [])
         
     }
     
-    
+    $ionicModal.fromTemplateUrl('templates/emaitza-modala.html', {
+        scope: $scope,
+        animation: 'slide-in-up',
+        backdropClickToClose: false     // Whether to close the modal on clicking the backdrop. Default: true.
+    }).then(function(modal) {
+        $scope.emaitzenModala = modal;
+    });
     
 }]);
