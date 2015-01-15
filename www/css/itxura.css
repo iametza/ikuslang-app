@@ -27,6 +27,8 @@
 .emaitzak-modala-izenburua {
     font-weight: bold;
     font-size: 2em;
+    margin: 0 auto 0 auto;
+    padding-top: 8px;
 }
 
 .emaitzak-modala-emaitzak {
