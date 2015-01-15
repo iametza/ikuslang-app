@@ -330,12 +330,15 @@ angular.module('ikuslang-app.controllers', [])
     
 }])
 
-.controller('MultzokatuCtrl', ['$scope', '$stateParams', 'Erabiltzailea', 'Zerbitzaria', function($scope, $stateParams, Erabiltzailea, Zerbitzaria) {
+.controller('MultzokatuCtrl', ['$ionicModal', '$scope', '$stateParams', 'Erabiltzailea', 'Zerbitzaria', function($ionicModal, $scope, $stateParams, Erabiltzailea, Zerbitzaria) {
     
     $scope.id_ariketa = $stateParams.id_ariketa;
     $scope.id_ikasgaia = $stateParams.id_ikasgaia;
     
     $scope.multzokatu = [];
+    
+    $scope.zuzen_kop = 0;
+    $scope.oker_kop = 0;
     
     $scope.sortable_options = {
         connectWith: ".sortable"
@@ -343,6 +346,7 @@ angular.module('ikuslang-app.controllers', [])
     
     var id_ariketa = 4;
     var id_hizkuntza = 1;
+    
     
     var promise = Zerbitzaria.eskuratuMultzokatu(id_ariketa, id_hizkuntza);
     
@@ -459,14 +463,22 @@ angular.module('ikuslang-app.controllers', [])
             
         });
         
-        alert("Zuzenak: " + zuzenak.length + " - Okerrak: " + okerrak.length);
-        
         Zerbitzaria.bidaliEmaitzak($scope.id_ikasgaia, $scope.id_ariketa, Erabiltzailea.eskuratuId(), zuzenak, okerrak);
         
-        console.log(zuzenak);
-        console.log(okerrak);
+        $scope.zuzen_kop = zuzenak.length;
+        $scope.oker_kop = okerrak.length;
+        
+        $scope.emaitzenModala.show();
         
     }
+    
+    $ionicModal.fromTemplateUrl('templates/emaitza-modala.html', {
+        scope: $scope,
+        animation: 'slide-in-up',
+        backdropClickToClose: false     // Whether to close the modal on clicking the backdrop. Default: true.
+    }).then(function(modal) {
+        $scope.emaitzenModala = modal;
+    });
     
 }])
 
