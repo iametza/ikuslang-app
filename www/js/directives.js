@@ -329,6 +329,13 @@ angular.module('ikuslang-app.directives', [])
         
         $(document).on("click", "#hitzak-markatu-berriz-hasi-botoia", function() {
             
+            // Ikus-entzunezkoa hasierara eraman.
+            scope.pop.currentTime(0);
+            
+            scope.$parent.$apply(function () {
+                scope.$parent.zuzenduta = false;
+            });
+            
             // Hitz ontzia hustu.
             $("#hitzak-markatu-hitz-ontzia").empty();
             

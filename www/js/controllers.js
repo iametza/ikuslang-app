@@ -271,6 +271,7 @@ angular.module('ikuslang-app.controllers', [])
     
     $scope.pop;
     
+    $scope.zuzenduta = false;
     $scope.zuzen_kop = 0;
     $scope.oker_kop = 0;
     
@@ -344,6 +345,14 @@ angular.module('ikuslang-app.controllers', [])
     }).then(function(modal) {
         $scope.emaitzenModala = modal;
     });
+    
+    $scope.emaitzenModalaItxi = function() {
+        
+        $scope.zuzenduta = true;
+        
+        $scope.emaitzenModala.hide()
+        
+    }
     
 }])
 
