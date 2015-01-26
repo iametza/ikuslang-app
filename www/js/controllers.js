@@ -366,6 +366,8 @@ angular.module('ikuslang-app.controllers', [])
     $scope.zuzen_kop = 0;
     $scope.oker_kop = 0;
     
+    $scope.zuzenduta = false;
+    
     $scope.sortable_options = {
         connectWith: ".sortable"
     }
@@ -383,6 +385,8 @@ angular.module('ikuslang-app.controllers', [])
     });
     
     $scope.berrizHasi = function() {
+        
+        $scope.zuzenduta = false;
         
         $(".multzokatu-helburua").each(function() {
             
@@ -506,6 +510,13 @@ angular.module('ikuslang-app.controllers', [])
         $scope.emaitzenModala = modal;
     });
     
+    $scope.emaitzenModalaItxi = function() {
+        
+        $scope.zuzenduta = true;
+        
+        $scope.emaitzenModala.hide()
+        
+    }
 }])
 
 .controller('EsaldiakOrdenatuCtrl', ['$ionicModal', '$scope', '$stateParams', 'Zerbitzaria', function($ionicModal, $scope, $stateParams, Zerbitzaria) {
