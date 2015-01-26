@@ -214,6 +214,8 @@ angular.module('ikuslang-app.directives', [])
             // Elementuaren id-a eskuratuko dugu.
             var id_akatsa;
             
+            scope.pop.pause();
+            
             $("#hitzak-markatu-hitz-ontzia .hitzak-markatu-hitz-ontzia-spana").each(function() {
                 
                 // Erantzunaren denborak eskuratuko ditugu.
