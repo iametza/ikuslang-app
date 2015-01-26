@@ -156,15 +156,27 @@ angular.module('ikuslang-app.controllers', [])
     
     $scope.pop;
     
+    $scope.zuzenduta = false;
+    
     $scope.zuzen_kop = 0;
     $scope.oker_kop = 0;
     
     $scope.hasi_berriz = function() {
         
+        $scope.zuzenduta = false;
+        
         $("#hutsuneak-bete-hipertranskribapena-edukinontzia input").each(function() {
             $(this).val("");
             $(this).removeClass("zuzena").removeClass("okerra");
         });
+        
+    }
+    
+    $scope.emaitzenModalaItxi = function() {
+        
+        $scope.zuzenduta = true;
+        
+        $scope.emaitzenModala.hide()
         
     }
     
