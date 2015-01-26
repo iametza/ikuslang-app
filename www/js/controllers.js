@@ -165,6 +165,9 @@ angular.module('ikuslang-app.controllers', [])
         
         $scope.zuzenduta = false;
         
+        // Ikus-entzunezkoa hasierara eraman.
+        $scope.pop.currentTime(0);
+        
         $("#hutsuneak-bete-hipertranskribapena-edukinontzia input").each(function() {
             $(this).val("");
             $(this).removeClass("zuzena").removeClass("okerra");
