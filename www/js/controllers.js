@@ -173,6 +173,8 @@ angular.module('ikuslang-app.controllers', [])
         var zuzenak = [];
         var okerrak = [];
         
+        $scope.pop.pause();
+        
         $("#hutsuneak-bete-hipertranskribapena-edukinontzia input").each(function(index, elem) {
             
             var id_hutsunea = $(this).attr("data-id-hutsunea");

@@ -95,7 +95,7 @@ angular.module('ikuslang-app.directives', [])
                 
                 scope.izena = scope.hutsuneak_bete.izena;
                 
-                scope.pop = Popcorn.jplayer("#jquery_jplayer_1", {
+                scope.$parent.pop = Popcorn.jplayer("#jquery_jplayer_1", {
                     media: {
                         m4v: Zerbitzaria.oinarrizko_url + scope.hutsuneak_bete.bideo_path + scope.hutsuneak_bete.bideo_mp4,
                         webmv: Zerbitzaria.oinarrizko_url + scope.hutsuneak_bete.bideo_path + scope.hutsuneak_bete.bideo_webm
