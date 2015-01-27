@@ -385,16 +385,33 @@ angular.module('ikuslang-app.directives', [])
                 
                 scope.izena = hitzak_markatu.izena;
                 
-                scope.pop = Popcorn.jplayer("#jquery_jplayer_1", {
-                    media: {
-                        m4v: Zerbitzaria.oinarrizko_url + hitzak_markatu.bideo_path + hitzak_markatu.bideo_mp4,
-                        webmv: Zerbitzaria.oinarrizko_url + hitzak_markatu.bideo_path + hitzak_markatu.bideo_webm
-                    },
-                    options: {
-                        solution: "html",
-                        supplied: "m4v, webmv"
-                    }
-                });
+                if (hitzak_markatu.mota === "bideoa") {
+                    
+                    scope.pop = Popcorn.jplayer("#jquery_jplayer_1", {
+                        media: {
+                            m4v: Zerbitzaria.oinarrizko_url + hitzak_markatu.bideo_path + hitzak_markatu.bideo_mp4,
+                            webmv: Zerbitzaria.oinarrizko_url + hitzak_markatu.bideo_path + hitzak_markatu.bideo_webm
+                        },
+                        options: {
+                            solution: "html",
+                            supplied: "m4v, webmv"
+                        }
+                    });
+                    
+                } else if (hitzak_markatu.mota === "audioa") {
+                    
+                    scope.pop = Popcorn.jplayer("#jquery_jplayer_1", {
+                        media: {
+                            mp3: Zerbitzaria.oinarrizko_url + hitzak_markatu.audio_path + hitzak_markatu.audio_mp3,
+                            oga: Zerbitzaria.oinarrizko_url + hitzak_markatu.audio_path + hitzak_markatu.audio_ogg
+                        },
+                        options: {
+                            solution: "html",
+                            supplied: "mp3, oga"
+                        }
+                    });
+                    
+                }
                 
                 // Azpitituluen fitxategia parseatu bistaratzeko.
                 //$scope.pop.parseSRT("http://asier.ikuslang.ametza.com/azpitituluak/karloszurutuzahd.srt", {target: "bideoa-azpitituluak"});
