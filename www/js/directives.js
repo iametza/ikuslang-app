@@ -95,17 +95,33 @@ angular.module('ikuslang-app.directives', [])
                 
                 scope.izena = scope.hutsuneak_bete.izena;
                 
-                scope.$parent.pop = Popcorn.jplayer("#jquery_jplayer_1", {
-                    media: {
-                        m4v: Zerbitzaria.oinarrizko_url + scope.hutsuneak_bete.bideo_path + scope.hutsuneak_bete.bideo_mp4,
-                        webmv: Zerbitzaria.oinarrizko_url + scope.hutsuneak_bete.bideo_path + scope.hutsuneak_bete.bideo_webm
-                    },
-                    options: {
-                        solution: "html",
-                        supplied: "m4v, webmv"
-                    }
-                });
-                
+                if (scope.hutsuneak_bete.mota === "bideoa") {
+                    
+                    scope.$parent.pop = Popcorn.jplayer("#jquery_jplayer_1", {
+                        media: {
+                            m4v: Zerbitzaria.oinarrizko_url + scope.hutsuneak_bete.bideo_path + scope.hutsuneak_bete.bideo_mp4,
+                            webmv: Zerbitzaria.oinarrizko_url + scope.hutsuneak_bete.bideo_path + scope.hutsuneak_bete.bideo_webm
+                        },
+                        options: {
+                            solution: "html",
+                            supplied: "m4v, webmv"
+                        }
+                    });
+                    
+                } else if (scope.hutsuneak_bete.mota === "audioa") {
+                    
+                    scope.$parent.pop = Popcorn.jplayer("#jquery_jplayer_1", {
+                        media: {
+                            mp3: Zerbitzaria.oinarrizko_url + scope.hutsuneak_bete.audio_path + scope.hutsuneak_bete.audio_mp3,
+                            oga: Zerbitzaria.oinarrizko_url + scope.hutsuneak_bete.audio_path + scope.hutsuneak_bete.audio_ogg
+                        },
+                        options: {
+                            solution: "html",
+                            supplied: "mp3, oga"
+                        }
+                    });
+                    
+                }
                 // Azpitituluen fitxategia parseatu bistaratzeko.
                 //$scope.pop.parseSRT("http://asier.ikuslang.ametza.com/azpitituluak/karloszurutuzahd.srt", {target: "bideoa-azpitituluak"});
                 
