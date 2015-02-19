@@ -12,6 +12,9 @@ angular.module('ikuslang-app.directives', [])
         var hutsunearen_testua = "";
         var $spana;
         
+        // Hutsunearen testuari kendutako !az karaktereak
+        var kendutako_karaktereak = "";
+        
         $("span", element).each(function(i) {
             // doing p.transcript on every word is a bit inefficient - wondering if there is a better way
             p.transcript({
@@ -31,6 +34,8 @@ angular.module('ikuslang-app.directives', [])
             
             hutsunearen_testua = "";
             
+            kendutako_karaktereak = "";
+            
             // Hitz bat baino gehiagoko hutsueneen kasuan bakarrik sartzen da while begizta honetan.
             while (--hitz_kopurua) {
                 
@@ -48,10 +53,30 @@ angular.module('ikuslang-app.directives', [])
             // Bukaerako zuriunea kendu.
             hutsunearen_testua = $.trim(hutsunearen_testua);
             
+            console.log(hutsunearen_testua);
+            //console.log(hutsunearen_testua.replace(/\W/g, ''));
+            
+            while(/[^a-zA-Z0-9]/.test(hutsunearen_testua.charAt(hutsunearen_testua.length - 1))) {
+                
+                kendutako_karaktereak = hutsunearen_testua.charAt(hutsunearen_testua.length - 1) + kendutako_karaktereak;
+                
+                hutsunearen_testua = hutsunearen_testua.substring(0, hutsunearen_testua.length - 1);
+                
+            }
+            
+            console.log(kendutako_karaktereak);
+            console.log(hutsunearen_testua);
+            
             console.log(hutsuneak[i]);
             
             // Lehen hitzaren span-a input text batekin ordezkatu.
             $("span[data-ms='" + hutsuneak[i].hitzak[0].denbora + "']", element).replaceWith("<input type='text' class='hutsuneak-bete-input' data-id-hutsunea='" + hutsuneak[i].id + "' data-testua='" + hutsunearen_testua + "' />");
+            
+            if (kendutako_karaktereak.length > 0) {
+                
+                $("input[data-id-hutsunea='" + hutsuneak[i].id + "']").after("<span>" + kendutako_karaktereak + "</span>");
+                
+            }
             
         }
         
