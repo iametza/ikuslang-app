@@ -720,4 +720,10 @@ angular.module('ikuslang-app.controllers', [])
         $scope.emaitzenModala = modal;
     });
     
+    $scope.emaitzenModalaItxi = function() {
+        
+        $scope.emaitzenModala.hide()
+        
+    }
+    
 }]);
