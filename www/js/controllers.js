@@ -519,18 +519,22 @@ angular.module('ikuslang-app.controllers', [])
     }
 }])
 
-.controller('EsaldiakOrdenatuCtrl', ['$ionicModal', '$scope', '$stateParams', 'Zerbitzaria', function($ionicModal, $scope, $stateParams, Zerbitzaria) {
+.controller('EsaldiakOrdenatuCtrl', ['$ionicModal', '$scope', '$stateParams', 'Erabiltzailea', 'Zerbitzaria', function($ionicModal, $scope, $stateParams, Erabiltzailea, Zerbitzaria) {
     
     $scope.esaldiak_zuzendu;
     
     $scope.zuzen_kop = 0;
     $scope.oker_kop = 0;
     
+    var zuzen_idak = [];
+    var oker_idak = [];
+    
     var id_ariketa = $stateParams.id_ariketa;
     $scope.id_ikasgaia = $stateParams.id_ikasgaia;
     
     var id_hizkuntza = 1;
     
+    var esaldien_idak = [];
     var esaldiak = [];
     var ordenak = [];
     
@@ -551,6 +555,7 @@ angular.module('ikuslang-app.controllers', [])
             
             esaldiak.push($scope.esaldiak_zuzendu.esaldiak[i].testua.split(" "));
             
+            esaldien_idak.push($scope.esaldiak_zuzendu.esaldiak[i].id);
         }
         
         // esaldiak arrayak dituen elementuak adina elementu gehituko ditugu array berrira.
@@ -633,9 +638,17 @@ angular.module('ikuslang-app.controllers', [])
                       + "\n\tPortzentaia: %" + jSonResults.success_rate);*/
                 
                 if (jSonResults.nb_not_valid === 0) {
+                    
                     $scope.zuzen_kop++;
+                    
+                    zuzen_idak.push(esaldien_idak[esaldien_ordena[zenbagarren_esaldia]]);
+                    
                 } else {
+                    
                     $scope.oker_kop++;
+                    
+                    oker_idak.push(esaldien_idak[esaldien_ordena[zenbagarren_esaldia]]);
+                    
                 }
                 
                 bistaratu_zuzen_kopurua();
@@ -656,6 +669,8 @@ angular.module('ikuslang-app.controllers', [])
                     $("#jMyPuzzle-buttons").append("<input type='button' class='button' value='Aurrera' id='esaldiak-zuzendu-aurrera-botoia' />");
                     
                 } else {
+                    
+                    Zerbitzaria.bidaliEmaitzak($scope.id_ikasgaia, id_ariketa, Erabiltzailea.eskuratuId(), zuzen_idak, oker_idak);
                     
                     $scope.emaitzenModala.show();
                     
