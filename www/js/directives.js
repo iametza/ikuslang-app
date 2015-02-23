@@ -545,19 +545,23 @@ angular.module('ikuslang-app.directives', [])
                     
                 }
                 
-                // Multimedia amaitzean bistaratu beharreko galderak badaude...
-                if (galdera_erantzunak.amaierako_galderak.length > 0) {
+                pop.on("ended", function() {
                     
-                    pop.on("ended", function() {
+                    // Multimedia amaitzean bistaratu beharreko galderak badaude...
+                    if (galdera_erantzunak.amaierako_galderak.length > 0) {
                         
                         scope.modal.show();
                         
                         // Dagokion galdera prestatu.
                         bistaratu_galdera();
                         
-                    });
+                    } else {
+                        
+                        scope.emaitzenModala.show();
+                        
+                    }
                     
-                }
+                });
                 
                 if (galdera_erantzunak.galderak.length > 0) {
                     
