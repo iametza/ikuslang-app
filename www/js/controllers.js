@@ -173,13 +173,21 @@ angular.module('ikuslang-app.controllers', [])
             $(this).removeClass("zuzena").removeClass("okerra");
         });
         
+        // Hipertranskribapenaren kaxari berriz ere korritzeko aukera eman.
+        $("#hutsuneak-bete-hipertranskribapena-edukinontzia").css("overflow-y", "scroll");
+        
+        console.log($("#hutsuneak-bete-hipertranskribapena-edukinontzia").css("overflow-y"));
     }
     
     $scope.emaitzenModalaItxi = function() {
         
         $scope.zuzenduta = true;
         
-        $scope.emaitzenModala.hide()
+        $scope.emaitzenModala.hide();
+        
+        // Erabiltzaileari hipertranskribapen osoa ikusteko aukera eman.
+        // ::-webkit-scrollbar eta ::-webkit-scrollbar-thumb erabiliz korritze-barra bistaratzea lortu dut baina ez zuen funtzionatzen.
+        $("#hutsuneak-bete-hipertranskribapena-edukinontzia").css("overflow-y", "visible");
         
     }
     
@@ -352,6 +360,9 @@ angular.module('ikuslang-app.controllers', [])
         
         $scope.emaitzenModala.hide()
         
+        // Erabiltzaileari hipertranskribapen osoa ikusteko aukera eman.
+        // ::-webkit-scrollbar eta ::-webkit-scrollbar-thumb erabiliz korritze-barra bistaratzea lortu dut baina ez zuen funtzionatzen.
+        $("#hitzak-markatu-hipertranskribapena-edukinontzia").css("overflow-y", "visible");
     }
     
 }])

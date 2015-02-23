@@ -385,6 +385,9 @@ angular.module('ikuslang-app.directives', [])
                 $(this).removeClass("hitzak-markatu-hipertranskribapena-erantzun-okerra").removeClass("hitzak-markatu-hipertranskribapena-erantzun-zuzena");
             })
             
+            // Hipertranskribapenaren kaxari berriz ere korritzeko aukera eman.
+            $("#hitzak-markatu-hipertranskribapena-edukinontzia").css("overflow-y", "scroll");
+            
         });
         
     }
