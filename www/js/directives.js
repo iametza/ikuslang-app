@@ -1091,7 +1091,7 @@ angular.module('ikuslang-app.directives', [])
                             // Erantzun zuzenari dagokion soinua erreproduzitu
                             // soundManager.play('erantzun_zuzena');
                             
-                            scope.zuzen_kop = scope.zuzen_kop + 1;
+                            scope.$parent.zuzen_kop = scope.$parent.zuzen_kop + 1;
                             
                             galderak.erantzun_zuzenak_gehi_bat();
                             bistaratu_zuzen_kopurua();
@@ -1113,7 +1113,7 @@ angular.module('ikuslang-app.directives', [])
                                 $("#erantzuna" + erantzun_zuzenak[i]).addClass("erantzun_zuzena");
                             }
                             
-                            scope.oker_kop = scope.oker_kop + 1;
+                            scope.$parent.oker_kop = scope.$parent.oker_kop + 1;
                             
                             galderak.erantzun_okerrak_gehi_bat();
                             bistaratu_oker_kopurua();
@@ -1145,7 +1145,7 @@ angular.module('ikuslang-app.directives', [])
                             // Erantzun zuzenari dagokion soinua erreproduzitu
                             // soundManager.play('erantzun_zuzena');
                             
-                            scope.zuzen_kop = scope.zuzen_kop + 1;
+                            scope.$parent.zuzen_kop = scope.$parent.zuzen_kop + 1;
                             
                             amaierako_galderak.erantzun_zuzenak_gehi_bat();
                             
@@ -1168,7 +1168,7 @@ angular.module('ikuslang-app.directives', [])
                                 $("#erantzuna" + erantzun_zuzenak[i]).addClass("erantzun_zuzena");
                             }
                             
-                            scope.oker_kop = scope.oker_kop + 1;
+                            scope.$parent.oker_kop = scope.$parent.oker_kop + 1;
                             
                             amaierako_galderak.erantzun_okerrak_gehi_bat();
                             
