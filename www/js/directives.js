@@ -529,7 +529,7 @@ angular.module('ikuslang-app.directives', [])
                     pop.code({
                         
                         start: galdera_erantzunak.galderak[i].denbora,
-                        end: galdera_erantzunak.galderak[i].denbora + 1,
+                        end: parseInt(galdera_erantzunak.galderak[i].denbora, 10) + 1,
                         onStart: function() {
                             
                             pop.pause();
