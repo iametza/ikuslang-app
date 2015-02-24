@@ -458,7 +458,7 @@ angular.module('ikuslang-app.directives', [])
 }])
 
 // direktibaren atributua: hutsuneak-bete-hipertranskribapena (marratxoekin) baina direktibaren izena camelCase izan behar du.
-.directive('galderaErantzunakHipertranskribapena', ['Zerbitzaria', function(Zerbitzaria) {
+.directive('galderaErantzunakHipertranskribapena', ['Erabiltzailea', 'Zerbitzaria', function(Erabiltzailea, Zerbitzaria) {
     
     return {
         
@@ -557,6 +557,8 @@ angular.module('ikuslang-app.directives', [])
                         
                     } else {
                         
+                        Zerbitzaria.bidaliEmaitzak(scope.$parent.id_ikasgaia, id_ariketa, Erabiltzailea.eskuratuId(), scope.$parent.emaitzak.zuzenak, scope.$parent.emaitzak.okerrak);
+                        
                         scope.emaitzenModala.show();
                         
                     }
@@ -598,7 +600,8 @@ angular.module('ikuslang-app.directives', [])
                         galderak.gehitu_erantzuna(i,
                                                   j,
                                                   galdera_erantzunak.galderak[i].erantzunak[j].erantzuna,
-                                                  galdera_erantzunak.galderak[i].erantzunak[j].zuzena);
+                                                  galdera_erantzunak.galderak[i].erantzunak[j].zuzena,
+                                                  galdera_erantzunak.galderak[i].erantzunak[j].id);
                         
                     }
                 }
@@ -616,7 +619,8 @@ angular.module('ikuslang-app.directives', [])
                         amaierako_galderak.gehitu_erantzuna(i,
                                                             j,
                                                             galdera_erantzunak.amaierako_galderak[i].erantzunak[j].erantzuna,
-                                                            galdera_erantzunak.amaierako_galderak[i].erantzunak[j].zuzena);
+                                                            galdera_erantzunak.amaierako_galderak[i].erantzunak[j].zuzena,
+                                                            galdera_erantzunak.amaierako_galderak[i].erantzunak[j].id);
                         
                     }
                 }
@@ -1094,7 +1098,11 @@ angular.module('ikuslang-app.directives', [])
                             scope.$parent.zuzen_kop = scope.$parent.zuzen_kop + 1;
                             
                             galderak.erantzun_zuzenak_gehi_bat();
+                            
                             bistaratu_zuzen_kopurua();
+                            
+                            // Erantzunaren id-a zuzenen arrayan gorde.
+                            scope.$parent.emaitzak.zuzenak.push(galderak.itzuli_id_erantzuna_db(galderak.itzuli_id_galdera(), $(this).attr("data-id")));
                             
                         } else { // okerra bada berriz
                             
@@ -1116,7 +1124,11 @@ angular.module('ikuslang-app.directives', [])
                             scope.$parent.oker_kop = scope.$parent.oker_kop + 1;
                             
                             galderak.erantzun_okerrak_gehi_bat();
+                            
                             bistaratu_oker_kopurua();
+                            
+                            // Erantzunaren id-a okerren arrayan gorde.
+                            scope.$parent.emaitzak.okerrak.push(galderak.itzuli_id_erantzuna_db(galderak.itzuli_id_galdera(), $(this).attr("data-id")));
                             
                         }
                         
@@ -1151,6 +1163,9 @@ angular.module('ikuslang-app.directives', [])
                             
                             bistaratu_zuzen_kopurua();
                             
+                            // Erantzunaren id-a zuzenen arrayan gorde.
+                            scope.$parent.emaitzak.zuzenak.push(galderak.itzuli_id_erantzuna_db(galderak.itzuli_id_galdera(), $(this).attr("data-id")));
+                            
                         } else { // okerra bada berriz
                             
                             //alert("oker");
@@ -1173,6 +1188,9 @@ angular.module('ikuslang-app.directives', [])
                             amaierako_galderak.erantzun_okerrak_gehi_bat();
                             
                             bistaratu_oker_kopurua();
+                            
+                            // Erantzunaren id-a okerren arrayan gorde.
+                            scope.$parent.emaitzak.okerrak.push(galderak.itzuli_id_erantzuna_db(galderak.itzuli_id_galdera(), $(this).attr("data-id")));
                             
                         }
                         
@@ -1245,6 +1263,8 @@ angular.module('ikuslang-app.directives', [])
                         
                         // Modala ezkutatu.
                         scope.modal.hide();
+                        
+                        Zerbitzaria.bidaliEmaitzak(scope.$parent.id_ikasgaia, id_ariketa, Erabiltzailea.eskuratuId(), scope.$parent.emaitzak.zuzenak, scope.$parent.emaitzak.okerrak);
                         
                         scope.emaitzenModala.show();
                         

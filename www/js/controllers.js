@@ -251,6 +251,12 @@ angular.module('ikuslang-app.controllers', [])
     $scope.zuzen_kop = 0;
     $scope.oker_kop = 0;
     
+    // Erabiltzaileak emandako erantzunak (erantzunaren id-a gordetzen dugu).
+    $scope.emaitzak = {
+        zuzenak: [],
+        okerrak: []
+    };
+    
     $ionicModal.fromTemplateUrl('galderak-modala', {
         scope: $scope,
         animation: 'slide-in-up',
