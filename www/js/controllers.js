@@ -267,6 +267,12 @@ angular.module('ikuslang-app.controllers', [])
         $scope.emaitzenModala = modal;
     });
     
+    $scope.emaitzenModalaItxi = function() {
+        
+        $scope.emaitzenModala.hide()
+        
+    }
+    
     // Erabiltzaileari aurrerapen-barra erabiliz denboran aurrera eta atzera ibiltzea galaraziko diogu.
     $.jPlayer.prototype.seekBar = function() {};
     
