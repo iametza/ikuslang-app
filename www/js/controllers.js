@@ -736,9 +736,11 @@ angular.module('ikuslang-app.controllers', [])
         $(document).on("click", ".jMyPuzzle #esaldiak-zuzendu-berriz-hasi-botoia", function() {
             
             // Aldagaiak zeroratuko ditugu.
-            zuzen_kop = 0;
-            oker_kop = 0;
+            $scope.zuzen_kop = 0;
+            $scope.oker_kop = 0;
             zenbagarren_esaldia = 0;
+            zuzen_idak = [];
+            oker_idak = [];
             
             // Arraya berriz desordenatuko dugu.
             esaldien_ordena = shuffle(esaldien_ordena);
