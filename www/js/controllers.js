@@ -265,6 +265,10 @@ angular.module('ikuslang-app.controllers', [])
         $scope.modal = modal;
     });
     
+    // Aurretik modala existituko balitz suntsitu, bestela arazoak ematen zituen bigarren aldiz galdera-erantzunen ariketan sartzean.
+    // Orain alferrik da eta egindakoa eginda dago, baina JQUERY ERABILIZ EZ DIRA DOM-EAN ALDAKETAK EGIN BEHAR!!!
+    $(".modal-backdrop").remove();
+    
     $ionicModal.fromTemplateUrl('templates/emaitza-modala.html', {
         scope: $scope,
         animation: 'slide-in-up',
@@ -275,7 +279,7 @@ angular.module('ikuslang-app.controllers', [])
     
     $scope.emaitzenModalaItxi = function() {
         
-        $scope.emaitzenModala.hide()
+        $scope.emaitzenModala.hide();
         
     }
     
