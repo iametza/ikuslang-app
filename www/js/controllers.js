@@ -241,7 +241,7 @@ angular.module('ikuslang-app.controllers', [])
     
 }])
 
-.controller('GalderaErantzunakCtrl', ['$ionicModal', '$scope', '$stateParams', '$timeout', 'Zerbitzaria', function($ionicModal, $scope, $stateParams, $timeout, Zerbitzaria) {
+.controller('GalderaErantzunakCtrl', ['$ionicModal', '$scope', '$state', '$stateParams', '$timeout', 'Zerbitzaria', function($ionicModal, $scope, $state, $stateParams, $timeout, Zerbitzaria) {
     
     $scope.id_ariketa = $stateParams.id_ariketa;
     $scope.id_ikasgaia = $stateParams.id_ikasgaia;
@@ -280,6 +280,9 @@ angular.module('ikuslang-app.controllers', [])
     $scope.emaitzenModalaItxi = function() {
         
         $scope.emaitzenModala.hide();
+        
+        // Nire txokoa-ra eraman erabiltzailea, bestela arazoak ematen zituen berriz play sakatzean.
+        $state.go('nire-txokoa');
         
     }
     
