@@ -1164,7 +1164,7 @@ angular.module('ikuslang-app.directives', [])
                             bistaratu_zuzen_kopurua();
                             
                             // Erantzunaren id-a zuzenen arrayan gorde.
-                            scope.$parent.emaitzak.zuzenak.push(galderak.itzuli_id_erantzuna_db(galderak.itzuli_id_galdera(), $(this).attr("data-id")));
+                            scope.$parent.emaitzak.zuzenak.push(amaierako_galderak.itzuli_id_erantzuna_db(amaierako_galderak.itzuli_id_galdera(), $(this).attr("data-id")));
                             
                         } else { // okerra bada berriz
                             
@@ -1190,7 +1190,7 @@ angular.module('ikuslang-app.directives', [])
                             bistaratu_oker_kopurua();
                             
                             // Erantzunaren id-a okerren arrayan gorde.
-                            scope.$parent.emaitzak.okerrak.push(galderak.itzuli_id_erantzuna_db(galderak.itzuli_id_galdera(), $(this).attr("data-id")));
+                            scope.$parent.emaitzak.okerrak.push(amaierako_galderak.itzuli_id_erantzuna_db(amaierako_galderak.itzuli_id_galdera(), $(this).attr("data-id")));
                             
                         }
                         
