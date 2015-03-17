@@ -95,6 +95,11 @@ angular.module('ikuslang-app.controllers', [])
         
     });
     
+    $scope.amaituSaioa = function() {
+        Erabiltzailea.garbitu();
+        $state.go('login');
+    }
+    
     $scope.bistaratuAriketa = function(id_ariketa, id_ariketa_mota, id_ikasgaia) {
         
         switch (id_ariketa_mota) {
