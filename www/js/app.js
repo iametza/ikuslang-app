@@ -81,67 +81,34 @@ var app = angular.module('ikuslang-app', [
         controller: 'NireTxokoaCtrl'
     })
     
-    .state('ezarpenak', {
-        url: "/ezarpenak",
-        templateUrl: "templates/ezarpenak.html",
-        controller: 'EzarpenakCtrl'
-    })
-    
-    .state('app', {
-      url: "/app",
-      abstract: true,
-      templateUrl: "templates/menu.html",
-      controller: 'AppCtrl'
-    })
-    
-    .state('app.hutsuneak-bete', {
+    .state('hutsuneak-bete', {
         url: "/hutsuneak-bete/?id_ariketa&id_ikasgaia",
-        views: {
-            'menuContent' :{
-                templateUrl: "templates/hutsuneak-bete.html",
-                controller: "HutsuneakBeteCtrl"
-            }
-        }
+        templateUrl: "templates/hutsuneak-bete.html",
+        controller: "HutsuneakBeteCtrl"
     })
 
-    .state('app.galdera-erantzunak', {
-      url: "/galdera-erantzunak/?id_ariketa&id_ikasgaia",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/galdera-erantzunak.html",
-          controller: "GalderaErantzunakCtrl"
-        }
-      }
+    .state('galdera-erantzunak', {
+        url: "/galdera-erantzunak/?id_ariketa&id_ikasgaia",
+        templateUrl: "templates/galdera-erantzunak.html",
+        controller: "GalderaErantzunakCtrl"
     })
 
-    .state('app.hitzak-markatu', {
-      url: "/hitzak-markatu/?id_ariketa&id_ikasgaia",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/hitzak-markatu.html",
-          controller: "HitzakMarkatuCtrl"
-        }
-      }
+    .state('hitzak-markatu', {
+        url: "/hitzak-markatu/?id_ariketa&id_ikasgaia",
+        templateUrl: "templates/hitzak-markatu.html",
+        controller: "HitzakMarkatuCtrl"
     })
     
-    .state('app.multzokatu', {
-      url: "/multzokatu/?id_ariketa&id_ikasgaia",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/multzokatu.html",
-          controller: "MultzokatuCtrl"
-        }
-      }
+    .state('multzokatu', {
+        url: "/multzokatu/?id_ariketa&id_ikasgaia",
+        templateUrl: "templates/multzokatu.html",
+        controller: "MultzokatuCtrl"
     })
 
-    .state('app.esaldiak-ordenatu', {
+    .state('esaldiak-ordenatu', {
       url: "/esaldiak-ordenatu/?id_ariketa&id_ikasgaia",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/esaldiak-ordenatu.html",
-          controller: "EsaldiakOrdenatuCtrl"
-        }
-      }
+      templateUrl: "templates/esaldiak-ordenatu.html",
+      controller: "EsaldiakOrdenatuCtrl"
     });
     
   // if none of the above states are matched, use this as the fallback

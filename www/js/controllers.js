@@ -100,35 +100,35 @@ angular.module('ikuslang-app.controllers', [])
         switch (id_ariketa_mota) {
             
             case 1:
-                $state.go('app.esaldiak-ordenatu', {
+                $state.go('esaldiak-ordenatu', {
                     'id_ariketa': id_ariketa,
                     'id_ikasgaia': id_ikasgaia
                 });
                 break;
             
             case 2:
-                $state.go('app.galdera-erantzunak', {
+                $state.go('galdera-erantzunak', {
                     'id_ariketa': id_ariketa,
                     'id_ikasgaia': id_ikasgaia
                 });
                 break;
             
             case 3:
-                $state.go('app.hitzak-markatu', {
+                $state.go('hitzak-markatu', {
                     'id_ariketa': id_ariketa,
                     'id_ikasgaia': id_ikasgaia
                 });
                 break;
             
             case 4:
-                $state.go('app.hutsuneak-bete', {
+                $state.go('hutsuneak-bete', {
                     'id_ariketa': id_ariketa,
                     'id_ikasgaia': id_ikasgaia
                 });
                 break;
             
             case 5:
-                $state.go('app.multzokatu', {
+                $state.go('multzokatu', {
                     'id_ariketa': id_ariketa,
                     'id_ikasgaia': id_ikasgaia
                 });
