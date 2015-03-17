@@ -146,10 +146,6 @@ angular.module('ikuslang-app.controllers', [])
     
 }])
 
-.controller('EzarpenakCtrl', function($scope) {
-    
-})
-
 .controller('HutsuneakBeteCtrl', ['$ionicModal', '$scope', '$stateParams', 'Erabiltzailea', 'Zerbitzaria', function($ionicModal, $scope, $stateParams, Erabiltzailea, Zerbitzaria) {
     
     $scope.id_ariketa = $stateParams.id_ariketa;
