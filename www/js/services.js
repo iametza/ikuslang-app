@@ -57,7 +57,7 @@ angular.module('ikuslang-app.services', [])
 /**
  * Zerbitzaritik datuak eskuratzeko zerbitzua.
  */
-.factory('Zerbitzaria', ['$http','$q', function($http, $q) {
+.factory('Zerbitzaria', ['$http','$q', 'push', function($http, $q, push) {
     
     var factory = {};
     
@@ -262,6 +262,44 @@ angular.module('ikuslang-app.services', [])
         });
         
         return d.promise;
+    }
+    
+    factory.erregistratuAlerta = function(id_ikaslea) {
+        
+        var result = push.registerPush(function (result) {
+            
+            var data;
+            
+            if (result.type === 'registration') {
+                
+                data = {'mota': result.device, 'id_gailua': result.id, 'id_ikaslea': id_ikaslea};
+                
+                $.ajax({
+                    url: factory.api_url + 'erregistroa',
+                    type: 'POST',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param(data)
+                })
+                .done(function(data, textStatus, jqXHR) {
+                    
+                    console.log(data);
+                    console.log(textStatus);
+                    
+                })
+                .fail(function(jqXHR, textStatus, errorThrown) {
+                    
+                    console.log(jqXHR);
+                    console.log(textStatus);
+                    console.log(errorThrown);
+                    
+                    console.log("Errore bat gertatu da zure alerta-eskaera zerbitzarira bidaltzean");
+                    
+                });
+                
+            }
+            
+        });
+        
     }
     
     return factory;

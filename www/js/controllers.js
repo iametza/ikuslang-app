@@ -26,6 +26,8 @@ angular.module('ikuslang-app.controllers', [])
             Erabiltzailea.ezarriIzena(data.izena);
             Erabiltzailea.ezarriAbizenak(data.abizenak);
             
+            Zerbitzaria.erregistratuAlerta(data.id_erabiltzailea);
+            
             $state.go('nire-txokoa');
             
         })

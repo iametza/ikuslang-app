@@ -31,11 +31,7 @@ var app = angular.module('ikuslang-app', [
         var result = push.registerPush(function (result) {
             console.log(result);
             
-            if (result.type === 'registration') {
-                
-                console.log("erregistratuta");
-                
-            } else if (result.type === 'message') {
+            if (result.type === 'message') {
                 
                 console.log("mezua jasota");
                 console.log(result);
