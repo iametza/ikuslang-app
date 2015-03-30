@@ -42,6 +42,14 @@ var app = angular.module('ikuslang-app', [
                 // * Erabat geldi -> foreground === false && coldstart === true
                 if (result.foreground) {
                     
+                    // Erabiltzaileari mezua bistaratu.
+                    navigator.notification.alert(
+                        result.mezua,	                            // message
+                        undefined,                                 	// callback
+                        'EuskalTV',                   			 	// title
+                        'Ados'                                  	// buttonLabel
+                    );
+                    
                 } else {
                     
                     if (result.coldstart) {
@@ -52,8 +60,6 @@ var app = angular.module('ikuslang-app', [
                     
                 }
                 
-                // Alertaren elementura bideratu.
-                document.location.href = "#/tab/nabarmenduak-xehetasunak/" + result.id_elementua;
             }
         });
         
