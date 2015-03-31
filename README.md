@@ -1,6 +1,17 @@
 Ikuslang
 ============
 
+Cordovaren pluginak
+-------------------
+
+Proiektu honek Cordovaren ondorengo pluginak erabiltzen ditu:
+
+* com.ionic.keyboard
+* com.phonegap.plugins.PushPlugin
+* org.apache.cordova.console
+* org.apache.cordova.device
+* org.apache.cordova.dialogs
+
 Lizentzia
 ---------
 
