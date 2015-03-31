@@ -42,7 +42,7 @@ var app = angular.module('ikuslang-app', [
                     navigator.notification.alert(
                         result.message,	                            // message
                         undefined,                                 	// callback
-                        'EuskalTV',                   			 	// title
+                        'Ikuslang',                   			 	// title
                         'Ados'                                  	// buttonLabel
                     );
                     
