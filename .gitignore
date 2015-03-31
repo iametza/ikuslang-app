@@ -8,3 +8,5 @@ plugins/
 # komodo
 .komodotools
 *.komodoproject
+
+www/js/config.js
