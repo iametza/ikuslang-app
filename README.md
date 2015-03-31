@@ -12,6 +12,11 @@ Proiektu honek Cordovaren ondorengo pluginak erabiltzen ditu:
 * org.apache.cordova.device
 * org.apache.cordova.dialogs
 
+Konfigurazioa
+-------------
+
+www/js/config.js fitxategian GCMren senderIDa jarri behar da.
+
 Lizentzia
 ---------
 
