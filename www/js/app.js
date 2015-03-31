@@ -28,37 +28,6 @@ var app = angular.module('ikuslang-app', [
           StatusBar.styleDefault();
         }
         
-        var result = push.registerPush(function (result) {
-            
-            if (result.type === 'message') {
-                                
-                // Mezua jasotzean aplikazioa 3 egoeratan egon daiteke:
-                // * Aurreko planoan exekutatzen -> foreground === true
-                // * Atzeko planoan ezkutuan baina memorian -> foreground === false && coldstart === false
-                // * Erabat geldi -> foreground === false && coldstart === true
-                if (result.foreground) {
-                    
-                    // Erabiltzaileari mezua bistaratu.
-                    navigator.notification.alert(
-                        result.message,	                            // message
-                        undefined,                                 	// callback
-                        'Ikuslang',                   			 	// title
-                        'Ados'                                  	// buttonLabel
-                    );
-                    
-                } else {
-                    
-                    if (result.coldstart) {
-                        
-                    } else {
-                        
-                    }
-                    
-                }
-                
-            }
-        });
-        
     });
     
 })

@@ -26,6 +26,8 @@ angular.module('ikuslang-app.controllers', [])
             Erabiltzailea.ezarriIzena(data.izena);
             Erabiltzailea.ezarriAbizenak(data.abizenak);
             
+            // Saioa hasi aurretik alertek ez dute funtzionatuko.
+            // Aplikazioa atzeko planoan dagoenean saioa hasi duen azken erabiltzailearen alertak jasoko ditu.
             Zerbitzaria.erregistratuAlerta(data.id_erabiltzailea);
             
             $state.go('nire-txokoa');
