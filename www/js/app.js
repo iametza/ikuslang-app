@@ -29,13 +29,9 @@ var app = angular.module('ikuslang-app', [
         }
         
         var result = push.registerPush(function (result) {
-            console.log(result);
             
             if (result.type === 'message') {
-                
-                console.log("mezua jasota");
-                console.log(result);
-                
+                                
                 // Mezua jasotzean aplikazioa 3 egoeratan egon daiteke:
                 // * Aurreko planoan exekutatzen -> foreground === true
                 // * Atzeko planoan ezkutuan baina memorian -> foreground === false && coldstart === false
@@ -44,7 +40,7 @@ var app = angular.module('ikuslang-app', [
                     
                     // Erabiltzaileari mezua bistaratu.
                     navigator.notification.alert(
-                        result.mezua,	                            // message
+                        result.message,	                            // message
                         undefined,                                 	// callback
                         'EuskalTV',                   			 	// title
                         'Ados'                                  	// buttonLabel
